@@ -1,16 +1,30 @@
 extends Area2D
 
-
 @export var speed: float = 600.0
 var direction: Vector2 = Vector2.ZERO
+var dead := false
 
-func _ready() -> void:
+func _physics_process(delta):
+	if dead:
+		return
 	$AnimatedSprite2D.play("idle")
+	position += direction * speed * delta
 
-func _physics_process(delta: float) -> void:
-	if direction != Vector2.ZERO:
-		position += direction * speed * delta
+func _on_area_entered(area):
+	# отложим вызов функции _die, чтобы не лезть в физику во время расчётов
+	call_deferred("_die")
 
+func _die():
+	if dead:
+		return
+	dead = true
 
-func _on_area_entered(area: Area2D) -> void:
+	# отключаем коллизию безопасно
+	$CollisionShape2D.set_deferred("disabled", true)
+
+	# проигрываем анимацию взрыва
+	$AnimatedSprite2D.play("destroy")
+
+	# ждём конца анимации
+	await $AnimatedSprite2D.animation_finished
 	queue_free()

@@ -67,6 +67,7 @@ func shoot():
 
 	projectile.direction = dir
 	projectile.rotation = dir.angle()
+	shoot_flash()
 
 func attack():
 	_change_state(State.ATTACK)
@@ -80,3 +81,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if $Node2D/AnimatedSprite2D.animation == "attack" and $Node2D/AnimatedSprite2D.frame == attack_frame_to_shoot:
 		shoot()
 		print("shot")
+
+func shoot_flash():
+	$Node2D/Marker2D/PointLight2D.visible = true
+	await get_tree().create_timer(0.1).timeout
+	$Node2D/Marker2D/PointLight2D.visible = false

@@ -1,11 +1,41 @@
-[gd_scene load_steps=19 format=3 uid="uid://csbm0yrjynx50"]
+[gd_scene load_steps=28 format=3 uid="uid://csbm0yrjynx50"]
 
 [ext_resource type="Script" uid="uid://cxcc364xsms55" path="res://main/bullets/fireball.gd" id="1_48ig4"]
 [ext_resource type="Texture2D" uid="uid://cw4esfmojgv07" path="res://assets/textures/effects/fire.png" id="1_jmo2q"]
+[ext_resource type="Texture2D" uid="uid://c2nowduaeptly" path="res://assets/textures/effects/63.png" id="2_n0un6"]
+[ext_resource type="Texture2D" uid="uid://bj2qtphxsvvj8" path="res://assets/textures/effects/light_bullet.png" id="4_q08vq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_48ig4"]
 radius = 3.0
 height = 40.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tldje"]
+atlas = ExtResource("2_n0un6")
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxme0"]
+atlas = ExtResource("2_n0un6")
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umlua"]
+atlas = ExtResource("2_n0un6")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjswa"]
+atlas = ExtResource("2_n0un6")
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot08k"]
+atlas = ExtResource("2_n0un6")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7vry"]
+atlas = ExtResource("2_n0un6")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay5xp"]
+atlas = ExtResource("2_n0un6")
+region = Rect2(384, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0un6"]
 atlas = ExtResource("1_jmo2q")
@@ -67,6 +97,32 @@ region = Rect2(832, 448, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tldje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxme0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umlua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjswa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot08k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7vry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5xp")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n0un6")
 }, {
 "duration": 1.0,
@@ -115,7 +171,6 @@ animations = [{
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_48ig4")
-speed = 200.0
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -129,9 +184,14 @@ texture_filter = 3
 position = Vector2(0, 5.96046e-07)
 scale = Vector2(1.09375, 1)
 sprite_frames = SubResource("SpriteFrames_tldje")
-animation = &"idle"
-frame_progress = 0.81933
+animation = &"destroy"
+frame_progress = 0.283633
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.94902, 0, 0, 1)
+energy = 2.92
+texture = ExtResource("4_q08vq")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

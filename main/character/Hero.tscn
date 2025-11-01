@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdmuymyac5p07"]
+[gd_scene load_steps=28 format=3 uid="uid://cdmuymyac5p07"]
 
 [ext_resource type="Texture2D" uid="uid://ensxa33f2kxk" path="res://assets/textures/character/Necromancer_creativekind-Sheet.png" id="1_3rotv"]
 [ext_resource type="Script" uid="uid://dleelgvum42ca" path="res://main/character/hero.gd" id="1_mi437"]
 [ext_resource type="PackedScene" uid="uid://csbm0yrjynx50" path="res://main/bullets/fireball.tscn" id="2_nsxfi"]
+[ext_resource type="Texture2D" uid="uid://bj2qtphxsvvj8" path="res://assets/textures/effects/light_bullet.png" id="4_lhspf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi437"]
 atlas = ExtResource("1_3rotv")
@@ -171,7 +172,6 @@ height = 36.0
 scale = Vector2(2.455, 2.455)
 script = ExtResource("1_mi437")
 projectile_scene = ExtResource("2_nsxfi")
-metadata/_edit_group_ = true
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(1, 1)
@@ -182,15 +182,25 @@ position = Vector2(-1, -23)
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_hy8sp")
 animation = &"attack"
-frame = 8
-frame_progress = 0.207956
+frame = 10
+frame_progress = 0.52795
+metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
 position = Vector2(16.2933, -39.1039)
 scale = Vector2(1, 1)
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/Marker2D"]
+position = Vector2(0.0896111, -0.114052)
+scale = Vector2(0.442719, 0.436354)
+color = Color(0.968627, 0.827451, 0.00784314, 1)
+energy = 16.0
+texture = ExtResource("4_lhspf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mi437")
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
