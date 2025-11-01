@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
 var speed = Global.speed
+@onready var shoot_point = $Node2D/Marker2D
+@export var projectile_scene: PackedScene
+var attack_frame_to_shoot = 8
 
 enum State { MOVE, ATTACK, DEAD }
 var animation = ["idle", "attack"]
 var current_state: State = State.MOVE
 var current_animation: String
 
-func _ready() -> void:
-	$AnimatedSprite2D.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 
 func _change_state(_state: State) -> void:
 	if current_state != _state:
@@ -16,11 +17,11 @@ func _change_state(_state: State) -> void:
 
 func _play_anim(_name: String) -> void:
 	if current_animation != _name:
-		$AnimatedSprite2D.play(_name)
+		$Node2D/AnimatedSprite2D.play(_name)
 		current_animation = _name
 
 func _stop_anim() -> void:
-	$AnimatedSprite2D.stop()
+	$Node2D/AnimatedSprite2D.stop()
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.DEAD:
@@ -52,14 +53,30 @@ func _physics_process(delta: float) -> void:
 		else:
 			_play_anim("idle")
 
-	# --- переворот спрайта ---
 	if velocity.x != 0:
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		$Node2D.scale.x = -1 if velocity.x < 0 else 1
+
+func shoot():
+	var projectile = projectile_scene.instantiate()
+	get_tree().current_scene.add_child(projectile)
+	projectile.global_position = shoot_point.global_position
+
+	# --- считаем направление до мышки ---
+	var mouse_pos = get_global_mouse_position()
+	var dir = (mouse_pos - shoot_point.global_position).normalized()
+
+	projectile.direction = dir
+	projectile.rotation = dir.angle()
 
 func attack():
 	_change_state(State.ATTACK)
 	_play_anim(animation[1])
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if $AnimatedSprite2D.animation == "attack":
+	if $Node2D/AnimatedSprite2D.animation == "attack":
 		_change_state(State.MOVE)
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $Node2D/AnimatedSprite2D.animation == "attack" and $Node2D/AnimatedSprite2D.frame == attack_frame_to_shoot:
+		shoot()
+		print("shot")

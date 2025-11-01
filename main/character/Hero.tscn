@@ -1,10 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://cdmuymyac5p07"]
+[gd_scene load_steps=27 format=3 uid="uid://cdmuymyac5p07"]
 
 [ext_resource type="Texture2D" uid="uid://ensxa33f2kxk" path="res://assets/textures/character/Necromancer_creativekind-Sheet.png" id="1_3rotv"]
 [ext_resource type="Script" uid="uid://dleelgvum42ca" path="res://main/character/hero.gd" id="1_mi437"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mi437"]
-height = 36.0
+[ext_resource type="PackedScene" uid="uid://csbm0yrjynx50" path="res://main/bullets/fireball.tscn" id="2_nsxfi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi437"]
 atlas = ExtResource("1_3rotv")
@@ -166,17 +164,33 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mi437"]
+height = 36.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(2.455, 2.455)
 script = ExtResource("1_mi437")
+projectile_scene = ExtResource("2_nsxfi")
 metadata/_edit_group_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+texture_filter = 3
+position = Vector2(-1, -23)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_hy8sp")
+animation = &"attack"
+frame = 8
+frame_progress = 0.207956
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(16.2933, -39.1039)
+scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mi437")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 3
-position = Vector2(-1, -23)
-sprite_frames = SubResource("SpriteFrames_hy8sp")
-animation = &"idle"
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
