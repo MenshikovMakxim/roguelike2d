@@ -15,6 +15,9 @@ func _ready():
 	add_to_group("player")
 	fsm.init(self)
 	fsm.change_to("Move")
+	
+func play_anim(_name : String):
+	anim.play(_name)
 
 
 func _physics_process(delta):
@@ -64,4 +67,5 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	fsm.change_to("Damage")
+	#fsm.change_to("Damage")
+	print("damage")

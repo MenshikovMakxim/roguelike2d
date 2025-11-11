@@ -288,7 +288,6 @@ scale = Vector2(2.455, 2.455)
 script = ExtResource("1_mi437")
 
 [node name="HitBox" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 light_mask = 4

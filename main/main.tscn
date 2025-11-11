@@ -9,7 +9,7 @@
 script = ExtResource("1_xwkvk")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_53q0u")]
-position = Vector2(277, 127)
+position = Vector2(296.00003, 122.00001)
 projectile_scene = ExtResource("3_xwkvk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -19,3 +19,4 @@ metadata/_edit_lock_ = true
 [node name="NightBorne" parent="." instance=ExtResource("4_c651c")]
 position = Vector2(99, 146)
 scale = Vector2(3.48, 3.48)
+player = NodePath("../CharacterBody2D")
