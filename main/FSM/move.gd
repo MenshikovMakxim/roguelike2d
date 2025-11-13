@@ -1,6 +1,6 @@
 extends State
 
-func physics_update(delta):
+func physics_update(_delta):
 	var dir = Vector2.ZERO
 	if Input.is_action_pressed("ui_left"):
 		dir.x -= 1

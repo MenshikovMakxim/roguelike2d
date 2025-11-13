@@ -17,6 +17,5 @@ position = Vector2(276, 125)
 metadata/_edit_lock_ = true
 
 [node name="NightBorne" parent="." instance=ExtResource("4_c651c")]
-position = Vector2(99, 146)
-scale = Vector2(3.48, 3.48)
-player = NodePath("../CharacterBody2D")
+position = Vector2(92, 116)
+scale = Vector2(3.58, 3.58)

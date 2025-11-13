@@ -235,6 +235,8 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D"]
+scale = Vector2(1.715, 1.715)
+collision_mask = 5
 script = ExtResource("1_48ig4")
 metadata/_edit_lock_ = true
 
@@ -249,7 +251,7 @@ position = Vector2(0, 5.96046e-07)
 scale = Vector2(1.09375, 1)
 sprite_frames = SubResource("SpriteFrames_tldje")
 animation = &"idle"
-frame_progress = 0.884857
+frame_progress = 0.68845695
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -264,6 +266,6 @@ position = Vector2(-3, -3)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_jv6i0")
 animation = &"fire"
-frame_progress = 0.481706
+frame_progress = 0.022039512
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

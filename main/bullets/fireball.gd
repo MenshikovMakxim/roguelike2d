@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed: float = 600.0
+var damage = Global.attack * 1.2
 var direction: Vector2 = Vector2.ZERO
 var dead := false
 
@@ -15,8 +16,9 @@ func _physics_process(delta):
 	position += direction * speed * delta
 
 func _on_area_entered(area):
-	if area.has_method("take_damage"):
-		area.take_damage(1)  
+	var body = area.get_parent()
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
 	$FireWay.stop()
 
 	call_deferred("_die")
@@ -30,8 +32,8 @@ func _die():
 	$CollisionShape2D.set_deferred("disabled", true)
 
 	# проигрываем анимацию взрыва
-	$AnimatedSprite2D.play("destroy")
+	#$AnimatedSprite2D.play("destroy")
 
 	# ждём конца анимации
-	await $AnimatedSprite2D.animation_finished
+	#await $AnimatedSprite2D.animation_finished
 	queue_free()

@@ -6,3 +6,5 @@ signal attack_frame
 signal animation_finished
 signal damage_taken(amount)
 signal die
+signal attack_player(damage)
+signal player_dead

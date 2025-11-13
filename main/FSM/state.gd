@@ -3,7 +3,7 @@ class_name State
 
 var actor
 
-func enter(msg = {}):
+func enter():
 	pass
 
 func exit():

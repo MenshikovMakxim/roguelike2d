@@ -1,17 +1,20 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var speed: float = 50
+@export var speed: float = 100.0
+@export var attack = 50
+@onready var attack_frame = 6
 @export var player: NodePath
 @onready var anim = $Face/AnimatedSprite2D
+@onready var effects = $Face/Effects
 @onready var fsm = $StateMachine
 @onready var face = $Face
-@export var can_see_player: bool = false
-@export var attack_cooldown: float = 1.0
-@export var can_attack: bool = true
+#@export var can_see_player: bool = false
+#@export var attack_cooldown: float = 1.0
+#@export var can_attack: bool = true
 
-var player_in_attack_zone: bool = false
-var health: int = 3
+#var player_in_attack_zone: bool = false
+var health: int = 300
 var k: float = 0.5
 var target: Node2D
 
@@ -26,14 +29,28 @@ func _ready():
 	add_to_group("enemy")
 	fsm.init(self)
 	fsm.change_to("Chase")
+	#if get_player():
+		#fsm.change_to("Chase")
+	#else:
+		#fsm.change_to("Idle")
 	#if can_see_player:
 		#current_state = State.CHASE
 
-func play_anim(_name : String):
+func play_anim(_name : String, fn: Callable = Callable()):
 	anim.play(_name)
+	if effects.sprite_frames.has_animation(_name):
+		effects.show()
+		effects.play(_name)
+	await anim.animation_finished
+	effects.hide()
+	if fn:
+		fn.call()
 
 func _physics_process(delta: float) -> void:
 	fsm.physics_update(delta)
+	if health <= 0:
+		$HitBox/CollisionShape2D.set_deferred("disabled", true)
+		fsm.change_to("Die")
 	#
 	#if not target:
 		#current_state = State.IDLE
@@ -148,12 +165,14 @@ func _physics_process(delta: float) -> void:
 ## Сигнали
 ## -------------------------------
 #
-func _on_hit_box_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_bullets"):
-		fsm.change_to("Damage")
-#
+#func _on_hit_box_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("player_bullets"):
+		#fsm.change_to("Damage")
+
 func take_damage(amount):
 	health -= amount
+	fsm.change_to("Damage")
+
 #func _on_attack_box_area_entered(area: Area2D) -> void:
 	#print("atack")
 	#if area.is_in_group("player"):
@@ -164,3 +183,16 @@ func take_damage(amount):
 #func _on_attack_box_area_exited(area: Area2D) -> void:
 	#print("nooo")
 	#current_state = State.CHASE
+
+
+func _on_attack_box_area_entered(_area: Area2D) -> void:
+	fsm.change_to("Attack")
+
+
+func _on_attack_box_area_exited(_area: Area2D) -> void:
+	fsm.change_to("Chase")
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if $Face/AnimatedSprite2D.animation == "attack" and anim.frame == attack_frame:
+		Eventbus.emit_signal("attack_player", attack)
