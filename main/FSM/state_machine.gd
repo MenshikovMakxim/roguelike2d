@@ -1,6 +1,6 @@
 extends Node
 
-var current_state: Node
+var current_state: State
 var default: String
 var states = {}
 

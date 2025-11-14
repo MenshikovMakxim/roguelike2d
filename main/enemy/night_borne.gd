@@ -1,188 +1,35 @@
-extends CharacterBody2D
+extends Character
 class_name Enemy
 
-@export var speed: float = 100.0
-@export var attack = 50
-@onready var attack_frame = 6
 @export var player: NodePath
-@onready var anim = $Face/AnimatedSprite2D
-@onready var effects = $Face/Effects
-@onready var fsm = $StateMachine
-@onready var face = $Face
-#@export var can_see_player: bool = false
-#@export var attack_cooldown: float = 1.0
-#@export var can_attack: bool = true
+@onready var target: Node2D
 
-#var player_in_attack_zone: bool = false
-var health: int = 300
-var k: float = 0.5
-var target: Node2D
+func _init() -> void:
+	super()
+	speed = 100
+	health = 300
+	attack = 50
+	attack_frame = 6
 
-#enum State { IDLE, CHASE, ATTACK, DAMAGE, DIE }
-#var current_state: State = State.IDLE
 
 func get_player():
 	target = get_node_or_null(player)
 	return target
 
+
 func _ready():
+	super()
 	add_to_group("enemy")
-	fsm.init(self)
 	fsm.change_to("Chase")
-	#if get_player():
-		#fsm.change_to("Chase")
-	#else:
-		#fsm.change_to("Idle")
-	#if can_see_player:
-		#current_state = State.CHASE
 
-func play_anim(_name : String, fn: Callable = Callable()):
-	anim.play(_name)
-	if effects.sprite_frames.has_animation(_name):
-		effects.show()
-		effects.play(_name)
-	await anim.animation_finished
-	effects.hide()
-	if fn:
-		fn.call()
-
-func _physics_process(delta: float) -> void:
-	fsm.physics_update(delta)
-	if health <= 0:
-		$HitBox/CollisionShape2D.set_deferred("disabled", true)
-		fsm.change_to("Die")
-	#
-	#if not target:
-		#current_state = State.IDLE
-		#return
-#
-	#match current_state:
-		#State.IDLE:
-			#_idle_state()
-		#State.CHASE:
-			#_chase_state(delta)
-			#if _can_start_attack():
-				#current_state = State.ATTACK
-		#State.ATTACK:
-			#_attack_state()
-		#State.DAMAGE:
-			#velocity = Vector2.ZERO
-			#move_and_slide()
-		#State.DIE:
-			#pass
-
-
-# -------------------------------
-# Базові стани
-# -------------------------------
-#
-#func _idle_state() -> void:
-	#velocity = Vector2.ZERO
-	#move_and_slide()
-	#$Node2D/AnimatedSprite2D.play("idle")
-#
-#
-#func _chase_state(delta: float) -> void:
-	#var direction = (target.global_position - global_position).normalized()
-	#velocity = direction * speed
-	#move_and_slide()
-	#$Node2D/AnimatedSprite2D.play("run")
-#
-	#if velocity.x != 0:
-		#$Node2D.scale.x = -1 if velocity.x < 0 else 1
-#
-#
-#func _attack_state() -> void:
-	#if not can_attack:
-		#return
-#
-	#print("attack")
-	#can_attack = false
-	#velocity = Vector2.ZERO
-	#move_and_slide()
-	#$Node2D/AnimatedSprite2D.play("attack")
-#
-	#if target:
-		#$Node2D.scale.x = -1 if target.global_position.x < global_position.x else 1
-#
-	## Атака
-	#if player_in_attack_zone and target.has_method("take_damage_mob"):
-		#target.take_damage_mob(1)
-#
-	#await $Node2D/AnimatedSprite2D.animation_finished
-	#if current_state != State.DIE: # запобігає помилкам при смерті під час атаки
-		#current_state = State.CHASE
-#
-	#await get_tree().create_timer(attack_cooldown).timeout
-	#can_attack = true
-#
-#
-## -------------------------------
-## Допоміжні функції
-## -------------------------------
-#
-#func _can_start_attack() -> bool:
-	#return can_attack and player_in_attack_zone
-#
-#
-#func take_damage(amount: int) -> void:
-	#if current_state == State.DIE:
-		#return
-#
-	#current_state = State.DAMAGE
-	#health -= amount
-	#print("Enemy HP:", health)
-#
-	#$Node2D/AnimatedSprite2D.play("damage")
-	#_flash_light()
-#
-	#await $Node2D/AnimatedSprite2D.animation_finished
-#
-	#if health <= 0:
-		#die()
-	#else:
-		#current_state = State.CHASE if can_see_player else State.IDLE
-#
-#
-#func _flash_light() -> void:
-	#var light = $HitBox/PointLight2D
-	#light.enabled = true
-	#light.energy = health / k
-	#await get_tree().create_timer(0.5).timeout
-	#light.enabled = false # важливо: вимикаємо після спалаху
-#
-#
-#func die() -> void:
-	#current_state = State.DIE
-	#$HitBox/CollisionShape2D.set_deferred("disabled", true)
-	#$CollisionShape2D.set_deferred("disabled", true)
-	#$Node2D/AnimatedSprite2D.play("die")
-	#await $Node2D/AnimatedSprite2D.animation_finished
-	#queue_free()
-#
-#
-## -------------------------------
-## Сигнали
-## -------------------------------
-#
-#func _on_hit_box_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("player_bullets"):
-		#fsm.change_to("Damage")
 
 func take_damage(amount):
 	health -= amount
 	fsm.change_to("Damage")
 
-#func _on_attack_box_area_entered(area: Area2D) -> void:
-	#print("atack")
-	#if area.is_in_group("player"):
-		#current_state = State.ATTACK
-		#print("attack player")
-#
-#
-#func _on_attack_box_area_exited(area: Area2D) -> void:
-	#print("nooo")
-	#current_state = State.CHASE
+
+func do_attack():
+	Eventbus.emit_signal("attack_player", attack)
 
 
 func _on_attack_box_area_entered(_area: Area2D) -> void:
@@ -191,8 +38,3 @@ func _on_attack_box_area_entered(_area: Area2D) -> void:
 
 func _on_attack_box_area_exited(_area: Area2D) -> void:
 	fsm.change_to("Chase")
-
-
-func _on_animated_sprite_2d_frame_changed() -> void:
-	if $Face/AnimatedSprite2D.animation == "attack" and anim.frame == attack_frame:
-		Eventbus.emit_signal("attack_player", attack)

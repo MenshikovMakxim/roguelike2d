@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://bc0lqrr8lxyjp"]
+
+[ext_resource type="Script" uid="uid://c7y87b3nkkgcj" path="res://main/character/character.gd" id="1_gep86"]
+[ext_resource type="Script" uid="uid://bqj5t86hi4m3n" path="res://main/FSM/state_machine.gd" id="2_bop78"]
+[ext_resource type="Script" uid="uid://bj7t8808g6m3" path="res://main/FSM/move.gd" id="3_gx21m"]
+[ext_resource type="Script" uid="uid://btlnfbbla5qqs" path="res://main/FSM/attack.gd" id="4_eqt6m"]
+[ext_resource type="Script" uid="uid://bn7pkxeuvb07v" path="res://main/FSM/damage.gd" id="5_2282u"]
+[ext_resource type="Script" uid="uid://ciojll1vvf35v" path="res://main/FSM/die.gd" id="6_3uwmn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ild5u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxi7u"]
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_gep86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ild5u")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_qxi7u")
+
+[node name="Face" type="Node2D" parent="."]
+
+[node name="Animation" type="AnimatedSprite2D" parent="Face"]
+
+[node name="Effects" type="AnimatedSprite2D" parent="Face"]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_bop78")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_gx21m")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("4_eqt6m")
+
+[node name="Damage" type="Node" parent="StateMachine"]
+script = ExtResource("5_2282u")
+
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource("6_3uwmn")

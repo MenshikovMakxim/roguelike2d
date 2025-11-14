@@ -6,7 +6,6 @@ extends State
 	##Eventbus.connect("animation_finished", Callable(self, "attack_finished"))
 	#pass
 func enter():
-
 	if actor.is_in_group("player"):
 		player = true
 
