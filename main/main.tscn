@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bg4unuv6ard4n" path="res://main/enemy/NightBorne.tscn" id="4_c651c"]
 
 [node name="Main" type="Node2D"]
+position = Vector2(-2, 0)
 script = ExtResource("1_xwkvk")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_53q0u")]

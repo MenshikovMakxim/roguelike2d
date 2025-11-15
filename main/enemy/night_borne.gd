@@ -5,11 +5,7 @@ class_name Enemy
 @onready var target: Node2D
 
 func _init() -> void:
-	super()
-	speed = 100
-	health = 300
-	attack = 50
-	attack_frame = 6
+	super(300, 100, 50, 6)
 
 
 func get_player():

@@ -10,8 +10,11 @@ class_name Character
 @onready var face = $Face
 @onready var fsm = $StateMachine
 
-func _init() -> void:
-	pass
+func _init(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
+	self.health = _health
+	self.speed = _speed
+	self.attack = _attack
+	self.attack_frame = _attack_frame
 
 
 func _ready() -> void:

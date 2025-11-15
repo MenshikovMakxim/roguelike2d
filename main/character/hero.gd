@@ -5,7 +5,7 @@ extends Character
 @export var projectile_scene: PackedScene
 
 func _init() -> void:
-	super()
+	super._init(Global.hp, Global.speed, Global.attack, 8)
 	speed = Global.speed
 	health = Global.hp
 	attack = Global.attack
