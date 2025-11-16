@@ -13,18 +13,18 @@ script = ExtResource("1_xwkvk")
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_53q0u")]
 position = Vector2(252, 112)
 projectile_scene = ExtResource("3_xwkvk")
+health = 200
+speed = 227.505
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-scale = Vector2(0.40733197, 0.40733197)
+scale = Vector2(0.407332, 0.407332)
 metadata/_edit_lock_ = true
 
-[node name="NightBorne" parent="." instance=ExtResource("4_c651c")]
-position = Vector2(57.000008, 115.00001)
-scale = Vector2(3.58, 3.58)
-
 [node name="Slime" parent="." instance=ExtResource("5_3wy1v")]
-position = Vector2(113, 19)
-scale = Vector2(3.725, 3.725)
-health = 225
-attack = 0.125
+position = Vector2(58, 41)
+scale = Vector2(4.005, 4.005)
 attack_frame = 3
+
+[node name="NightBorne" parent="." instance=ExtResource("4_c651c")]
+position = Vector2(47, 167)
+scale = Vector2(3.39, 3.39)

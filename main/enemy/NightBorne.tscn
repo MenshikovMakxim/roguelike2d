@@ -1,8 +1,7 @@
-[gd_scene load_steps=67 format=3 uid="uid://bg4unuv6ard4n"]
+[gd_scene load_steps=66 format=3 uid="uid://bg4unuv6ard4n"]
 
 [ext_resource type="Script" uid="uid://ct45cg13se2ef" path="res://main/enemy/enemy.gd" id="1_a7xjj"]
 [ext_resource type="Texture2D" uid="uid://c2p8wc6tlarge" path="res://assets/textures/enemy/NightBorne.png" id="2_3i00s"]
-[ext_resource type="Texture2D" uid="uid://dup14kanjh1fi" path="res://assets/textures/effects/light_damage.png" id="2_sks72"]
 [ext_resource type="SpriteFrames" uid="uid://bb8or5ooed2uy" path="res://main/enemy/Damage.tres" id="4_a7xjj"]
 [ext_resource type="Script" uid="uid://bqj5t86hi4m3n" path="res://main/FSM/state_machine.gd" id="4_wjmo1"]
 [ext_resource type="Script" uid="uid://btlnfbbla5qqs" path="res://main/FSM/attack.gd" id="5_ourlx"]
@@ -422,11 +421,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_vb76u")
 
-[node name="PointLight2D" type="PointLight2D" parent="HitBox"]
-color = Color(1, 0, 1, 1)
-energy = 5.0
-texture = ExtResource("2_sks72")
-
 [node name="Face" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -453,8 +447,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
-light_mask = 2
-visibility_layer = 2
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_3i00s")
 
 [node name="StateMachine" type="Node" parent="."]

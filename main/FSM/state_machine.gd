@@ -1,7 +1,8 @@
 extends Node
+class_name FSM
 
-var current_state: State
-var default: String
+var current_state : State
+var default : String
 var states = {}
 
 func init(_actor):

@@ -1,14 +1,14 @@
 extends CharacterBody2D
 class_name Character
 
-@export var health: int 
-@export var speed : float
-@export var attack : float
+@export var health: int = 100
+@export var speed : float = 100
+@export var attack : float = 10
 @export var attack_frame : int
-@onready var anim = $Face/Animation
-@onready var effects = $Face/Effects
-@onready var face = $Face
-@onready var fsm = $StateMachine
+@onready var anim : AnimatedSprite2D = $Face/Animation
+@onready var effects : AnimatedSprite2D = $Face/Effects
+@onready var face : Node2D = $Face
+@onready var fsm : FSM = $StateMachine
 
 func _init(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
 	self.health = _health
@@ -50,9 +50,9 @@ func do_attack():
 	pass
 
 
-func _on_animated_sprite_2d_frame_changed() -> void: 
-	if anim.animation == "attack" and anim.frame == attack_frame: 
-		do_attack() 
+#func _on_animated_sprite_2d_frame_changed() -> void: 
+	#if anim.animation == "attack" and anim.frame == attack_frame: 
+		#do_attack() 
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

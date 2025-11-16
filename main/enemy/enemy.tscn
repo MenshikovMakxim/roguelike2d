@@ -17,12 +17,12 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"damage",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -39,20 +39,32 @@ radius = 22.0
 script = ExtResource("2_b8jve")
 player = NodePath("")
 
+[node name="HitBox" parent="." index="1"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Face" parent="." index="2"]
+metadata/_edit_lock_ = true
+
 [node name="Animation" parent="Face" index="0"]
 sprite_frames = SubResource("SpriteFrames_faf7x")
+animation = &"damage"
 
 [node name="StateMachine" parent="." index="3"]
 script = ExtResource("3_5731b")
 
-[node name="Chase" type="Node" parent="StateMachine" index="4"]
+[node name="Chase" type="Node" parent="StateMachine" index="0"]
 script = ExtResource("3_5731b")
 
 [node name="AttackBox" type="Area2D" parent="." index="4"]
 collision_layer = 2
 collision_mask = 8
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" index="0"]
 light_mask = 2
 visibility_layer = 2
 shape = SubResource("CircleShape2D_tjrd4")
+
+[connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]
+[connection signal="area_exited" from="AttackBox" to="." method="_on_attack_box_area_exited"]

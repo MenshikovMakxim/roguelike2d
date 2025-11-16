@@ -1,16 +1,18 @@
-[gd_scene load_steps=37 format=3 uid="uid://du2lp7dtdwpih"]
+[gd_scene load_steps=39 format=3 uid="uid://du2lp7dtdwpih"]
 
 [ext_resource type="PackedScene" uid="uid://duh82fnaqlxri" path="res://main/enemy/enemy.tscn" id="1_y47ul"]
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="2_28kc4"]
 [ext_resource type="SpriteFrames" uid="uid://bb8or5ooed2uy" path="res://main/enemy/Damage.tres" id="3_kxcv7"]
+[ext_resource type="Script" uid="uid://bqj5t86hi4m3n" path="res://main/FSM/state_machine.gd" id="4_iwi5n"]
+[ext_resource type="Script" uid="uid://crte1p5wvafvp" path="res://main/FSM/idle.gd" id="5_iwi5n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_28kc4"]
 radius = 6.0
-height = 12.0
+height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kxcv7"]
 radius = 6.0
-height = 12.0
+height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxcv7"]
 atlas = ExtResource("2_28kc4")
@@ -214,7 +216,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_28kc4")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage",
 "speed": 10.0
 }, {
@@ -237,7 +239,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xa6cn")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -262,19 +264,27 @@ animations = [{
 [node name="Slime" instance=ExtResource("1_y47ul")]
 
 [node name="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_28kc4")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kxcv7")
 
 [node name="Animation" parent="Face" index="0"]
-position = Vector2(-1, -7)
+position = Vector2(-1, -5)
 sprite_frames = SubResource("SpriteFrames_phfuy")
-animation = &"chase"
+animation = &"die"
 
 [node name="Effects" parent="Face" index="1"]
 sprite_frames = ExtResource("3_kxcv7")
 animation = &"damage"
+
+[node name="StateMachine" parent="." index="3"]
+script = ExtResource("4_iwi5n")
+
+[node name="Idle" parent="StateMachine" index="1"]
+script = ExtResource("5_iwi5n")
 
 [node name="CollisionShape2D" parent="AttackBox" index="0"]
 metadata/_edit_lock_ = true
