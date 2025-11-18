@@ -1,39 +1,51 @@
 extends Area2D
 
 @export var speed: float = 600.0
+@onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 var damage = Global.attack * 1.2
 var direction: Vector2 = Vector2.ZERO
-var dead := false
+var fly := true
+
+
+func _play_anim(_name : String, _fn : Callable = Callable()) -> void:
+	anim.stop()
+	anim.play(_name)
+	if _fn:
+		await anim.animation_finished
+		_fn.call()
 
 func _ready():
 	add_to_group("player_bullets")
 
-func _physics_process(delta):
-	if dead:
-		return
+func _fly() -> void:
 	$AnimatedSprite2D.play("idle")
 	$FireWay.play("fire")
+
+func _physics_process(delta):
+	if not fly:
+		return
+	_fly()
+	#$AnimatedSprite2D.play("idle")
+	#$FireWay.play("fire")
 	position += direction * speed * delta
 
-func _on_area_entered(area):
-	var body = area.get_parent()
-	if body.has_method("take_damage"):
-		body.take_damage(damage)
-	$FireWay.stop()
+#func _on_area_entered(area):
+	#var body = area.get_parent()
+	#if body is Enemy:
+		#body.take_damage(damage)
+	#call_deferred("_die")
 
-	call_deferred("_die")
-
-func _die():
-	if dead:
-		return
-	dead = true
-
-	# отключаем коллизию безопасно
+func _damage(body):
+	direction = Vector2.ZERO
 	$CollisionShape2D.set_deferred("disabled", true)
-
-	# проигрываем анимацию взрыва
-	#$AnimatedSprite2D.play("destroy")
-
-	# ждём конца анимации
-	#await $AnimatedSprite2D.animation_finished
+	body.take_damage(damage)
 	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	fly = false
+	$FireWay.queue_free()
+	if body is Enemy:
+		_damage(body)
+	else:
+		_play_anim("destroy", queue_free)

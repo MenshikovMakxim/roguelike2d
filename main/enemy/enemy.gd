@@ -38,9 +38,9 @@ func do_attack():
 	#fsm.to_default()
 
 
-func _on_attack_box_area_entered(area: Area2D) -> void:
+func _on_attack_box_area_entered(_area: Area2D) -> void:
 	fsm.change_to("Attack")
 
 
-func _on_attack_box_area_exited(area: Area2D) -> void:
+func _on_attack_box_area_exited(_area: Area2D) -> void:
 	fsm.to_default()

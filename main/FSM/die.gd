@@ -2,7 +2,7 @@ extends State
 
 func enter():
 	actor.velocity = Vector2.ZERO
-	
+	actor.disable()
 	
 	if actor.is_in_group("player"):
 		Eventbus.emit_signal("player_dead")

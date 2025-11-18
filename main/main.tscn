@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cwqq7qe7n5vdw" path="res://main/locations/dungeon/dungeon.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node2D"]
-position = Vector2(-2, 0)
+position = Vector2(-3, 1)
 script = ExtResource("1_xwkvk")
 
 [node name="Dungeon" parent="." instance=ExtResource("6_kfbq2")]
@@ -16,8 +16,8 @@ position = Vector2(140, 43)
 metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" parent="Dungeon" instance=ExtResource("1_53q0u")]
-z_index = 1
-position = Vector2(8, 48)
+z_index = 2
+position = Vector2(13, 46)
 scale = Vector2(1, 1)
 projectile_scene = ExtResource("3_xwkvk")
 health = 200
