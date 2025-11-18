@@ -407,7 +407,6 @@ scale = Vector2(2.455, 2.455)
 script = ExtResource("1_mi437")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_mi437")
 metadata/_edit_lock_ = true
 
@@ -442,6 +441,7 @@ energy = 16.0
 texture = ExtResource("4_lhspf")
 
 [node name="Aura" type="PointLight2D" parent="Face"]
+visible = false
 position = Vector2(0, -5.29532)
 scale = Vector2(0.334012, 0.358452)
 color = Color(0.972549, 0.160784, 0, 1)
