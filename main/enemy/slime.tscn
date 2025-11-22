@@ -256,6 +256,7 @@ animations = [{
 
 [node name="Enemy" instance=ExtResource("1_y47ul")]
 texture_filter = 0
+can_attack = true
 
 [node name="CollisionShape2D" parent="." index="0"]
 visible = false
@@ -263,10 +264,9 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_28kc4")
 
 [node name="Animation" parent="Face" index="0"]
-position = Vector2(-1, -5)
 sprite_frames = SubResource("SpriteFrames_phfuy")
-animation = &"idle"
-frame_progress = 0.10686974
+animation = &"attack"
+offset = Vector2(-1.36, -8.425)
 
 [node name="Effects" parent="Face" index="1"]
 visible = false

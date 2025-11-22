@@ -8,22 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://cwqq7qe7n5vdw" path="res://main/locations/dungeon/dungeon.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(-3, 1)
 script = ExtResource("1_xwkvk")
 
-[node name="Dungeon" parent="." instance=ExtResource("6_kfbq2")]
-position = Vector2(140, 43)
-metadata/_edit_lock_ = true
-
-[node name="Slime" parent="Dungeon" instance=ExtResource("5_3wy1v")]
-position = Vector2(205, 307)
-collision_layer = 1
-attack_frame = 3
-
-[node name="Slime2" parent="Dungeon" instance=ExtResource("5_3wy1v")]
-position = Vector2(167, 307)
-collision_layer = 1
-attack_frame = 3
+[node name="NightWarrior" parent="." instance=ExtResource("6_4dugh")]
+can_attack = false
 
 [node name="Hero" parent="." instance=ExtResource("5_kfbq2")]
 position = Vector2(148, 92)
@@ -36,4 +26,15 @@ attack_frame = 8
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 zoom = Vector2(1.965, 1.965)
 
-[node name="Enemy" parent="." instance=ExtResource("6_4dugh")]
+[node name="Dungeon" parent="." instance=ExtResource("6_kfbq2")]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(140, 43)
+metadata/_edit_lock_ = true
+
+[node name="Slime" parent="." instance=ExtResource("5_3wy1v")]
+y_sort_enabled = false
+position = Vector2(345, 350)
+collision_layer = 1
+can_attack = false
+attack_frame = 3

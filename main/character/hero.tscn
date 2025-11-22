@@ -277,17 +277,20 @@ animations = [{
 }]
 
 [node name="Hero" instance=ExtResource("1_j4os2")]
+y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("2_dldjo")
 projectile_scene = null
 
 [node name="CollisionShape2D" parent="." index="0"]
+y_sort_enabled = true
 shape = SubResource("CapsuleShape2D_37t01")
 
 [node name="Animation" parent="Face" index="0"]
-position = Vector2(-1, -24)
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_dldjo")
 animation = &"idle"
+offset = Vector2(-1.21, -22.4)
 
 [node name="Effects" parent="Face" index="1"]
 animation = &"attack"

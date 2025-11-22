@@ -14,26 +14,21 @@ func _play_anim(_name : String, _fn : Callable = Callable()) -> void:
 		await anim.animation_finished
 		_fn.call()
 
+
 func _ready():
 	add_to_group("player_bullets")
 
+
 func _fly() -> void:
 	$AnimatedSprite2D.play("idle")
-	$FireWay.play("fire")
+
 
 func _physics_process(delta):
 	if not fly:
 		return
 	_fly()
-	#$AnimatedSprite2D.play("idle")
-	#$FireWay.play("fire")
 	position += direction * speed * delta
 
-#func _on_area_entered(area):
-	#var body = area.get_parent()
-	#if body is Enemy:
-		#body.take_damage(damage)
-	#call_deferred("_die")
 
 func _damage(body):
 	direction = Vector2.ZERO
@@ -44,7 +39,6 @@ func _damage(body):
 
 func _on_body_entered(body: Node2D) -> void:
 	fly = false
-	$FireWay.queue_free()
 	if body is Enemy:
 		_damage(body)
 	else:

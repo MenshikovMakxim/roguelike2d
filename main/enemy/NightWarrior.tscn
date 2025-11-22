@@ -395,14 +395,19 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Enemy" instance=ExtResource("1_ya662")]
-z_index = 2
+[node name="NightWarrior" instance=ExtResource("1_ya662")]
 scale = Vector2(1.38, 1.38)
+can_attack = true
 
 [node name="Animation" parent="Face" index="0"]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bgen6")
 animation = &"attack"
+offset = Vector2(-0.425, -5.68)
 
 [node name="Effects" parent="Face" index="1"]
 z_index = 0
+position = Vector2(0, -3.6231887)
+
+[node name="CollisionShape2D" parent="AttackBox" index="0"]
+position = Vector2(0, -2.898551)

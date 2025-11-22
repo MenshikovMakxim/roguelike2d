@@ -36,6 +36,7 @@ animations = [{
 }]
 
 [node name="Character" type="CharacterBody2D"]
+y_sort_enabled = true
 texture_filter = 3
 script = ExtResource("1_gep86")
 
