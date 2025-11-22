@@ -1,4 +1,5 @@
 extends Character
+class_name Hero
 
 @onready var shoot_point = $Face/Marker2D
 @onready var flash = $Face/Marker2D/PointLight2D

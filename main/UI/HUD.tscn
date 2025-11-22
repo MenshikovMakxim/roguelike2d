@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://j2utusg7nykl"]
 
-[node name="Hud" type="Control"]
-layout_mode = 3
-anchors_preset = 15
+[node name="Hud" type="CanvasLayer"]
+
+[node name="HP" type="Label" parent="."]
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_bottom = 0.096
+offset_bottom = -0.040000916
+text = "     hp"
