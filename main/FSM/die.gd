@@ -4,8 +4,9 @@ func enter():
 	actor.velocity = Vector2.ZERO
 	actor.disable()
 	
-	if actor.is_in_group("player"):
+	if actor is Hero:
 		Eventbus.emit_signal("player_dead")
+		Global.hp = 0
 		
 	actor.anim.play("die")
 	await actor.anim.animation_finished

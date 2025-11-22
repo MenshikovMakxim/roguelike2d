@@ -1,14 +1,21 @@
-[gd_scene format=3 uid="uid://rv38o6di5w3i"]
+[gd_scene load_steps=2 format=3 uid="uid://rv38o6di5w3i"]
 
-[node name="HpBar" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://bc356nmxyvtcm" path="res://main/UI/hp_bar.gd" id="1_1jslb"]
+
+[node name="HpBar" type="MarginContainer"]
+texture_filter = 5
+clip_contents = true
+custom_minimum_size = Vector2(150, 15)
+offset_right = 150.0
+offset_bottom = 37.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_1jslb")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+value = 50.0

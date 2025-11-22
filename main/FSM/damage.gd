@@ -13,7 +13,7 @@ func enter():
 		actor.play_anim("damage", attack_finished)
 
 func attack_finished():
-	actor.fsm.to_default()
+	actor.to_default_state()
 	#if player:
 		#actor.fsm.change_to("Move")
 	#else:

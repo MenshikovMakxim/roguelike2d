@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://cto67ynwdm2d4"]
+
+[ext_resource type="Script" uid="uid://bqj5t86hi4m3n" path="res://main/FSM/state_machine.gd" id="1_3cpur"]
+[ext_resource type="Script" uid="uid://dan6hcfxs43oh" path="res://main/FSM/chase.gd" id="2_xafgu"]
+[ext_resource type="Script" uid="uid://crte1p5wvafvp" path="res://main/FSM/idle.gd" id="3_gmks4"]
+[ext_resource type="Script" uid="uid://btlnfbbla5qqs" path="res://main/FSM/attack.gd" id="4_exakp"]
+[ext_resource type="Script" uid="uid://bn7pkxeuvb07v" path="res://main/FSM/damage.gd" id="5_vucrw"]
+[ext_resource type="Script" uid="uid://ciojll1vvf35v" path="res://main/FSM/die.gd" id="6_t82b1"]
+[ext_resource type="Script" uid="uid://bj7t8808g6m3" path="res://main/FSM/move.gd" id="7_xafgu"]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource("1_3cpur")
+
+[node name="Chase" type="Node" parent="."]
+script = ExtResource("2_xafgu")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("3_gmks4")
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("4_exakp")
+
+[node name="Damage" type="Node" parent="."]
+script = ExtResource("5_vucrw")
+
+[node name="Die" type="Node" parent="."]
+script = ExtResource("6_t82b1")
+
+[node name="Move" type="Node" parent="."]
+script = ExtResource("7_xafgu")

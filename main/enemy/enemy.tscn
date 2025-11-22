@@ -1,10 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://duh82fnaqlxri"]
+[gd_scene load_steps=16 format=3 uid="uid://duh82fnaqlxri"]
 
 [ext_resource type="PackedScene" uid="uid://bc0lqrr8lxyjp" path="res://main/character/character.tscn" id="1_iblou"]
 [ext_resource type="Script" uid="uid://ct45cg13se2ef" path="res://main/enemy/enemy.gd" id="2_b8jve"]
-[ext_resource type="Script" uid="uid://dan6hcfxs43oh" path="res://main/FSM/chase.gd" id="3_5731b"]
 [ext_resource type="Texture2D" uid="uid://c2nowduaeptly" path="res://assets/textures/effects/63.png" id="3_faf7x"]
-[ext_resource type="Script" uid="uid://crte1p5wvafvp" path="res://main/FSM/idle.gd" id="4_b8jve"]
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="4_ojprf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_faf7x"]
@@ -122,6 +120,10 @@ collision_layer = 5
 collision_mask = 3
 script = ExtResource("2_b8jve")
 player = NodePath("")
+can_attack = true
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
 
 [node name="Face" parent="." index="1"]
 metadata/_edit_lock_ = true
@@ -131,9 +133,11 @@ sprite_frames = SubResource("SpriteFrames_faf7x")
 animation = &"damage"
 
 [node name="Effects" parent="Face" index="1"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_1i04x")
 
 [node name="AttackBox" type="Area2D" parent="." index="2"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_lock_ = true
@@ -142,12 +146,6 @@ metadata/_edit_lock_ = true
 light_mask = 2
 visibility_layer = 2
 shape = SubResource("CircleShape2D_tjrd4")
-
-[node name="Chase" type="Node" parent="StateMachine" index="0"]
-script = ExtResource("3_5731b")
-
-[node name="Idle" parent="StateMachine" index="1"]
-script = ExtResource("4_b8jve")
 
 [connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]
 [connection signal="area_exited" from="AttackBox" to="." method="_on_attack_box_area_exited"]

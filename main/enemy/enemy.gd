@@ -5,7 +5,7 @@ class_name Enemy
 @onready var target: Node2D
 @export var can_attack: bool = true
 
-func _init(_health:int=100, _speed:float=100, _attack:float=25, _attack_frame:int=6) -> void:
+func _init(_health:int=100, _speed:float=100, _attack:float=13, _attack_frame:int=6) -> void:
 	super._init(_health, _speed, _attack, _attack_frame)
 
 
@@ -14,10 +14,16 @@ func get_player():
 	return target
 
 
+func disable():
+	super()
+	$AttackBox/CollisionShape2D.set_deferred("disabled", true)
+	
+
 func _ready():
 	super()
 	add_to_group("enemy")
 	fsm.change_to("Chase")
+	default_state = "Chase"
 
 
 func do_attack():
@@ -30,4 +36,4 @@ func _on_attack_box_body_entered(_body: Character) -> void:
 
 
 func _on_attack_box_body_exited(_body: Character) -> void:
-	fsm.to_default()
+	to_default_state()

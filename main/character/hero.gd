@@ -14,10 +14,15 @@ func _init() -> void:
 
 
 func _ready():
+	super()
 	Eventbus.connect("attack_player", Callable(self, "take_damage"))
 	add_to_group("player")
-	fsm.init(self)
-	fsm.change_to("Idle")
+	default_state = "Move"
+	fsm.change_to("Move")
+
+func take_damage(amount):
+	super(amount)
+	Global.hp = health
 
 
 func do_attack():
@@ -37,3 +42,8 @@ func shoot_flash():
 	flash.visible = true
 	await get_tree().create_timer(1).timeout
 	flash.visible = false
+
+
+#func _physics_process(delta: float) -> void:
+	#if Input.is_action_just_pressed("mouse_2"):
+		#fsm.change_to("Idle")

@@ -9,6 +9,7 @@ class_name Character
 @onready var effects : AnimatedSprite2D = $Face/Effects
 @onready var face : Node2D = $Face
 @onready var fsm : FSM = $StateMachine
+@onready var default_state : String
 
 func _init(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
 	self.health = _health
@@ -42,7 +43,6 @@ func play_anim(_name : String, fn: Callable = Callable()):
 func _physics_process(delta: float) -> void:
 	fsm.physics_update(delta)
 	if health <= 0:
-		$CollisionShape2D.set_deferred("disabled", true)
 		fsm.change_to("Die")
 
 
@@ -52,14 +52,18 @@ func take_damage(amount):
 	print(health)
 
 
+func to_default_state():
+	fsm.change_to(default_state)
+
+
 func do_attack():
 	pass
 
 
 func disable():
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_animation_animation_finished() -> void:
 	if health > 0:
-		fsm.to_default()
+		to_default_state()

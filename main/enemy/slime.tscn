@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://du2lp7dtdwpih"]
+[gd_scene load_steps=34 format=3 uid="uid://du2lp7dtdwpih"]
 
 [ext_resource type="PackedScene" uid="uid://duh82fnaqlxri" path="res://main/enemy/enemy.tscn" id="1_y47ul"]
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="2_28kc4"]
@@ -38,10 +38,6 @@ region = Rect2(192, 25, 32, 25)
 [sub_resource type="AtlasTexture" id="AtlasTexture_iecpf"]
 atlas = ExtResource("2_28kc4")
 region = Rect2(224, 25, 32, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sevsf"]
-atlas = ExtResource("2_28kc4")
-region = Rect2(0, 0, 32, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qrqg"]
 atlas = ExtResource("2_28kc4")
@@ -160,9 +156,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sevsf")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0qrqg")
 }, {
 "duration": 1.0,
@@ -185,7 +178,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"chase",
-"speed": 10.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -211,7 +204,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -234,7 +227,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -251,15 +244,16 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="Enemy" instance=ExtResource("1_y47ul")]
 texture_filter = 0
-can_attack = true
+health = 80
+speed = 80.0
+attack_frame = 3
 
 [node name="CollisionShape2D" parent="." index="0"]
-visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_28kc4")
 
@@ -269,11 +263,7 @@ animation = &"attack"
 offset = Vector2(-1.36, -8.425)
 
 [node name="Effects" parent="Face" index="1"]
-visible = false
 z_index = 0
-
-[node name="AttackBox" parent="." index="2"]
-visible = false
 
 [node name="CollisionShape2D" parent="AttackBox" index="0"]
 metadata/_edit_lock_ = true

@@ -21,4 +21,5 @@ func physics_update(_delta):
 		stop_chase()
 
 func stop_chase():
-	actor.fsm.change_to("Idle")
+	if actor is not Hero:
+		actor.fsm.change_to("Idle")

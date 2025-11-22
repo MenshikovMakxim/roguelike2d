@@ -397,7 +397,10 @@ animations = [{
 
 [node name="NightWarrior" instance=ExtResource("1_ya662")]
 scale = Vector2(1.38, 1.38)
-can_attack = true
+health = 120
+speed = 150.0
+attack = 19.0
+attack_frame = 6
 
 [node name="Animation" parent="Face" index="0"]
 position = Vector2(0, -4)
