@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kx61lnw0d33w"]
+[gd_scene load_steps=9 format=3 uid="uid://kx61lnw0d33w"]
 
 [ext_resource type="Script" uid="uid://dxbevt210tana" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://csbm0yrjynx50" path="res://main/bullets/fireball.tscn" id="3_xwkvk"]
@@ -7,9 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://cwukvt23erbwd" path="res://main/enemy/NightWarrior.tscn" id="6_4dugh"]
 [ext_resource type="PackedScene" uid="uid://cwqq7qe7n5vdw" path="res://main/locations/dungeon/dungeon.tscn" id="6_kfbq2"]
 
+[sub_resource type="Gradient" id="Gradient_8m4de"]
+offsets = PackedFloat32Array(0.64, 0.7)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kfbq2"]
+gradient = SubResource("Gradient_8m4de")
+width = 464
+height = 359
+fill = 1
+fill_from = Vector2(0.495, 0.5)
+fill_to = Vector2(0, 1)
+repeat = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 22
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(-3, 1)
+texture_filter = 3
+texture_repeat = 1
 script = ExtResource("1_xwkvk")
 
 [node name="NightWarrior" parent="." instance=ExtResource("6_4dugh")]
@@ -38,3 +54,8 @@ position = Vector2(345, 350)
 collision_layer = 1
 can_attack = false
 attack_frame = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(112.00005, 68.00002)
+scale = Vector2(3.124998, 2.89855)
+texture = SubResource("GradientTexture2D_kfbq2")

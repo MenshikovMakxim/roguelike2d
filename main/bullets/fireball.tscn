@@ -502,7 +502,7 @@ animations = [{
 [node name="Area2D" type="Area2D"]
 light_mask = 5
 visibility_layer = 5
-z_index = 2
+y_sort_enabled = true
 texture_filter = 3
 scale = Vector2(0.73, 0.73)
 collision_layer = 0
@@ -523,7 +523,7 @@ position = Vector2(1.3698559, 0)
 rotation = 3.1415927
 scale = Vector2(1.09375, 1)
 sprite_frames = SubResource("SpriteFrames_tldje")
-animation = &"destroy"
+animation = &"idle"
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

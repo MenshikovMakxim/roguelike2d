@@ -4,13 +4,19 @@ class_name Character
 @export var health: int = 100
 @export var speed : float = 100
 @export var attack : float = 10
-@export var attack_frame : int
+@export var attack_frame : int = 1
 @onready var anim : AnimatedSprite2D = $Face/Animation
 @onready var effects : AnimatedSprite2D = $Face/Effects
 @onready var face : Node2D = $Face
 @onready var fsm : FSM = $StateMachine
 
 func _init(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
+	self.health = _health
+	self.speed = _speed
+	self.attack = _attack
+	self.attack_frame = _attack_frame
+
+func setup(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
 	self.health = _health
 	self.speed = _speed
 	self.attack = _attack
