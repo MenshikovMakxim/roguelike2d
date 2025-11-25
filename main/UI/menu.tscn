@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://d33dftgewpw1f"]
+
+[ext_resource type="Script" uid="uid://xbmh7t7e7kn6" path="res://main/UI/menu.gd" id="1_37ek2"]
+[ext_resource type="Texture2D" uid="uid://7i5dpbv6mww3" path="res://main/UI/menu.tres" id="2_hnf3l"]
+[ext_resource type="Texture2D" uid="uid://bspdfof1ikrcx" path="res://main/UI/menu2.tres" id="3_3impa"]
+[ext_resource type="Texture2D" uid="uid://c612hmmfvfgsr" path="res://exported_frames/frame_0.png" id="4_3impa"]
+[ext_resource type="Texture2D" uid="uid://d2emva0cnrmq7" path="res://exported_frames/frame_1.png" id="5_f2nar"]
+[ext_resource type="Texture2D" uid="uid://ba27b8uwwvimy" path="res://exported_frames/frame_2.png" id="6_lqput"]
+[ext_resource type="Texture2D" uid="uid://cdn48s0vkrp3u" path="res://exported_frames/frame_3.png" id="7_vjywk"]
+[ext_resource type="Texture2D" uid="uid://c6e654nbvsc64" path="res://exported_frames/frame_4.png" id="8_nm8qa"]
+[ext_resource type="Texture2D" uid="uid://br6nmnbx07ns1" path="res://exported_frames/frame_5.png" id="9_m21rw"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_hnf3l"]
+frames = 6
+speed_scale = 10.0
+frame_0/texture = ExtResource("4_3impa")
+frame_1/texture = ExtResource("5_f2nar")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_lqput")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_vjywk")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("8_nm8qa")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("9_m21rw")
+frame_5/duration = 1.0
+
+[sub_resource type="InputEventAction" id="InputEventAction_37ek2"]
+action = &"ui_accept"
+
+[sub_resource type="Shortcut" id="Shortcut_hnf3l"]
+events = [SubResource("InputEventAction_37ek2")]
+
+[node name="Control" type="Control"]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37ek2")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hnf3l")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3impa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AnimatedTexture_hnf3l")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_hnf3l")
+text = "S T A R T"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

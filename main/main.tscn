@@ -1,57 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://kx61lnw0d33w"]
+[gd_scene load_steps=2 format=3 uid="uid://kx61lnw0d33w"]
 
-[ext_resource type="Script" uid="uid://dxbevt210tana" path="res://main/main.gd" id="1_xwkvk"]
-[ext_resource type="PackedScene" uid="uid://csbm0yrjynx50" path="res://main/bullets/fireball.tscn" id="3_xwkvk"]
-[ext_resource type="PackedScene" uid="uid://c1nstqtgb0f00" path="res://main/character/hero.tscn" id="5_kfbq2"]
-[ext_resource type="PackedScene" uid="uid://cwqq7qe7n5vdw" path="res://main/locations/dungeon/dungeon.tscn" id="6_kfbq2"]
-[ext_resource type="PackedScene" uid="uid://d03he3fwk6nwb" path="res://main/locations/edge.tscn" id="7_4dugh"]
-[ext_resource type="PackedScene" uid="uid://j2utusg7nykl" path="res://main/UI/HUD.tscn" id="8_67ri8"]
-
-[sub_resource type="Curve2D" id="Curve2D_kfbq2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -760, -512, 0, 0, 0, 0, 720, -512, 0, 0, 0, 0, 720, 528, 0, 0, 0, 0, -760, 528, 0, 0, 0, 0, -760, -512)
-}
-point_count = 5
+[ext_resource type="PackedScene" uid="uid://d33dftgewpw1f" path="res://main/UI/menu.tscn" id="1_53q0u"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 3
 texture_repeat = 1
-script = ExtResource("1_xwkvk")
 
-[node name="Hud" parent="." instance=ExtResource("8_67ri8")]
-
-[node name="Hero" parent="." instance=ExtResource("5_kfbq2")]
-position = Vector2(0, 40)
-projectile_scene = ExtResource("3_xwkvk")
-
-[node name="Camera2D" type="Camera2D" parent="Hero"]
-zoom = Vector2(1.665, 1.665)
-limit_left = -770
-limit_top = -545
-limit_right = 720
-limit_bottom = 570
-metadata/_edit_lock_ = true
-
-[node name="Dungeon" parent="." instance=ExtResource("6_kfbq2")]
-z_index = -1
-y_sort_enabled = true
-metadata/_edit_lock_ = true
-
-[node name="Edge" parent="." instance=ExtResource("7_4dugh")]
-z_index = 4
-position = Vector2(-19.225002, 9.000004)
-scale = Vector2(24.46, 17.28)
-metadata/_edit_lock_ = true
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_kfbq2")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-760, -512)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Control" parent="." instance=ExtResource("1_53q0u")]

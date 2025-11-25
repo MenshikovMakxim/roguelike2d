@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Roguelike2D"
-run/main_scene="uid://kx61lnw0d33w"
+run/main_scene="uid://d33dftgewpw1f"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
@@ -28,8 +28,7 @@ Eventbus="*res://main/globals/eventbus.gd"
 
 window/size/viewport_width=256
 window/size/viewport_height=240
-window/size/window_width_override=512
-window/size/window_height_override=480
+window/size/borderless=true
 
 [input]
 

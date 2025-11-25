@@ -5,8 +5,8 @@ class_name Enemy
 @onready var target: Node2D
 @export var can_attack: bool = true
 
-func _init(_health:int=100, _speed:float=100, _attack:float=13, _attack_frame:int=6) -> void:
-	super._init(_health, _speed, _attack, _attack_frame)
+#func _init(_health:int=100, _speed:float=100, _attack:float=13, _attack_frame:int=6) -> void:
+	#super._init(_health, _speed, _attack, _attack_frame)
 
 
 func get_player():

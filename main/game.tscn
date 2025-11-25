@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://dm0rd2jbm4egr"]
+
+[ext_resource type="Script" uid="uid://dxbevt210tana" path="res://main/main.gd" id="1_3qcir"]
+[ext_resource type="PackedScene" uid="uid://j2utusg7nykl" path="res://main/UI/HUD.tscn" id="2_jc0vi"]
+[ext_resource type="PackedScene" uid="uid://c1nstqtgb0f00" path="res://main/character/hero.tscn" id="3_2c7eb"]
+[ext_resource type="PackedScene" uid="uid://csbm0yrjynx50" path="res://main/bullets/fireball.tscn" id="4_4u4fy"]
+[ext_resource type="PackedScene" uid="uid://cwqq7qe7n5vdw" path="res://main/locations/dungeon/dungeon.tscn" id="5_j015t"]
+[ext_resource type="PackedScene" uid="uid://d03he3fwk6nwb" path="res://main/locations/edge.tscn" id="6_hlcqn"]
+
+[sub_resource type="Curve2D" id="Curve2D_v3ojx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -760, -512, 0, 0, 0, 0, 720, -512, 0, 0, 0, 0, 720, 528, 0, 0, 0, 0, -760, 528, 0, 0, 0, 0, -760, -512)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_3qcir")
+
+[node name="Hud" parent="." instance=ExtResource("2_jc0vi")]
+
+[node name="Hero" parent="." instance=ExtResource("3_2c7eb")]
+position = Vector2(0, 40)
+projectile_scene = ExtResource("4_4u4fy")
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+zoom = Vector2(1.97, 1.97)
+limit_left = -770
+limit_top = -545
+limit_right = 720
+limit_bottom = 570
+metadata/_edit_lock_ = true
+
+[node name="Dungeon" parent="." instance=ExtResource("5_j015t")]
+z_index = -1
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Edge" parent="." instance=ExtResource("6_hlcqn")]
+z_index = 4
+position = Vector2(-19.225002, 9.000004)
+scale = Vector2(24.46, 17.28)
+metadata/_edit_lock_ = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_v3ojx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-760, -512)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

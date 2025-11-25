@@ -11,11 +11,11 @@ class_name Character
 @onready var fsm : FSM = $StateMachine
 @onready var default_state : String
 
-func _init(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
-	self.health = _health
-	self.speed = _speed
-	self.attack = _attack
-	self.attack_frame = _attack_frame
+#func _init(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
+	#self.health = _health
+	#self.speed = _speed
+	#self.attack = _attack
+	#self.attack_frame = _attack_frame
 
 func setup(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
 	self.health = _health
