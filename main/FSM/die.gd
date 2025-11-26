@@ -8,7 +8,7 @@ func enter():
 	actor.disable()
 	
 	if actor is Hero:
-		Eventbus.emit_signal("player_dead")
+		Global.emit_signal("player_dead")
 		Global.hp = 0
 		
 	actor.anim.play("die")

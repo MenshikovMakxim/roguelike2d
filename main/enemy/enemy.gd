@@ -24,7 +24,7 @@ func _ready():
 	
 
 func do_attack():
-	Eventbus.emit_signal("attack_player", attack)
+	Global.emit_signal("attack_player", attack)
 
 
 func _on_attack_box_body_entered(_body: Character) -> void:

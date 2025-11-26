@@ -3,7 +3,7 @@ extends State
 var target: Node2D = null
 
 func _ready() -> void:
-	Eventbus.connect("player_dead", Callable(self, "stop_chase"))
+	Global.connect("player_dead", Callable(self, "stop_chase"))
 
 func enter():
 	target = actor.get_player()

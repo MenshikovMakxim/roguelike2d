@@ -8,7 +8,7 @@ class_name Hero
 
 func _ready():
 	super()
-	Eventbus.connect("attack_player", Callable(self, "take_damage"))
+	Global.connect("attack_player", Callable(self, "take_damage"))
 	add_to_group("player")
 	default_state = "Move"
 	fsm.change_to("Move")

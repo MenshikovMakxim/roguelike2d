@@ -22,7 +22,10 @@ buses/default_bus_layout=""
 [autoload]
 
 Global="*res://main/globals/global.gd"
-Eventbus="*res://main/globals/eventbus.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 
