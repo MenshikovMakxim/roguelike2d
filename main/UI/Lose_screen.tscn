@@ -1,3 +1,57 @@
-[gd_scene format=3 uid="uid://cs7wrh5lxcccj"]
+[gd_scene load_steps=4 format=3 uid="uid://cs7wrh5lxcccj"]
 
-[node name="LoseScreen" type="Node2D"]
+[ext_resource type="Script" uid="uid://chshmfxbtdcta" path="res://main/UI/lose_screen.gd" id="1_2fsn7"]
+[ext_resource type="Texture2D" uid="uid://bgv5gc7f5f1dg" path="res://assets/die_art.png" id="1_w4pcu"]
+[ext_resource type="PackedScene" uid="uid://b3fc1acjxjhk8" path="res://main/globals/SoundManager.tscn" id="3_enujj"]
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fsn7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+offset_right = 8.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_w4pcu")
+
+[node name="SoundManager" parent="." instance=ExtResource("3_enujj")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Retry" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "R E T R Y"
+
+[node name="Menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "M E N U"
+
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]

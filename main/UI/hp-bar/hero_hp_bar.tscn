@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://rv38o6di5w3i"]
+
+[ext_resource type="Script" uid="uid://cyrrj8gxxc4yk" path="res://main/UI/hp-bar/hero_hp_bar.gd" id="1_3lkmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl1lf"]
+bg_color = Color(0.6, 0.32941177, 0.6, 0.29803923)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+shadow_size = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lkmq"]
+bg_color = Color(0.7254902, 0, 0.2627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32941177, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+corner_detail = 3
+shadow_size = 4
+anti_aliasing = false
+
+[node name="HpBar" type="MarginContainer"]
+texture_filter = 5
+clip_contents = true
+custom_minimum_size = Vector2(150, 15)
+offset_right = 560.0
+offset_bottom = 67.0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_3lkmq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.6117647, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+theme_override_styles/background = SubResource("StyleBoxFlat_fl1lf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3lkmq")
+value = 50.0

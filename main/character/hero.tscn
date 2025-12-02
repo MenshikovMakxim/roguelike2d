@@ -290,6 +290,11 @@ animations = [{
 collision_layer = 2
 script = ExtResource("2_dldjo")
 projectile_scene = null
+health = 200
+speed = 180.0
+attack = 20.0
+attack_frame = 8
+die_frame = 4
 sounds = Dictionary[String, AudioStream]({
 "attack": ExtResource("4_5bngo"),
 "damage": ExtResource("3_5yfqu")
@@ -302,7 +307,6 @@ shape = SubResource("CapsuleShape2D_37t01")
 [node name="Animation" parent="Face" index="0"]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_dldjo")
-animation = &"die"
 offset = Vector2(-1.21, -22.4)
 
 [node name="Effects" parent="Face" index="1"]

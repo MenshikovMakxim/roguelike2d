@@ -1,18 +1,18 @@
 extends State
 
-@onready var player = false
+#@onready var player = false
 
 
 func enter():
-	if actor.is_in_group("player"):
-		player = true
+	#if actor is Hero:
+		#player = true
 	actor.anim.play("attack")
 	actor.anim.connect("frame_changed", Callable(self, "attack"))
 
 
 func physics_update(_delta):
 	# дозволяємо рух як у MoveState
-	if player:
+	if actor is Hero:
 		var dir = Vector2.ZERO
 
 		if Input.is_action_pressed("ui_left"):

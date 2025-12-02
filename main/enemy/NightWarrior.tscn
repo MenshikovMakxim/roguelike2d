@@ -416,8 +416,9 @@ sounds = Dictionary[String, AudioStream]({
 [node name="Animation" parent="Face" index="0"]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bgen6")
-animation = &"die"
-frame = 13
+animation = &"idle"
+frame = 3
+frame_progress = 0.944053
 offset = Vector2(-0.425, -5.68)
 
 [node name="Effects" parent="Face" index="1"]
@@ -426,3 +427,7 @@ position = Vector2(0, -3.6231887)
 
 [node name="CollisionShape2D" parent="AttackBox" index="0"]
 position = Vector2(0, -2.898551)
+
+[node name="ProgressBar" parent="." index="5"]
+offset_top = -21.753635
+offset_bottom = -17.753635

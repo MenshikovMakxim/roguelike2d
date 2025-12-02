@@ -7,12 +7,14 @@ func enter():
 	actor.velocity = Vector2.ZERO
 	actor.disable()
 	
-	if actor is Hero:
-		Global.emit_signal("player_dead")
-		Global.hp = 0
-		
 	actor.anim.play("die")
 	await actor.anim.animation_finished
+	
+	if actor is Hero:
+		Global.emit_signal("player_dead")
+		#actor.to_default_state()
+		#Global.hp = 200
+	
 	delete_actor()
 
 

@@ -1,15 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://d33dftgewpw1f"]
+[gd_scene load_steps=14 format=3 uid="uid://d33dftgewpw1f"]
 
 [ext_resource type="Script" uid="uid://xbmh7t7e7kn6" path="res://main/UI/menu/menu.gd" id="1_37ek2"]
 [ext_resource type="Texture2D" uid="uid://7i5dpbv6mww3" path="res://main/UI/menu/menu.tres" id="2_hnf3l"]
 [ext_resource type="Texture2D" uid="uid://bspdfof1ikrcx" path="res://main/UI/menu/menu2.tres" id="3_3impa"]
-[ext_resource type="Texture2D" uid="uid://c612hmmfvfgsr" path="res://exported_frames/frame_0.png" id="4_3impa"]
-[ext_resource type="Texture2D" uid="uid://d2emva0cnrmq7" path="res://exported_frames/frame_1.png" id="5_f2nar"]
-[ext_resource type="Texture2D" uid="uid://ba27b8uwwvimy" path="res://exported_frames/frame_2.png" id="6_lqput"]
-[ext_resource type="Texture2D" uid="uid://cdn48s0vkrp3u" path="res://exported_frames/frame_3.png" id="7_vjywk"]
-[ext_resource type="Texture2D" uid="uid://c6e654nbvsc64" path="res://exported_frames/frame_4.png" id="8_nm8qa"]
-[ext_resource type="Texture2D" uid="uid://br6nmnbx07ns1" path="res://exported_frames/frame_5.png" id="9_m21rw"]
-[ext_resource type="Texture2D" uid="uid://dgjklvdytmq8t" path="res://assets/textures/effects/fire/Red Effect Bullet Impact Explosion 32x32.png" id="10_lqput"]
+[ext_resource type="Texture2D" uid="uid://c612hmmfvfgsr" path="res://assets/exported_frames/frame_0.png" id="4_3impa"]
+[ext_resource type="Texture2D" uid="uid://d2emva0cnrmq7" path="res://assets/exported_frames/frame_1.png" id="5_f2nar"]
+[ext_resource type="Texture2D" uid="uid://ba27b8uwwvimy" path="res://assets/exported_frames/frame_2.png" id="6_lqput"]
+[ext_resource type="Texture2D" uid="uid://cdn48s0vkrp3u" path="res://assets/exported_frames/frame_3.png" id="7_vjywk"]
+[ext_resource type="Texture2D" uid="uid://c6e654nbvsc64" path="res://assets/exported_frames/frame_4.png" id="8_nm8qa"]
+[ext_resource type="Texture2D" uid="uid://br6nmnbx07ns1" path="res://assets/exported_frames/frame_5.png" id="9_m21rw"]
 [ext_resource type="PackedScene" uid="uid://b3fc1acjxjhk8" path="res://main/globals/SoundManager.tscn" id="12_vjywk"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_hnf3l"]
@@ -32,42 +31,6 @@ action = &"ui_accept"
 
 [sub_resource type="Shortcut" id="Shortcut_hnf3l"]
 events = [SubResource("InputEventAction_37ek2")]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vjywk"]
-atlas = ExtResource("10_lqput")
-region = Rect2(352, 384, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nm8qa"]
-atlas = ExtResource("10_lqput")
-region = Rect2(384, 384, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m21rw"]
-atlas = ExtResource("10_lqput")
-region = Rect2(416, 384, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5n0v"]
-atlas = ExtResource("10_lqput")
-region = Rect2(448, 384, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_umb64"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vjywk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nm8qa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m21rw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5n0v")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [node name="Control" type="Control"]
 texture_filter = 3
@@ -135,6 +98,7 @@ texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_hnf3l")
 text = "S T A R T"
 flat = true
@@ -143,6 +107,7 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+mouse_default_cursor_shape = 2
 text = "C R E D I T S"
 flat = true
 
@@ -150,15 +115,9 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 text = "E X I T "
 flat = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
-texture_filter = 3
-position = Vector2(632, 576.00006)
-scale = Vector2(13.250001, 8.999998)
-sprite_frames = SubResource("SpriteFrames_umb64")
-metadata/_edit_lock_ = true
 
 [node name="SoundManager" parent="." instance=ExtResource("12_vjywk")]
 

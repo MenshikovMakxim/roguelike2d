@@ -1,11 +1,11 @@
 extends State
 
-@onready var player = false
+#@onready var player = false
 
 
 func enter():
-	if actor.is_in_group("player"):
-		player = true
+	#if actor is Hero:
+		#player = true
 
 	if actor.has_method("take_damage"):
 		actor.play_anim("damage", attack_finished)

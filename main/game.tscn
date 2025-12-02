@@ -18,19 +18,18 @@ point_count = 5
 y_sort_enabled = true
 script = ExtResource("1_3qcir")
 
-[node name="Hud" parent="." instance=ExtResource("2_jc0vi")]
-
 [node name="Hero" parent="." instance=ExtResource("3_2c7eb")]
-position = Vector2(0, 40)
+position = Vector2(8, 83)
 projectile_scene = ExtResource("4_4u4fy")
 
-[node name="Camera2D" type="Camera2D" parent="Hero"]
+[node name="Camera2D2" type="Camera2D" parent="Hero"]
 zoom = Vector2(1.97, 1.97)
-limit_left = -770
-limit_top = -545
-limit_right = 720
-limit_bottom = 570
-metadata/_edit_lock_ = true
+limit_left = -765
+limit_top = -543
+limit_right = 726
+limit_bottom = 537
+
+[node name="Hud" parent="." instance=ExtResource("2_jc0vi")]
 
 [node name="Dungeon" parent="." instance=ExtResource("5_j015t")]
 z_index = -1
@@ -57,5 +56,8 @@ autostart = true
 stream = ExtResource("7_jc0vi")
 volume_db = -8.0
 autoplay = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, 82)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

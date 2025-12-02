@@ -5,11 +5,10 @@ class_name Hero
 @onready var flash = $Face/Marker2D/PointLight2D
 @export var projectile_scene: PackedScene
 
-
 func _ready():
 	super()
+	Global.hp = 200
 	Global.connect("attack_player", Callable(self, "take_damage"))
-	add_to_group("player")
 	default_state = "Move"
 	fsm.change_to("Move")
 	super.setup(Global.hp, Global.speed, Global.attack, 8, 3)
@@ -17,6 +16,7 @@ func _ready():
 func take_damage(amount):
 	super(amount)
 	Global.hp = health
+	
 
 
 func do_attack():

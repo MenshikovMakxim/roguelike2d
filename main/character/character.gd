@@ -60,7 +60,6 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount):
 	health -= amount
 	fsm.change_to("Damage")
-	print(health)
 
 
 func to_default_state():
