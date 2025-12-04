@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cto67ynwdm2d4"]
+[gd_scene load_steps=9 format=3 uid="uid://cto67ynwdm2d4"]
 
 [ext_resource type="Script" uid="uid://bqj5t86hi4m3n" path="res://main/FSM/state_machine.gd" id="1_3cpur"]
 [ext_resource type="Script" uid="uid://dan6hcfxs43oh" path="res://main/FSM/chase.gd" id="2_xafgu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bn7pkxeuvb07v" path="res://main/FSM/damage.gd" id="5_vucrw"]
 [ext_resource type="Script" uid="uid://ciojll1vvf35v" path="res://main/FSM/die.gd" id="6_t82b1"]
 [ext_resource type="Script" uid="uid://bj7t8808g6m3" path="res://main/FSM/move.gd" id="7_xafgu"]
+[ext_resource type="Script" uid="uid://dskldqgh6en54" path="res://main/FSM/far_attack.gd" id="8_gmks4"]
 
 [node name="StateMachine" type="Node"]
 script = ExtResource("1_3cpur")
@@ -28,3 +29,6 @@ script = ExtResource("6_t82b1")
 
 [node name="Move" type="Node" parent="."]
 script = ExtResource("7_xafgu")
+
+[node name="FarAttack" type="Node" parent="."]
+script = ExtResource("8_gmks4")

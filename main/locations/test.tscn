@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bec4bnjejiki7"]
+
+[ext_resource type="PackedScene" uid="uid://c1nstqtgb0f00" path="res://main/character/hero.tscn" id="1_fnpwn"]
+[ext_resource type="PackedScene" uid="uid://biyhcr5kuedii" path="res://main/enemy/FireWorm.tscn" id="2_3gofr"]
+[ext_resource type="PackedScene" uid="uid://cwukvt23erbwd" path="res://main/enemy/NightWarrior.tscn" id="3_3gofr"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Hero" parent="." instance=ExtResource("1_fnpwn")]
+position = Vector2(55, 72)
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+zoom = Vector2(2.45, 2.45)
+
+[node name="NightWarrior" parent="." instance=ExtResource("3_3gofr")]
+position = Vector2(289, 122)
+
+[node name="Enemy" parent="." instance=ExtResource("2_3gofr")]
+position = Vector2(206, 27)
+distant_to_attack = 300.0
+player = NodePath("../Hero")

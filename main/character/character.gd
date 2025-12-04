@@ -9,12 +9,14 @@ class_name Character
 @onready var anim : AnimatedSprite2D = $Face/Animation
 @onready var effects : AnimatedSprite2D = $Face/Effects
 @onready var face : Node2D = $Face
+@onready var shadow : Sprite2D = $Face/Shadow
 @onready var fsm : FSM = $StateMachine
 @onready var default_state : String
 @onready var audio : AudioStreamPlayer2D = $AudioStreamPlayer2D
 @export var sounds : Dictionary[String, AudioStream] = {"damage":preload("res://assets/sounds/enemy/damage.ogg")}
+@export var sounds_volumes : int
 
-func play_sound(_name: String, _volume = 0):
+func play_sound(_name: String, _volume = sounds_volumes):
 	if sounds.has(_name):
 		audio.stream = sounds[_name]
 		audio.volume_db = _volume

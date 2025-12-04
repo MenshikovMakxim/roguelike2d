@@ -1,6 +1,5 @@
 extends State
 
-
 func enter():
 	
 	actor.anim.connect("frame_changed", Callable(self, "sound"))
@@ -12,15 +11,14 @@ func enter():
 	
 	if actor is Hero:
 		Global.emit_signal("player_dead")
-		#actor.to_default_state()
-		#Global.hp = 200
 	
 	delete_actor()
 
 
 func sound():
 	if actor.anim.frame == actor.die_frame:
-		actor.play_sound("die", 25)
+		actor.shadow.hide()
+		actor.play_sound("die", 10)
 
 
 func delete_actor():

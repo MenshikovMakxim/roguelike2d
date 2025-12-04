@@ -4,6 +4,7 @@ class_name Hero
 @onready var shoot_point = $Face/Marker2D
 @onready var flash = $Face/Marker2D/PointLight2D
 @export var projectile_scene: PackedScene
+@onready var fireball : PackedScene = load("res://main/bullets/hero_bullet.tscn")
 
 func _ready():
 	super()
@@ -20,15 +21,17 @@ func take_damage(amount):
 
 
 func do_attack():
-	var projectile = projectile_scene.instantiate()
-	get_tree().current_scene.add_child(projectile)
-	projectile.global_position = shoot_point.global_position
-
+	var _fireball = fireball.instantiate()
+	get_tree().current_scene.add_child(_fireball)
+	_fireball.set_damage(30)
+	_fireball.global_position = shoot_point.global_position
+	
+	
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - shoot_point.global_position).normalized()
 
-	projectile.direction = dir
-	projectile.rotation = dir.angle()
+	_fireball.direction = dir
+	_fireball.rotation = dir.angle()
 	shoot_flash()
 
 

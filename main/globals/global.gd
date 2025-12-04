@@ -13,7 +13,7 @@ func _ready() -> void:
 ##stats of hero
 
 var hp = 200
-var speed = 200
+var speed = 170
 var attack = 40
 
 ##router

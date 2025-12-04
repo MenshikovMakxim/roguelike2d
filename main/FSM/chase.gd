@@ -19,6 +19,7 @@ func chase():
 	if actor.velocity.x != 0:
 		actor.face.scale.x = -1 if actor.velocity.x < 0 else 1
 
+
 func physics_update(_delta):
 	if target:
 		chase()

@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc0lqrr8lxyjp"]
+[gd_scene load_steps=8 format=3 uid="uid://bc0lqrr8lxyjp"]
 
 [ext_resource type="Script" uid="uid://c7y87b3nkkgcj" path="res://main/character/character.gd" id="1_gep86"]
 [ext_resource type="SpriteFrames" uid="uid://kbnturjafboi" path="res://main/character/character.tres" id="2_gx21m"]
 [ext_resource type="PackedScene" uid="uid://cto67ynwdm2d4" path="res://main/FSM/state_machine.tscn" id="3_o64gn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ild5u"]
-radius = 8.0
-height = 22.0
+radius = 9.0
+height = 24.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bop78"]
 animations = [{
@@ -31,6 +31,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_o64gn"]
+offsets = PackedFloat32Array(0.29333332, 0.82)
+colors = PackedColorArray(0, 0, 0, 0.7294118, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r4jqx"]
+gradient = SubResource("Gradient_o64gn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.3)
+metadata/_snap_enabled = true
+
 [node name="Character" type="CharacterBody2D"]
 y_sort_enabled = true
 texture_filter = 3
@@ -47,10 +58,17 @@ sprite_frames = SubResource("SpriteFrames_bop78")
 animation = &"attack"
 
 [node name="Effects" type="AnimatedSprite2D" parent="Face"]
+visible = false
 z_index = 2
 texture_filter = 3
 sprite_frames = ExtResource("2_gx21m")
 animation = &"damage"
+
+[node name="Shadow" type="Sprite2D" parent="Face"]
+z_index = -1
+position = Vector2(0, 21.5)
+scale = Vector2(1, 0.359375)
+texture = SubResource("GradientTexture2D_r4jqx")
 
 [node name="StateMachine" parent="." instance=ExtResource("3_o64gn")]
 

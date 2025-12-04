@@ -425,6 +425,9 @@ offset = Vector2(-0.425, -5.68)
 z_index = 0
 position = Vector2(0, -3.6231887)
 
+[node name="Shadow" parent="Face" index="2"]
+position = Vector2(0, 14.282614)
+
 [node name="CollisionShape2D" parent="AttackBox" index="0"]
 position = Vector2(0, -2.898551)
 

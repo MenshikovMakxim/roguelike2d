@@ -288,6 +288,7 @@ animations = [{
 
 [node name="Hero" instance=ExtResource("1_j4os2")]
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("2_dldjo")
 projectile_scene = null
 health = 200
@@ -299,6 +300,7 @@ sounds = Dictionary[String, AudioStream]({
 "attack": ExtResource("4_5bngo"),
 "damage": ExtResource("3_5yfqu")
 })
+sounds_volumes = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 y_sort_enabled = true
@@ -323,6 +325,10 @@ enabled = false
 color = Color(0.968627, 0.827451, 0.00784314, 1)
 energy = 16.0
 texture = ExtResource("3_dldjo")
+
+[node name="Shadow" parent="Face" index="3"]
+position = Vector2(-2, 29.500002)
+scale = Vector2(1.5, 0.42187503)
 
 [node name="AudioStreamPlayer2D" parent="." index="3"]
 volume_db = -10.0

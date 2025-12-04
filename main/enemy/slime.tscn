@@ -270,11 +270,17 @@ shape = SubResource("CapsuleShape2D_28kc4")
 
 [node name="Animation" parent="Face" index="0"]
 sprite_frames = SubResource("SpriteFrames_phfuy")
-animation = &"die"
-offset = Vector2(-1.36, -8.425)
+animation = &"attack"
+frame = 7
+frame_progress = 0.6211926
+offset = Vector2(1.09, -8.425)
+flip_h = true
 
 [node name="Effects" parent="Face" index="1"]
 z_index = 0
+
+[node name="Shadow" parent="Face" index="2"]
+position = Vector2(0, 4.5000024)
 
 [node name="CollisionShape2D" parent="AttackBox" index="0"]
 metadata/_edit_lock_ = true

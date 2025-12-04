@@ -2,28 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cmypkchy3ouyj" path="res://main/locations/edge.gd" id="1_a2ym2"]
 
-[sub_resource type="Gradient" id="Gradient_8m4de"]
-offsets = PackedFloat32Array(0.5945946, 0.7)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a2ym2"]
-gradient = SubResource("Gradient_8m4de")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.03448276, 0.9655172)
-metadata/_snap_enabled = true
-metadata/_snap_count = 2
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xtjel"]
 a = Vector2(-32, -32)
 b = Vector2(-32, 32)
 
+[sub_resource type="Gradient" id="Gradient_a2ym2"]
+offsets = PackedFloat32Array(0.24, 0.48)
+colors = PackedColorArray(0, 0, 0, 1, 0.012617188, 0.012617188, 0.012617188, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xtjel"]
+gradient = SubResource("Gradient_a2ym2")
+
 [node name="Edge" type="Node2D"]
 script = ExtResource("1_a2ym2")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 4
-texture = SubResource("GradientTexture2D_a2ym2")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 15
@@ -48,6 +39,29 @@ metadata/_edit_lock_ = true
 position = Vector2(64, 0)
 shape = SubResource("SegmentShape2D_xtjel")
 metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-27.999998, 2.861023e-06)
+scale = Vector2(0.15625, 0.96874994)
+texture = SubResource("GradientTexture2D_xtjel")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(28.00001, 2.861023e-06)
+rotation = 3.1415927
+scale = Vector2(0.15625, 0.96874994)
+texture = SubResource("GradientTexture2D_xtjel")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(5.722046e-06, -27.999994)
+rotation = 1.5707964
+scale = Vector2(0.15625, 0.96874994)
+texture = SubResource("GradientTexture2D_xtjel")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(5.722046e-06, 28.000006)
+rotation = -1.5707964
+scale = Vector2(0.15625, 0.96874994)
+texture = SubResource("GradientTexture2D_xtjel")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

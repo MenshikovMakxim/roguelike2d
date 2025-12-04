@@ -5,7 +5,7 @@ var autors_of_assets = {
 	"CreativeKind": "https://creativekind.itch.io/",
 	"LuckyLoops": "https://lucky-loops.itch.io/",
 	"Free": "https://free-game-assets.itch.io/",
-	"Sounds": null
+	"Sounds": "https://zvukogram.com/category/"
 }
 
 

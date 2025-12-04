@@ -1,11 +1,8 @@
 extends State
-
-#@onready var player = false
+class_name AttackState
 
 
 func enter():
-	#if actor is Hero:
-		#player = true
 	actor.anim.play("attack")
 	actor.anim.connect("frame_changed", Callable(self, "attack"))
 
