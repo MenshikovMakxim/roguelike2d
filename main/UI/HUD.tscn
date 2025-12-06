@@ -21,25 +21,26 @@ offset_right = 643.0
 offset_bottom = 67.0
 size_flags_horizontal = 0
 
-[node name="HpBar" parent="MarginContainer" instance=ExtResource("1_yxm2k")]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = -180
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -643.0
-offset_bottom = 67.0
-grow_horizontal = 0
-size_flags_horizontal = 4
+[node name="HpBar" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_yxm2k")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
 size_flags_vertical = 4
+theme_override_constants/separation = 13
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("GradientTexture2D_uhjjh")
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "0"

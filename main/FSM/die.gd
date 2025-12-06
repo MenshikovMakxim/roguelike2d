@@ -22,9 +22,9 @@ func sound():
 
 
 func delete_actor():
+	Global.spawn_soul(actor.position)
 	actor.queue_free()
 	actor.audio.stop()
-	
 
 
 func exit():

@@ -7,4 +7,4 @@ func _ready() -> void:
 
 
 func update():
-	$HBoxContainer/Label.text = str(Global.souls)
+	$MarginContainer/VBoxContainer/HBoxContainer/Label.text = str(Global.souls)

@@ -44,3 +44,9 @@ func shoot_flash():
 #func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("mouse_2"):
 		#fsm.change_to("Idle")
+
+
+func _on_collector_area_entered(area: Area2D) -> void:
+	if area is Soul:
+		area.queue_free()
+		fsm.change_to("Collect")
