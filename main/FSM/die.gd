@@ -25,7 +25,7 @@ func delete_actor():
 	if actor is Hero:
 		Global.emit_signal("player_dead")
 		
-	Global.spawn_soul(actor.position)
+	Global.spawn_soul(actor.position, actor.get_parent())
 	actor.queue_free()
 	actor.audio.stop()
 

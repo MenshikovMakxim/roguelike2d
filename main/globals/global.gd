@@ -34,11 +34,12 @@ func go_to(_name: String):
 	get_tree().change_scene_to_file(scene)
 
 
-func spawn_soul(position):
+func spawn_soul(position, parent):
 	var soul_scene = preload("res://main/items/soul.tscn")
 	var soul := soul_scene.instantiate()
 	soul.position = position
-	get_parent().add_child(soul)
+	parent.add_child(soul)
+	print(parent)
 
 func add_soul():
 	souls += 1
