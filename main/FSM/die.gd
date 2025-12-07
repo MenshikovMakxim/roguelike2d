@@ -1,18 +1,17 @@
 extends State
 
 func enter():
-	
 	actor.anim.connect("frame_changed", Callable(self, "sound"))
 	actor.velocity = Vector2.ZERO
 	actor.disable()
 	
+	#actor.play_effects("die")
+	#await actor.anim.animation_finished
+	
 	actor.anim.play("die")
-	await actor.anim.animation_finished
+	actor.play_anim("die", delete_actor)
 	
-	if actor is Hero:
-		Global.emit_signal("player_dead")
 	
-	delete_actor()
 
 
 func sound():
@@ -22,6 +21,10 @@ func sound():
 
 
 func delete_actor():
+	
+	if actor is Hero:
+		Global.emit_signal("player_dead")
+		
 	Global.spawn_soul(actor.position)
 	actor.queue_free()
 	actor.audio.stop()

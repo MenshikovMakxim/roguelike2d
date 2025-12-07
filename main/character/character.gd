@@ -23,12 +23,6 @@ func play_sound(_name: String, _volume = sounds_volumes):
 		audio.play()
 
 
-#func _init(_health:int, _speed:float, _attack:float, _attack_frame:int) -> void:
-	#self.health = _health
-	#self.speed = _speed
-	#self.attack = _attack
-	#self.attack_frame = _attack_frame
-
 func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_frame:int) -> void:
 	self.health = _health
 	self.speed = _speed
@@ -44,13 +38,17 @@ func _ready() -> void:
 
 func play_anim(_name : String, fn: Callable = Callable()):
 	anim.play(_name)
+	await anim.animation_finished
+	if fn:
+		fn.call()
+
+
+func play_effects(_name : String):
 	if effects.sprite_frames.has_animation(_name):
 		effects.show()
 		effects.play(_name)
-	await anim.animation_finished
+	await effects.animation_finished
 	effects.hide()
-	if fn:
-		fn.call()
 
 
 func _physics_process(delta: float) -> void:

@@ -7,3 +7,4 @@ func _ready() -> void:
 func enter():
 	actor.velocity = Vector2.ZERO
 	actor.anim.play("idle")
+	actor.play_effects("idle")

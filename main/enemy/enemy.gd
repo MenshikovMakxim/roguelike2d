@@ -28,7 +28,7 @@ func _ready():
 func take_damage(amount):
 	super(amount)
 	hp_bar.value = health
-	
+
 
 func do_attack():
 	Global.emit_signal("attack_player", attack)

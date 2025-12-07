@@ -3,12 +3,13 @@ class_name AttackState
 
 
 func enter():
-	actor.anim.play("attack")
+	actor.play_effects("attack")
+	actor.play_anim("attack")
 	actor.anim.connect("frame_changed", Callable(self, "attack"))
 
 
 func physics_update(_delta):
-	# дозволяємо рух як у MoveState
+
 	if actor is Hero:
 		var dir = Vector2.ZERO
 

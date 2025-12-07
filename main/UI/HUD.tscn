@@ -17,23 +17,27 @@ metadata/_snap_enabled = true
 script = ExtResource("1_3wchm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 643.0
-offset_bottom = 67.0
-size_flags_horizontal = 0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = -180
+size_flags_vertical = 4
+theme_override_constants/separation = -20
 
 [node name="HpBar" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_yxm2k")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 13
+theme_override_constants/separation = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -43,4 +47,14 @@ texture = SubResource("GradientTexture2D_uhjjh")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
 text = "0"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.8980392, 0.54901963, 0.10980392, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 27
+text = "Thank you for the beta testing !"

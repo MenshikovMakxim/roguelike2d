@@ -3,6 +3,7 @@ extends Control
 
 func _ready() -> void:
 	$VBoxContainer.hide()
+	
 	$SoundManager.play_sound("menu_soundtrack")
 	var tween = create_tween()
 	$TextureRect.modulate.a = 0.0
@@ -10,6 +11,7 @@ func _ready() -> void:
 	
 	await tween.finished 
 	$VBoxContainer.show()
+	$VBoxContainer/Label.text = "You are collected " + str(Global.souls) + " souls!"
 
 
 func _on_retry_pressed() -> void:

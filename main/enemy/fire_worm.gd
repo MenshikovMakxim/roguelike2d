@@ -13,9 +13,15 @@ func do_far_attack():
 	bull.global_position = shoot_point.global_position
 	
 	var dir = (get_player().global_position - shoot_point.global_position).normalized()
+	
+	var spread_deg = 5.0  
+	var spread_rad = deg_to_rad(randf_range(-spread_deg, spread_deg))
 
-	bull.direction = dir
-	bull.rotation = dir.angle()
+	var final_angle = dir.angle() + spread_rad
+	var final_dir = Vector2.RIGHT.rotated(final_angle)
+
+	bull.direction = final_dir
+	bull.rotation = final_angle
 
 
 func _physics_process(delta: float) -> void:
@@ -31,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		if is_in_attack_range:
 			is_in_attack_range = false
-			to_default_state()  
+			to_default_state() 
 
 
 func calc_distant():

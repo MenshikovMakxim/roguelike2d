@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://duh82fnaqlxri"]
+[gd_scene load_steps=20 format=3 uid="uid://duh82fnaqlxri"]
 
 [ext_resource type="PackedScene" uid="uid://bc0lqrr8lxyjp" path="res://main/character/character.tscn" id="1_iblou"]
 [ext_resource type="Script" uid="uid://ct45cg13se2ef" path="res://main/enemy/enemy.gd" id="2_b8jve"]
+[ext_resource type="Texture2D" uid="uid://e4wxumir4tu5" path="res://assets/textures/effects/fire/Retro Impact Effect Pack 5 A.png" id="3_5731b"]
 [ext_resource type="Texture2D" uid="uid://c2nowduaeptly" path="res://assets/textures/effects/63.png" id="3_faf7x"]
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="4_ojprf"]
 
@@ -32,6 +33,10 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faf7x"]
+atlas = ExtResource("3_5731b")
+region = Rect2(384, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1re8"]
 atlas = ExtResource("3_faf7x")
@@ -73,6 +78,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faf7x")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i1re8")
 }, {
@@ -148,7 +156,10 @@ sprite_frames = SubResource("SpriteFrames_faf7x")
 animation = &"damage"
 
 [node name="Effects" parent="Face" index="1"]
+visible = true
 sprite_frames = SubResource("SpriteFrames_1i04x")
+frame = 8
+frame_progress = 1.0
 
 [node name="Shadow" parent="Face" index="2"]
 position = Vector2(0, 29.500002)

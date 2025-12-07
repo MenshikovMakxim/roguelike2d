@@ -10,7 +10,11 @@ func enter():
 	if actor.has_method("take_damage"):
 		actor.play_anim("damage", attack_finished)
 		actor.play_sound("damage")
+		actor.play_effects("damage")
 
 
 func attack_finished():
-	actor.to_default_state()
+	if actor.health > 0:
+		actor.to_default_state()
+	else:
+		actor.fsm.change_to("Die")

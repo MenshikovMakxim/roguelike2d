@@ -424,6 +424,7 @@ frame_progress = 0.944053
 offset = Vector2(-0.425, -5.68)
 
 [node name="Effects" parent="Face" index="1"]
+visible = true
 z_index = 0
 position = Vector2(0, -3.6231887)
 

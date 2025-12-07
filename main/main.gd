@@ -5,12 +5,13 @@ extends Node2D
 @onready var hero : PackedScene 
 
 func _ready() -> void:
+	Global.souls = 0
 	Global.connect("player_dead", Callable(self, "stop_spawn"))
 	mobs.append(load("res://main/enemy/NightWarrior.tscn"))
 	mobs.append(load("res://main/enemy/slime.tscn"))
 	mobs.append(load("res://main/enemy/FireWorm.tscn"))
 	hero = load("res://main/character/hero.tscn")
-	
+
 	hero.instantiate().position = $Marker2D.global_position
 
 
@@ -33,4 +34,5 @@ func _on_timer_timeout() -> void:
 
 func stop_spawn():
 	$Timer.stop()
+	
 	queue_free()
