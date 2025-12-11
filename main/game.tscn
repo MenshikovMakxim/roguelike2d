@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm0rd2jbm4egr"]
+[gd_scene load_steps=11 format=3 uid="uid://dm0rd2jbm4egr"]
 
 [ext_resource type="Script" uid="uid://dxbevt210tana" path="res://main/main.gd" id="1_3qcir"]
 [ext_resource type="PackedScene" uid="uid://j2utusg7nykl" path="res://main/UI/HUD.tscn" id="2_jc0vi"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://csbm0yrjynx50" path="res://main/bullets/fireball.tscn" id="4_4u4fy"]
 [ext_resource type="PackedScene" uid="uid://q77herhoyd84" path="res://main/locations/dungeon/flat.tscn" id="5_jc0vi"]
 [ext_resource type="PackedScene" uid="uid://d03he3fwk6nwb" path="res://main/locations/edge.tscn" id="6_hlcqn"]
-[ext_resource type="AudioStream" uid="uid://cky6185pf4nb7" path="res://assets/sounds/enemy/soundtrack/fires-of-anticipation_91140.ogg" id="7_jc0vi"]
+[ext_resource type="PackedScene" uid="uid://dlwj448see8i4" path="res://main/UI/menu/pause.tscn" id="8_2c7eb"]
+[ext_resource type="PackedScene" uid="uid://b3fc1acjxjhk8" path="res://main/globals/SoundManager.tscn" id="8_4u4fy"]
 
 [sub_resource type="Curve2D" id="Curve2D_v3ojx"]
 _data = {
@@ -23,10 +24,13 @@ tonemap_exposure = 0.48
 y_sort_enabled = true
 script = ExtResource("1_3qcir")
 
+[node name="Pause" parent="." instance=ExtResource("8_2c7eb")]
+
 [node name="Hero" parent="." instance=ExtResource("3_2c7eb")]
 position = Vector2(8, 83)
 projectile_scene = ExtResource("4_4u4fy")
 attack = 35.0
+sounds_volumes = 0
 
 [node name="Camera2D2" type="Camera2D" parent="Hero"]
 zoom = Vector2(1.97, 1.97)
@@ -62,15 +66,12 @@ position = Vector2(-1109, -832)
 wait_time = 5.0
 autostart = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_jc0vi")
-volume_db = -8.0
-autoplay = true
-
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(8, 82)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jc0vi")
+
+[node name="SoundManager" parent="." instance=ExtResource("8_4u4fy")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

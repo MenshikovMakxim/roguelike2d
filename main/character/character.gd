@@ -19,9 +19,8 @@ class_name Character
 func play_sound(_name: String, _volume = sounds_volumes):
 	if sounds.has(_name):
 		audio.stream = sounds[_name]
-		audio.volume_db = (_volume * Global.k_volume_effects)
+		audio.volume_db = Global.calc_volume_effects()
 		audio.play()
-
 
 
 func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_frame:int) -> void:
@@ -32,7 +31,7 @@ func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_fra
 	self.die_frame = _die_frame
 
 func change_volume():
-	audio.volume_db *= Global.k_volume_effects
+	audio.volume_db = Global.calc_volume_effects()
 
 
 func _ready() -> void:

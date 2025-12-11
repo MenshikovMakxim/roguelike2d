@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk2gesjwx0q7v"]
+[gd_scene load_steps=6 format=3 uid="uid://bk2gesjwx0q7v"]
 
 [ext_resource type="Script" uid="uid://cgmty8k81wbk1" path="res://main/UI/menu/settings.gd" id="1_rq7vc"]
 [ext_resource type="Texture2D" uid="uid://7i5dpbv6mww3" path="res://main/UI/menu/menu.tres" id="2_mcdfo"]
 [ext_resource type="Texture2D" uid="uid://bspdfof1ikrcx" path="res://main/UI/menu/menu2.tres" id="3_pcdxm"]
-[ext_resource type="PackedScene" uid="uid://b3fc1acjxjhk8" path="res://main/globals/SoundManager.tscn" id="4_pcdxm"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_mcdfo"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_pcdxm"]
+events = [SubResource("InputEventAction_mcdfo")]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -56,7 +61,6 @@ size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 max_value = 1.0
 step = 0.01
-value = 0.5
 
 [node name="value" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -76,7 +80,6 @@ size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 max_value = 1.0
 step = 0.01
-value = 0.5
 
 [node name="value2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -91,6 +94,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_pcdxm")
 text = "<- Back"
 flat = true
 
@@ -115,8 +119,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_pcdxm")
-
-[node name="SoundManager" parent="." instance=ExtResource("4_pcdxm")]
 
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed2"]

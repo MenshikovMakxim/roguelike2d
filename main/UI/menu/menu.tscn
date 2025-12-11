@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d33dftgewpw1f"]
+[gd_scene load_steps=6 format=3 uid="uid://d33dftgewpw1f"]
 
 [ext_resource type="Script" uid="uid://xbmh7t7e7kn6" path="res://main/UI/menu/menu.gd" id="1_37ek2"]
 [ext_resource type="Texture2D" uid="uid://7i5dpbv6mww3" path="res://main/UI/menu/menu.tres" id="2_hnf3l"]
 [ext_resource type="Texture2D" uid="uid://bspdfof1ikrcx" path="res://main/UI/menu/menu2.tres" id="3_3impa"]
-[ext_resource type="PackedScene" uid="uid://b3fc1acjxjhk8" path="res://main/globals/SoundManager.tscn" id="12_vjywk"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_37ek2"]
 action = &"ui_accept"
@@ -98,8 +97,6 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 30
 text = "E X I T "
 flat = true
-
-[node name="SoundManager" parent="." instance=ExtResource("12_vjywk")]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]

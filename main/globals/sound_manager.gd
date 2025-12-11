@@ -1,7 +1,6 @@
 extends Node
 
 @onready var player : AudioStreamPlayer 
-var volume 
 
 func _ready() -> void:
 	Global.connect("change_volume", Callable(self, "change_volume"))
@@ -9,18 +8,18 @@ func _ready() -> void:
 func play_sound(_name: String, _volume: int = 0):
 	player = AudioStreamPlayer.new()
 	player.stream = all_sounds[_name]
-	player.volume_db = volume
+	player.volume_db = Global.calc_volume_music()
 	add_child(player)
 	player.play()
 
 func change_volume():
-	player.volume_db *= Global.k_volume
-	print(player.volume_db)
-	
+	player.volume_db = Global.calc_volume_music()
+
 
 func stop_sound():
 	if player:
 		player.stop()
+
 
 ##sounds
 var all_sounds = {
