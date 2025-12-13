@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bxboh3d6i323h"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bxboh3d6i323h"]
 
 [ext_resource type="FontFile" uid="uid://ykrdnb3bqdve" path="res://assets/font/DigitalDisco.ttf" id="1_oieiu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oieiu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oieiu"]
 draw_center = false
@@ -30,6 +32,7 @@ expand_margin_bottom = 2.0
 
 [resource]
 Button/constants/outline_size = 5
+Button/styles/focus = SubResource("StyleBoxEmpty_oieiu")
 Button/styles/hover = SubResource("StyleBoxFlat_oieiu")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)

@@ -38,7 +38,7 @@ func collect():
 		return
 	else:
 		collected = true
-		Global.take_soul.emit()
+		#Global.take_soul.emit()
 		actor.play_effects("collect")
 		actor.play_sound("collect")
 		

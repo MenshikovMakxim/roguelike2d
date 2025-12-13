@@ -93,6 +93,24 @@ step = 0.01
 layout_mode = 2
 text = "0"
 
+[node name="Graphic" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Graphic"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic"]
+layout_mode = 2
+
+[node name="NameCheckBox" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer"]
+layout_mode = 2
+text = "smoothing"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer"]
+layout_mode = 2
+
 [node name="Tutorial" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -152,4 +170,5 @@ texture = ExtResource("3_pcdxm")
 
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects/HSlider" to="." method="_on_h_slider_value_changed2"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="MarginContainer/Back" to="." method="_on_button_pressed"]

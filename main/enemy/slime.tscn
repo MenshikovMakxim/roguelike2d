@@ -251,7 +251,6 @@ animations = [{
 }]
 
 [node name="Enemy" instance=ExtResource("1_y47ul")]
-texture_filter = 0
 health = 80
 speed = 80.0
 attack = 10.165

@@ -31,13 +31,14 @@ func _physics_process(delta: float) -> void:
 	
 	var dist = calc_distant()
 	if dist <= distant_to_attack:
-		if not is_in_attack_range:
+		if not is_in_attack_range and can_attack:
 			is_in_attack_range = true
 			fsm.change_to("FarAttack")  
 	else:
 		if is_in_attack_range:
 			is_in_attack_range = false
-			to_default_state() 
+			#to_default_state() 
+			fsm.change_to("Idle")
 
 
 func calc_distant():

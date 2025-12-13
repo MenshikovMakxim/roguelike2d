@@ -58,4 +58,4 @@ size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.8980392, 0.54901963, 0.10980392, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 27
-text = "Thank you for the beta testing !"
+text = "Take more souls!"

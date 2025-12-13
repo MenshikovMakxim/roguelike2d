@@ -4,3 +4,5 @@
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_ouep5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

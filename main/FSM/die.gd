@@ -8,8 +8,10 @@ func enter():
 	#actor.play_effects("die")
 	#await actor.anim.animation_finished
 	
-	actor.anim.play("die")
 	actor.play_anim("die", delete_actor)
+	#actor.anim.play("die")
+	#await actor.anim.animation_finished
+	#delete_actor()
 	
 	
 

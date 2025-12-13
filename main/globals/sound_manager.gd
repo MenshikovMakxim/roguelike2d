@@ -1,15 +1,17 @@
 extends Node
 
-@onready var player : AudioStreamPlayer 
+@onready var player : AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	Global.connect("change_volume", Callable(self, "change_volume"))
 
 func play_sound(_name: String, _volume: int = 0):
-	player = AudioStreamPlayer.new()
-	player.stream = all_sounds[_name]
+	var new_stream = all_sounds[_name]
+	if player.playing and player.stream == new_stream:
+		return
+		
+	player.stream = new_stream
 	player.volume_db = Global.calc_volume_music()
-	add_child(player)
 	player.play()
 
 func change_volume():
@@ -20,6 +22,10 @@ func stop_sound():
 	if player:
 		player.stop()
 
+
+func remove_audio():
+	for child in get_children():
+		child.queue_free()
 
 ##sounds
 var all_sounds = {

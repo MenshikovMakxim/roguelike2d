@@ -6,10 +6,11 @@ extends Node2D
 @onready var music = $SoundManager
 
 func _ready() -> void:
+	texture_filter = Global.switch_filter()
 	Global.start_game.emit()
 	music.play_sound("game_soundtrack")
 	$Pause.visible = false
-	Global.souls = 0
+	Global.connect("smooth_changed", Callable(self, "change_filter"))
 	Global.connect("player_dead", Callable(self, "stop_spawn"))
 	mobs.append(load("res://main/enemy/NightWarrior.tscn"))
 	mobs.append(load("res://main/enemy/slime.tscn"))
@@ -44,3 +45,7 @@ func stop_spawn():
 func pause(paused : bool):
 	get_tree().paused = paused
 	$Pause.visible = paused
+
+
+func change_filter():
+	texture_filter = Global.switch_filter()

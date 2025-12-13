@@ -9,7 +9,7 @@ class_name Hero
 
 func _ready():
 	super()
-	Global.hp = 200
+	add_to_group("hero")
 	Global.connect("attack_player", Callable(self, "take_damage"))
 	default_state = "Move"
 	fsm.change_to("Move")
@@ -19,19 +19,6 @@ func take_damage(amount):
 	super(amount)
 	Global.hp = health
 
-
-#func do_attack():
-	#var _fireball = fireball.instantiate()
-	#get_tree().current_scene.add_child(_fireball)
-	#_fireball.set_damage(Global.attack)
-	#_fireball.global_position = shoot_point.global_position
-	#
-	#var mouse_pos = get_global_mouse_position()
-	#var dir = (mouse_pos - shoot_point.global_position).normalized()
-	#
-	#_fireball.direction = dir
-	#_fireball.rotation = dir.angle()
-	#shoot_flash()
 
 func do_attack():
 	var _fireball = fireball.instantiate()
@@ -43,7 +30,7 @@ func do_attack():
 	var dir = (mouse_pos - shoot_point.global_position).normalized()
 
 
-	var spread_deg = 5.0  
+	var spread_deg = 3.0  
 	var spread_rad = deg_to_rad(randf_range(-spread_deg, spread_deg))
 
 	var final_angle = dir.angle() + spread_rad
@@ -51,9 +38,3 @@ func do_attack():
 
 	_fireball.direction = final_dir
 	_fireball.rotation = final_angle
-
-
-func _on_collector_area_entered(area: Area2D) -> void:
-	if area is Soul:
-		area.queue_free()
-		fsm.change_to("Collect")

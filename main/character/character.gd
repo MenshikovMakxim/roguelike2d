@@ -15,6 +15,7 @@ class_name Character
 @onready var audio : AudioStreamPlayer2D = $AudioStreamPlayer2D
 @export var sounds : Dictionary[String, AudioStream] = {"damage":preload("res://assets/sounds/enemy/damage.ogg")}
 @export var sounds_volumes : int = 0
+@export var is_dead = false
 
 func play_sound(_name: String, _volume = sounds_volumes):
 	if sounds.has(_name):
@@ -57,7 +58,7 @@ func play_effects(_name : String):
 
 func _physics_process(delta: float) -> void:
 	fsm.physics_update(delta)
-	if health <= 0:
+	if is_dead:
 		fsm.change_to("Die")
 
 

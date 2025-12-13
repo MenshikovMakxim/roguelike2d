@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://coie1xvlrxih1"]
+
+[node name="ReloadBar" type="Control"]
+layout_mode = 3
+anchor_left = -0.025
+anchor_right = 0.025
+offset_left = 32.0
+offset_right = -32.0
+
+[node name="CenterContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer"]
+layout_mode = 2
+show_percentage = false

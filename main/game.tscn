@@ -19,6 +19,12 @@ point_count = 5
 background_mode = 3
 tonemap_mode = 3
 tonemap_exposure = 0.5
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.24
+glow_strength = 1.11
+glow_bloom = 0.01
+glow_blend_mode = 0
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -34,10 +40,10 @@ sounds_volumes = 0
 
 [node name="Camera2D2" type="Camera2D" parent="Hero"]
 zoom = Vector2(1.97, 1.97)
-limit_left = -1150
-limit_top = -863
-limit_right = 1091
-limit_bottom = 797
+limit_left = -1105
+limit_top = -833
+limit_right = 1066
+limit_bottom = 777
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1

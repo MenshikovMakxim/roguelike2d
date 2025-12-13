@@ -400,7 +400,7 @@ animations = [{
 }]
 
 [node name="NightWarrior" instance=ExtResource("1_ya662")]
-modulate = Color(1, 0.52156866, 0.99607843, 1)
+modulate = Color(1, 0.6156863, 0.99607843, 1)
 self_modulate = Color(1, 1, 0.4509804, 1)
 scale = Vector2(1.38, 1.38)
 health = 120
@@ -419,8 +419,7 @@ sounds = Dictionary[String, AudioStream]({
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bgen6")
 animation = &"idle"
-frame = 3
-frame_progress = 0.944053
+frame = 2
 offset = Vector2(-0.425, -5.68)
 
 [node name="Effects" parent="Face" index="1"]
@@ -434,5 +433,6 @@ position = Vector2(0, 14.282614)
 position = Vector2(0, -5.9604645e-07)
 
 [node name="ProgressBar" parent="." index="5"]
+visible = false
 offset_top = -21.753635
 offset_bottom = -17.753635

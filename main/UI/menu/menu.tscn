@@ -100,6 +100,13 @@ theme_override_font_sizes/font_size = 30
 text = "E X I T "
 flat = true
 
+[node name="Label" type="Label" parent="MarginContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "version: Beta"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Credits" to="." method="_on_credits_pressed"]

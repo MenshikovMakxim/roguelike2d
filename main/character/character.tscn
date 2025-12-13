@@ -44,7 +44,6 @@ metadata/_snap_enabled = true
 
 [node name="Character" type="CharacterBody2D"]
 y_sort_enabled = true
-texture_filter = 3
 script = ExtResource("1_gep86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -53,14 +52,12 @@ shape = SubResource("CapsuleShape2D_ild5u")
 [node name="Face" type="Node2D" parent="."]
 
 [node name="Animation" type="AnimatedSprite2D" parent="Face"]
-texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_bop78")
 animation = &"attack"
 
 [node name="Effects" type="AnimatedSprite2D" parent="Face"]
 visible = false
 z_index = 2
-texture_filter = 3
 sprite_frames = ExtResource("2_gx21m")
 animation = &"damage"
 
