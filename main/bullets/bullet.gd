@@ -13,6 +13,7 @@ var fly : bool = true
 func play_sound(_name : String):
 	if sounds.has(_name):
 		audio.stream = sounds[_name]
+		audio.volume_db = Global.calc_volume_effects()
 		audio.play()
 
 

@@ -1,28 +1,33 @@
 extends Node2D
 
-@onready var mobs : Array[PackedScene]
-@onready var spawn_path : PathFollow2D
-@onready var hero : PackedScene 
+var mobs = [
+	load("res://main/enemy/NightWarrior.tscn"),
+	load("res://main/enemy/slime.tscn"),
+	load("res://main/enemy/FireWorm.tscn")
+]
+@onready var hero = load("res://main/character/hero.tscn").instantiate()
 @onready var music = $SoundManager
+@onready var map = $Flat
+@onready var spawn_point = $Marker2D
+@onready var spawn_path = $Path2D/PathFollow2D
 
 func _ready() -> void:
-	texture_filter = Global.switch_filter()
-	Global.start_game.emit()
+	change_filter()
+	prepare_hero()
 	music.play_sound("game_soundtrack")
-	$Pause.visible = false
+	Global.start_game.emit()
 	Global.connect("smooth_changed", Callable(self, "change_filter"))
 	Global.connect("player_dead", Callable(self, "stop_spawn"))
-	mobs.append(load("res://main/enemy/NightWarrior.tscn"))
-	mobs.append(load("res://main/enemy/slime.tscn"))
-	mobs.append(load("res://main/enemy/FireWorm.tscn"))
-	hero = load("res://main/character/hero.tscn")
-
-	hero.instantiate().position = $Marker2D.global_position
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
 		pause(true)
+
+
+#func _process(_delta: float) -> void:
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#pause(true)
 
 
 func rand_mob() -> PackedScene:
@@ -30,12 +35,8 @@ func rand_mob() -> PackedScene:
 
 
 func _on_timer_timeout() -> void:
-	spawn_path = $Path2D/PathFollow2D
-	var mob = rand_mob().instantiate()
-	mob.position = spawn_path.position
-	mob.player = "../Hero"
-	#mob.can_attack = false
-	add_child(mob)
+	prepare_mob()
+
 
 func stop_spawn():
 	$Timer.stop()
@@ -44,8 +45,21 @@ func stop_spawn():
 
 func pause(paused : bool):
 	get_tree().paused = paused
-	$Pause.visible = paused
+	if paused:
+		add_child(Global.pause_scene.instantiate())
 
 
 func change_filter():
 	texture_filter = Global.switch_filter()
+
+func prepare_hero():
+	add_child(hero)
+	hero.play_effects("spawn")
+	hero.position = spawn_point.global_position
+	hero.set_limits_from_layer(map.get_ground())
+	
+func prepare_mob():
+	var mob = rand_mob().instantiate()
+	mob.position = spawn_path.position
+	mob.player = "../Hero"
+	add_child(mob)

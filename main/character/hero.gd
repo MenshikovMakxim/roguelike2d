@@ -3,9 +3,11 @@ class_name Hero
 
 @onready var shoot_point = $Face/Marker2D
 @onready var flash = $Face/Marker2D/PointLight2D
-@export var projectile_scene: PackedScene
 @onready var fireball : PackedScene = load("res://main/bullets/hero_bullet.tscn")
 @onready var collector = $Collector
+@onready var camera = $Camera2D
+@onready var hud = $Hud
+
 
 func _ready():
 	super()
@@ -15,9 +17,10 @@ func _ready():
 	fsm.change_to("Move")
 	super.setup(Global.hp, Global.speed, Global.attack, 8, 3)
 
+
 func take_damage(amount):
 	super(amount)
-	Global.hp = health
+	hud.update(health)
 
 
 func do_attack():
@@ -29,8 +32,7 @@ func do_attack():
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - shoot_point.global_position).normalized()
 
-
-	var spread_deg = 3.0  
+	var spread_deg = 1.0  
 	var spread_rad = deg_to_rad(randf_range(-spread_deg, spread_deg))
 
 	var final_angle = dir.angle() + spread_rad
@@ -38,3 +40,17 @@ func do_attack():
 
 	_fireball.direction = final_dir
 	_fireball.rotation = final_angle
+
+
+func set_limits_from_layer(layer: TileMapLayer):
+	var rect := layer.get_used_rect()
+	if rect.size == Vector2i.ZERO:
+		return
+
+	var tile_size := layer.tile_set.tile_size
+	var offset := layer.global_position
+
+	camera.limit_left = rect.position.x * tile_size.x + offset.x
+	camera.limit_top = rect.position.y * tile_size.y + offset.y
+	camera.limit_right = rect.end.x * tile_size.x + offset.x
+	camera.limit_bottom = rect.end.y * tile_size.y + offset.y

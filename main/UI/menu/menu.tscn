@@ -2,8 +2,18 @@
 
 [ext_resource type="Script" uid="uid://xbmh7t7e7kn6" path="res://main/UI/menu/menu.gd" id="1_37ek2"]
 [ext_resource type="Theme" uid="uid://bxboh3d6i323h" path="res://main/globals/main_theme.tres" id="1_ojl31"]
-[ext_resource type="Texture2D" uid="uid://7i5dpbv6mww3" path="res://main/UI/menu/menu.tres" id="2_hnf3l"]
-[ext_resource type="Texture2D" uid="uid://bspdfof1ikrcx" path="res://main/UI/menu/menu2.tres" id="3_3impa"]
+
+[sub_resource type="Gradient" id="Gradient_tgvog"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.35333332, 1)
+colors = PackedColorArray(0.9882353, 0.8, 0.1764706, 1, 0.90588236, 0.2627451, 0.18039216, 1, 0.096235804, 0.044887528, 0.039255995, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q3u6k"]
+gradient = SubResource("Gradient_tgvog")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
 
 [sub_resource type="InputEventAction" id="InputEventAction_37ek2"]
 action = &"ui_accept"
@@ -23,25 +33,14 @@ theme = ExtResource("1_ojl31")
 script = ExtResource("1_37ek2")
 metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = 1
+[node name="Texture" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_hnf3l")
-metadata/_edit_lock_ = true
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_3impa")
+texture = SubResource("GradientTexture2D_q3u6k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -82,6 +81,14 @@ theme_override_font_sizes/font_size = 30
 text = "S E T T I N G S"
 flat = true
 
+[node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer2"]
+z_index = 1
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 30
+text = "T U T O R I A L"
+flat = true
+
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -109,5 +116,6 @@ text = "version: Beta"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Exit" to="." method="_on_exit_pressed"]

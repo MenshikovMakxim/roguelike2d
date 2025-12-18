@@ -1,15 +1,25 @@
 [gd_scene load_steps=8 format=3 uid="uid://bq6w5cbmrodmp"]
 
-[ext_resource type="Texture2D" uid="uid://7i5dpbv6mww3" path="res://main/UI/menu/menu.tres" id="1_fd3nf"]
-[ext_resource type="Script" uid="uid://0ld4l0dtkpa6" path="res://main/UI/credits/credits.gd" id="1_uqc05"]
-[ext_resource type="Texture2D" uid="uid://bspdfof1ikrcx" path="res://main/UI/menu/menu2.tres" id="3_qi0qp"]
+[ext_resource type="Script" uid="uid://0ld4l0dtkpa6" path="res://main/UI/menu/pages/credits.gd" id="1_xvjtr"]
+
+[sub_resource type="Gradient" id="Gradient_tgvog"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.35333332, 1)
+colors = PackedColorArray(0.9882353, 0.8, 0.1764706, 1, 0.90588236, 0.2627451, 0.18039216, 1, 0.096235804, 0.044887528, 0.039255995, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fd3nf"]
+gradient = SubResource("Gradient_tgvog")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
 
 [sub_resource type="Gradient" id="Gradient_qi0qp"]
-colors = PackedColorArray(0.3137255, 0.09803922, 0.65882355, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0.56078434, 0.09803922, 0.6156863, 0.41568628, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_s68ik"]
 gradient = SubResource("Gradient_qi0qp")
-fill_from = Vector2(0.5, 0.6)
+fill_from = Vector2(0.5, 0.8)
 fill_to = Vector2(0.5, 0.1)
 metadata/_snap_enabled = true
 
@@ -26,7 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_uqc05")
+script = ExtResource("1_xvjtr")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -37,25 +47,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2"]
-z_index = 2
+[node name="Texture" type="TextureRect" parent="MarginContainer2"]
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_bottom = 100
+texture = SubResource("GradientTexture2D_fd3nf")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
-z_index = 2
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_fd3nf")
-stretch_mode = 6
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer2"]
-layout_mode = 2
-texture = ExtResource("3_qi0qp")
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer2"]
+[node name="TextureFront" type="TextureRect" parent="MarginContainer2"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2

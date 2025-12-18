@@ -4,7 +4,8 @@ class_name Enemy
 @export var player : NodePath
 @onready var target: Node2D 
 @export var can_attack: bool = true
-@onready var hp_bar = $ProgressBar
+@onready var attack_box = $AttackBox
+
 
 
 func get_player():
@@ -14,11 +15,14 @@ func get_player():
 
 func disable():
 	super()
-	$AttackBox/CollisionShape2D.set_deferred("disabled", true)
-	$ProgressBar.hide()
+	attack_box.monitoring = false
+	attack_box.monitorable = false
+	#$AttackBox/CollisionShape2D.set_deferred("disabled", true)
+	hp_bar.hide()
 
 func _ready():
 	super()
+	hp_bar = $ProgressBar
 	hp_bar.max_value = health
 	hp_bar.value = hp_bar.max_value
 	fsm.change_to("Chase")
@@ -35,9 +39,10 @@ func do_attack():
 
 
 func _on_attack_box_body_entered(_body: Character) -> void:
-	if can_attack:
+	if can_attack and is_alive():
 		fsm.change_to("Attack")
 
 
 func _on_attack_box_body_exited(_body: Character) -> void:
-	to_default_state()
+	if is_alive():
+		to_default_state()

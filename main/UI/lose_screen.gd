@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	await tween.finished 
 	$VBoxContainer.show()
-	$VBoxContainer/Label.text = "You are collected " + str(Global.souls) + " souls!"
+	$VBoxContainer/Label.text = "You collected " + str(Global.souls) + " souls!"
 
 
 func _on_retry_pressed() -> void:

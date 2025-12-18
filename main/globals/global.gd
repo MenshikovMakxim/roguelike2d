@@ -2,7 +2,7 @@ extends Node
 ##variables
 
 @onready var sound_manager = preload("res://main/globals/SoundManager.tscn").instantiate()
-
+@onready var pause_scene = load("res://main/UI/menu/pages/pause.tscn")
 ##signals
 
 signal damage_taken(amount)
@@ -11,7 +11,6 @@ signal player_dead
 signal die_enemy
 signal take_soul
 signal change_volume
-signal change_smooth(toggle)
 signal smooth_changed
 signal start_game
 signal menu
@@ -19,15 +18,12 @@ signal menu
 
 func _ready() -> void:
 	add_child(sound_manager)
-	
-	#sound_manager.play_sound("menu_soundtrack")
-	
+
 	self.connect("player_dead",  Callable(self, "go_to").bind("lose"))
 	self.connect("take_soul", Callable(self, "add_soul"))
 	self.connect("start_game", Callable(self, "stop_menu"))
 	self.connect("menu", Callable(self, "start_menu"))
-	self.connect("change_smooth", Callable(self, "f_change_smooth"))
-	
+
 
 ##stats of hero
 
@@ -49,10 +45,6 @@ func switch_filter():
 	else:
 		return CanvasItem.TEXTURE_FILTER_NEAREST
 
-func f_change_smooth(toggle:bool):
-	smooth = toggle
-	smooth_changed.emit()
-	
 
 func calc_volume_music():
 	return linear_to_db(Global.k_volume)
@@ -73,9 +65,10 @@ var scens = {
 	"menu": "res://main/UI/menu/menu.tscn",
 	"game": "res://main/game.tscn",
 	"lose": "res://main/UI/Lose_screen.tscn",
-	"credits": "res://main/UI/credits/Credits.tscn",
-	"settings": "res://main/UI/menu/settings.tscn",
-	"pouse": "res://main/UI/menu/pause.tscn"
+	"credits": "res://main/UI/menu/pages/credits.tscn",
+	"settings": "res://main/UI/menu/pages/settings.tscn",
+	"pause": "res://main/UI/menu/pause.tscn",
+	"tutorial": "res://main/UI/menu/pages/tutorial.tscn"
 }
 
 func go_to(_name: String):
@@ -100,3 +93,24 @@ func to_def():
 
 func add_soul():
 	souls += 1
+
+
+func move(_actor : Hero):
+	var dir = Vector2.ZERO
+	
+	if Input.is_action_pressed("ui_left"):
+		dir.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		dir.x += 1
+	if Input.is_action_pressed("ui_up"):
+		dir.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		dir.y += 1
+
+	dir = dir.normalized()
+	_actor.velocity = dir * _actor.speed
+	_actor.move_and_slide()
+
+	# Поворот спрайта
+	if dir.x != 0:
+		_actor.get_node("Face").scale.x = -1 if dir.x < 0 else 1

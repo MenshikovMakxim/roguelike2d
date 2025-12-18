@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://j2utusg7nykl"]
 
-[ext_resource type="Script" uid="uid://bh8wduavaky5n" path="res://main/UI/hud.gd" id="1_3wchm"]
-[ext_resource type="PackedScene" uid="uid://rv38o6di5w3i" path="res://main/UI/hp-bar/hero_hp_bar.tscn" id="1_yxm2k"]
+[ext_resource type="Script" uid="uid://bh8wduavaky5n" path="res://main/UI/widgets/hud.gd" id="1_3wchm"]
+[ext_resource type="PackedScene" uid="uid://rv38o6di5w3i" path="res://main/UI/widgets/hero_hp_bar.tscn" id="1_yxm2k"]
 
 [sub_resource type="Gradient" id="Gradient_6jbe5"]
 offsets = PackedFloat32Array(0.18666667, 0.6933333)

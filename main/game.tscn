@@ -1,12 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm0rd2jbm4egr"]
+[gd_scene load_steps=7 format=3 uid="uid://dm0rd2jbm4egr"]
 
 [ext_resource type="Script" uid="uid://dxbevt210tana" path="res://main/main.gd" id="1_3qcir"]
-[ext_resource type="PackedScene" uid="uid://j2utusg7nykl" path="res://main/UI/HUD.tscn" id="2_jc0vi"]
-[ext_resource type="PackedScene" uid="uid://c1nstqtgb0f00" path="res://main/character/hero.tscn" id="3_2c7eb"]
-[ext_resource type="PackedScene" uid="uid://csbm0yrjynx50" path="res://main/bullets/fireball.tscn" id="4_4u4fy"]
 [ext_resource type="PackedScene" uid="uid://q77herhoyd84" path="res://main/locations/dungeon/flat.tscn" id="5_jc0vi"]
 [ext_resource type="PackedScene" uid="uid://d03he3fwk6nwb" path="res://main/locations/edge.tscn" id="6_hlcqn"]
-[ext_resource type="PackedScene" uid="uid://dlwj448see8i4" path="res://main/UI/menu/pause.tscn" id="8_2c7eb"]
 [ext_resource type="PackedScene" uid="uid://b3fc1acjxjhk8" path="res://main/globals/SoundManager.tscn" id="8_4u4fy"]
 
 [sub_resource type="Curve2D" id="Curve2D_v3ojx"]
@@ -17,41 +13,19 @@ point_count = 5
 
 [sub_resource type="Environment" id="Environment_jc0vi"]
 background_mode = 3
+ambient_light_energy = 0.84
 tonemap_mode = 3
 tonemap_exposure = 0.5
 glow_enabled = true
 glow_normalized = true
-glow_intensity = 1.24
+glow_intensity = 0.12
 glow_strength = 1.11
-glow_bloom = 0.01
+glow_bloom = 0.23
 glow_blend_mode = 0
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_3qcir")
-
-[node name="Pause" parent="." instance=ExtResource("8_2c7eb")]
-
-[node name="Hero" parent="." instance=ExtResource("3_2c7eb")]
-position = Vector2(8, 83)
-projectile_scene = ExtResource("4_4u4fy")
-attack = 35.0
-sounds_volumes = 0
-
-[node name="Camera2D2" type="Camera2D" parent="Hero"]
-zoom = Vector2(1.97, 1.97)
-limit_left = -1105
-limit_top = -833
-limit_right = 1066
-limit_bottom = 777
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
-
-[node name="Hud" parent="." instance=ExtResource("2_jc0vi")]
 
 [node name="Flat" parent="." instance=ExtResource("5_jc0vi")]
 z_index = -1
@@ -60,7 +34,7 @@ y_sort_enabled = true
 [node name="Edge" parent="." instance=ExtResource("6_hlcqn")]
 z_index = 4
 position = Vector2(-19.225002, -30)
-scale = Vector2(35.135, 26.086)
+scale = Vector2(36.305, 26.086)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_v3ojx")
@@ -69,11 +43,11 @@ curve = SubResource("Curve2D_v3ojx")
 position = Vector2(-1109, -832)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(8, 82)
+position = Vector2(8, 68)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jc0vi")

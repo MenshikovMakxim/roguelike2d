@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlwj448see8i4"]
+[gd_scene load_steps=5 format=3 uid="uid://dlwj448see8i4"]
 
-[ext_resource type="Script" uid="uid://yf5nmh1exe8x" path="res://main/UI/menu/pause.gd" id="1_xrtpp"]
-[ext_resource type="PackedScene" uid="uid://bk2gesjwx0q7v" path="res://main/UI/menu/settings.tscn" id="2_cwyrr"]
+[ext_resource type="Script" uid="uid://yf5nmh1exe8x" path="res://main/UI/menu/pages/pause.gd" id="1_nqobt"]
+[ext_resource type="PackedScene" uid="uid://bk2gesjwx0q7v" path="res://main/UI/menu/pages/settings.tscn" id="2_pau44"]
 
 [sub_resource type="Gradient" id="Gradient_xrtpp"]
 offsets = PackedFloat32Array(0)
@@ -10,16 +10,10 @@ colors = PackedColorArray(0, 0, 0, 0.47058824)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cwyrr"]
 gradient = SubResource("Gradient_xrtpp")
 
-[sub_resource type="InputEventAction" id="InputEventAction_xrtpp"]
-action = &"ui_select"
-
-[sub_resource type="Shortcut" id="Shortcut_cwyrr"]
-events = [SubResource("InputEventAction_xrtpp")]
-
 [node name="Pause" type="CanvasLayer"]
 process_mode = 2
 layer = 2
-script = ExtResource("1_xrtpp")
+script = ExtResource("1_nqobt")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -66,7 +60,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 30
-shortcut = SubResource("Shortcut_cwyrr")
 text = "C O N T I N U E"
 flat = true
 
@@ -81,6 +74,18 @@ theme_override_font_sizes/font_size = 30
 text = "S E T T I N G S"
 flat = true
 
+[node name="menu" type="Button" parent="MarginContainer/VBoxContainer"]
+process_mode = 2
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 30
+text = "M E N U
+"
+flat = true
+
 [node name="exit" type="Button" parent="MarginContainer/VBoxContainer"]
 process_mode = 2
 z_index = 1
@@ -93,10 +98,11 @@ text = "E X I T
 "
 flat = true
 
-[node name="Settings" parent="." instance=ExtResource("2_cwyrr")]
+[node name="Settings" parent="." instance=ExtResource("2_pau44")]
 visible = false
 z_index = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]

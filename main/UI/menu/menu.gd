@@ -18,3 +18,7 @@ func _on_exit_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	Global.go_to("settings")
+
+
+func _on_tutorial_pressed() -> void:
+	Global.go_to("tutorial")

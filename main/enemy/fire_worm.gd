@@ -37,8 +37,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		if is_in_attack_range:
 			is_in_attack_range = false
-			#to_default_state() 
-			fsm.change_to("Idle")
+			to_default_state() 
 
 
 func calc_distant():

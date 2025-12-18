@@ -8,8 +8,7 @@ func _ready() -> void:
 func enter():
 	target = actor.get_player()
 	if target:
-		actor.play_anim("chase")
-		actor.play_sound("chase")
+		actor.to_act("chase")
 
 func chase():
 	var direction = (target.global_position - actor.global_position).normalized()

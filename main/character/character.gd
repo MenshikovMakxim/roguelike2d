@@ -13,15 +13,20 @@ class_name Character
 @onready var fsm : FSM = $StateMachine
 @onready var default_state : String
 @onready var audio : AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var hp_bar : ProgressBar
 @export var sounds : Dictionary[String, AudioStream] = {"damage":preload("res://assets/sounds/enemy/damage.ogg")}
 @export var sounds_volumes : int = 0
 @export var is_dead = false
 
-func play_sound(_name: String, _volume = sounds_volumes):
-	if sounds.has(_name):
-		audio.stream = sounds[_name]
-		audio.volume_db = Global.calc_volume_effects()
-		audio.play()
+
+func _ready() -> void:
+	Global.connect("change_volume", Callable(self, "change_volume"))
+	fsm.init(self)
+	effects.hide()
+
+
+func _physics_process(delta: float) -> void:
+	fsm.physics_update(delta)
 
 
 func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_frame:int) -> void:
@@ -31,21 +36,20 @@ func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_fra
 	self.attack_frame = _attack_frame
 	self.die_frame = _die_frame
 
-func change_volume():
-	audio.volume_db = Global.calc_volume_effects()
 
-
-func _ready() -> void:
-	Global.connect("change_volume", Callable(self, "change_volume"))
-	fsm.init(self)
-	effects.hide()
+func play_sound(_name: String, _volume = sounds_volumes):
+	if sounds.has(_name):
+		audio.stream = sounds[_name]
+		audio.volume_db = Global.calc_volume_effects()
+		audio.play()
 
 
 func play_anim(_name : String, fn: Callable = Callable()):
-	anim.play(_name)
-	await anim.animation_finished
-	if fn:
-		fn.call()
+	if anim.sprite_frames.has_animation(_name):
+		anim.play(_name)
+		await anim.animation_finished
+		if fn:
+			fn.call()
 
 
 func play_effects(_name : String):
@@ -56,15 +60,23 @@ func play_effects(_name : String):
 	effects.hide()
 
 
-func _physics_process(delta: float) -> void:
-	fsm.physics_update(delta)
-	if is_dead:
-		fsm.change_to("Die")
+func to_act(_name : String, fn: Callable = Callable()):
+	play_anim(_name, fn)
+	play_effects(_name)
+	play_sound(_name)
+
+
+func change_volume():
+	audio.volume_db = Global.calc_volume_effects()
 
 
 func take_damage(amount):
 	health -= amount
 	fsm.change_to("Damage")
+
+
+func is_alive():
+	return health > 0;
 
 
 func to_default_state():
@@ -80,5 +92,5 @@ func disable():
 
 
 func _on_animation_animation_finished() -> void:
-	if health > 0:
+	if is_alive():
 		to_default_state()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://c1nstqtgb0f00"]
+[gd_scene load_steps=69 format=3 uid="uid://c1nstqtgb0f00"]
 
 [ext_resource type="PackedScene" uid="uid://bc0lqrr8lxyjp" path="res://main/character/character.tscn" id="1_j4os2"]
 [ext_resource type="Script" uid="uid://dleelgvum42ca" path="res://main/character/hero.gd" id="2_dldjo"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="4_dldjo"]
 [ext_resource type="AudioStream" uid="uid://ck13wbo8v3nsd" path="res://assets/sounds/fire/burning-fire-from-a-lit-match.ogg" id="5_5bngo"]
 [ext_resource type="AudioStream" uid="uid://bbddg2f7nue5l" path="res://assets/sounds/fire/blow-out-the-fire-of-a-match.ogg" id="6_ff06e"]
+[ext_resource type="PackedScene" uid="uid://j2utusg7nykl" path="res://main/UI/widgets/HUD.tscn" id="10_qy0aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37t01"]
 height = 32.0
@@ -433,7 +434,6 @@ light_mask = 0
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("2_dldjo")
-projectile_scene = null
 health = 200
 speed = 180.0
 attack = 20.0
@@ -443,7 +443,8 @@ sounds = Dictionary[String, AudioStream]({
 "attack": ExtResource("4_5bngo"),
 "collect": ExtResource("5_5bngo"),
 "damage": ExtResource("3_5yfqu"),
-"die": ExtResource("6_ff06e")
+"die": ExtResource("6_ff06e"),
+"spawn": ExtResource("6_ff06e")
 })
 sounds_volumes = 1
 
@@ -454,13 +455,13 @@ shape = SubResource("CapsuleShape2D_37t01")
 [node name="Animation" parent="Face" index="0"]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_dldjo")
-frame = 8
+animation = &"idle"
 offset = Vector2(-1.21, -22.4)
 
 [node name="Effects" parent="Face" index="1"]
 visible = true
-animation = &"attack"
-frame = 8
+animation = &"spawn"
+frame = 9
 frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="Face" index="2"]
@@ -498,3 +499,9 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector" index="0"]
 shape = SubResource("CircleShape2D_5yfqu")
+
+[node name="Camera2D" type="Camera2D" parent="." index="6"]
+zoom = Vector2(1.8, 1.8)
+limit_smoothed = true
+
+[node name="Hud" parent="." index="7" instance=ExtResource("10_qy0aa")]

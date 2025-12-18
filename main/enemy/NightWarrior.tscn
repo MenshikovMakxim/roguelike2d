@@ -433,6 +433,5 @@ position = Vector2(0, 14.282614)
 position = Vector2(0, -5.9604645e-07)
 
 [node name="ProgressBar" parent="." index="5"]
-visible = false
 offset_top = -21.753635
 offset_bottom = -17.753635

@@ -1,0 +1,17 @@
+extends CanvasLayer
+
+@onready var hp_bar = $MarginContainer/VBoxContainer/HpBar
+
+
+func _ready() -> void:
+	Global.connect("take_soul", Callable(self, "update_soul_bar"))
+	hp_bar.setup(Global.hp)
+
+
+func update_soul_bar():
+	$MarginContainer/VBoxContainer/HBoxContainer/Label.text = str(Global.souls)
+
+
+func update(_value):
+	Global.hp = _value
+	hp_bar.update(_value)
