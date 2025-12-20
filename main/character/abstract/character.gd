@@ -16,7 +16,7 @@ class_name Character
 @onready var hp_bar : ProgressBar
 @export var sounds : Dictionary[String, AudioStream] = {"damage":preload("res://assets/sounds/enemy/damage.ogg")}
 @export var sounds_volumes : int = 0
-@export var is_dead = false
+#@export var is_dead = false
 
 
 func _ready() -> void:
@@ -25,8 +25,11 @@ func _ready() -> void:
 	effects.hide()
 
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	fsm.physics_update(delta)
+
+#func _physics_process(delta: float) -> void:
+	#fsm.physics_update(delta)
 
 
 func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_frame:int) -> void:
@@ -38,24 +41,41 @@ func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_fra
 
 
 func play_sound(_name: String, _volume = sounds_volumes):
-	if sounds.has(_name):
-		audio.stream = sounds[_name]
-		audio.volume_db = Global.calc_volume_effects()
-		audio.play()
+	if not sounds.has(_name):
+		return
+		
+	#if audio.playing and audio.stream == sounds[_name]:
+		#return
+
+	audio.stream = sounds[_name]
+	audio.volume_db = Global.calc_volume_effects()
+	audio.play()
 
 
 func play_anim(_name : String, fn: Callable = Callable()):
-	if anim.sprite_frames.has_animation(_name):
-		anim.play(_name)
+	if not anim.sprite_frames.has_animation(_name):
+		return
+
+	if anim.animation == _name and anim.is_playing():
+		return
+
+	anim.play(_name)
+
+	if fn.is_valid():
 		await anim.animation_finished
-		if fn:
-			fn.call()
+		fn.call()
 
 
 func play_effects(_name : String):
-	if effects.sprite_frames.has_animation(_name):
-		effects.show()
-		effects.play(_name)
+	if not effects.sprite_frames.has_animation(_name):
+		return
+
+	if effects.animation == _name and effects.is_playing():
+		return
+
+	effects.show()
+	effects.play(_name)
+	
 	await effects.animation_finished
 	effects.hide()
 

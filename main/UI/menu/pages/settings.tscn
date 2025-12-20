@@ -116,6 +116,7 @@ text = "0"
 
 [node name="Graphic" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic"]
 layout_mode = 2
@@ -132,6 +133,39 @@ text = "smoothing"
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer"]
 layout_mode = 2
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game"
+
+[node name="Seconds" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 29
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds"]
+layout_mode = 2
+theme = ExtResource("2_pcdxm")
+theme_override_constants/outline_size = 5
+text = "enemy spawn every second:"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="value3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds"]
+layout_mode = 2
+text = "0"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -145,7 +179,8 @@ shortcut = SubResource("Shortcut_pcdxm")
 text = "<- Back"
 flat = true
 
-[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music/HSlider" to="." method="_on_h_slider_value_changed1"]
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects/HSlider" to="." method="_on_h_slider_value_changed2"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds/HSlider" to="." method="_on_h_slider_value_changed3"]
 [connection signal="pressed" from="MarginContainer/Back" to="." method="_on_button_pressed"]

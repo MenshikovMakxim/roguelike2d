@@ -1,10 +1,11 @@
 extends Node2D
 
 var mobs = [
-	load("res://main/enemy/NightWarrior.tscn"),
+	load("res://main/enemy/night_warrior.tscn"),
 	load("res://main/enemy/slime.tscn"),
-	load("res://main/enemy/FireWorm.tscn")
+	load("res://main/enemy/fire_worm.tscn")
 ]
+
 @onready var hero = load("res://main/character/hero.tscn").instantiate()
 @onready var music = $SoundManager
 @onready var map = $Flat
@@ -12,12 +13,11 @@ var mobs = [
 @onready var spawn_path = $Path2D/PathFollow2D
 
 func _ready() -> void:
-	change_filter()
-	prepare_hero()
-	music.play_sound("game_soundtrack")
+	prepare_game()
 	Global.start_game.emit()
 	Global.connect("smooth_changed", Callable(self, "change_filter"))
 	Global.connect("player_dead", Callable(self, "stop_spawn"))
+	Global.connect("change_spawn_timer", Callable(self, "change_timer"))
 
 
 func _input(event: InputEvent) -> void:
@@ -52,6 +52,9 @@ func pause(paused : bool):
 func change_filter():
 	texture_filter = Global.switch_filter()
 
+func change_timer():
+	$Timer.wait_time = Global.spawn_timer
+
 func prepare_hero():
 	add_child(hero)
 	hero.play_effects("spawn")
@@ -63,3 +66,9 @@ func prepare_mob():
 	mob.position = spawn_path.position
 	mob.player = "../Hero"
 	add_child(mob)
+
+func prepare_game():
+	music.play_sound("game_soundtrack")
+	change_timer()
+	change_filter()
+	prepare_hero()

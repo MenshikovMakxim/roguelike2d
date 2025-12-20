@@ -45,7 +45,8 @@ func _damage(body):
 	direction = Vector2.ZERO
 	$CollisionShape2D.set_deferred("disabled", true)
 	body.take_damage(damage)
-	queue_free()
+	_play_anim("destroy", queue_free)
+	#queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0n5agl4t75yk"]
+
+[ext_resource type="PackedScene" uid="uid://duh82fnaqlxri" path="res://main/enemy/abstract/enemy.tscn" id="1_e0053"]
+[ext_resource type="Script" uid="uid://hi34rqv360qa" path="res://main/enemy/abstract/distant_enemy.gd" id="2_3eof7"]
+
+[node name="DistantEnemy" instance=ExtResource("1_e0053")]
+script = ExtResource("2_3eof7")
+distant_to_attack = 200.0
+
+[node name="Animation" parent="Face" index="0"]
+animation = &"chase"
+
+[node name="Effects" parent="Face" index="1"]
+animation = &"die"
+frame = 0
+frame_progress = 0.0
+
+[node name="Marker2D" type="Marker2D" parent="Face" index="3"]
+position = Vector2(23, -11)
+
+[node name="ProgressBar" parent="." index="5"]
+z_index = 1
