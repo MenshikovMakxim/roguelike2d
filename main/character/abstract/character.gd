@@ -108,6 +108,7 @@ func do_attack():
 
 
 func disable():
+	#shadow.hide()
 	$CollisionShape2D.set_deferred("disabled", true)
 
 

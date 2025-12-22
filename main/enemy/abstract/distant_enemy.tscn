@@ -17,6 +17,3 @@ frame_progress = 0.0
 
 [node name="Marker2D" type="Marker2D" parent="Face" index="3"]
 position = Vector2(23, -11)
-
-[node name="ProgressBar" parent="." index="5"]
-z_index = 1

@@ -20,7 +20,7 @@ func _ready():
 	Global.connect("attack_player", Callable(self, "take_damage"))
 	default_state = "Move"
 	fsm.change_to("Move")
-	super.setup(Global.hp, Global.speed, Global.attack, 8, 3)
+	super.setup(Global.hp, Global.speed, Global.attack, attack_frame, die_frame)
 
 
 func take_damage(amount):
@@ -29,7 +29,7 @@ func take_damage(amount):
 
 
 func do_attack():
-	var _fireball = fireballs["mass"].instantiate()
+	var _fireball = fireballs["standart"].instantiate()
 	get_tree().current_scene.add_child(_fireball)
 	_fireball.set_damage(Global.attack)
 	_fireball.global_position = shoot_point.global_position

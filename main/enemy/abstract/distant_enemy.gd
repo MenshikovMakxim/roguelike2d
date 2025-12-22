@@ -8,6 +8,8 @@ class_name DistantEnemy
 
 func _ready():
 	super()
+	fsm.change_to("FarAttack")
+	default_state = "FarAttack"
 
 
 func do_far_attack():
@@ -28,13 +30,13 @@ func do_far_attack():
 	bull.rotation = final_angle
 
 
-func _process(delta: float) -> void:
-	super(delta)
-	if is_alive():
-		if is_attack_range():
-			fsm.change_to("FarAttack")
-		else:
-			to_default_state()
+#func _process(delta: float) -> void:
+	#super(delta)
+	#if is_alive():
+		#if is_attack_range():
+			#fsm.change_to("FarAttack")
+		#else:
+			#to_default_state()
 
 
 func calc_distant():

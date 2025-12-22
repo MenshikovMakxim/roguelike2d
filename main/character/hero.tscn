@@ -466,8 +466,7 @@ frame = 8
 frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="Face" index="2"]
-position = Vector2(16.2933, -39.1039)
-metadata/_edit_lock_ = true
+position = Vector2(0.29330063, -0.10390091)
 
 [node name="PointLight2D" type="PointLight2D" parent="Face/Marker2D" index="0"]
 position = Vector2(0.08961105, -0.114048004)
