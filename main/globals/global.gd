@@ -68,7 +68,7 @@ func start_menu():
 ##router
 
 var scens = {
-	"menu": "res://main/UI/menu/menu.tscn",
+	"menu": "res://main/UI/menu/pages/menu.tscn",
 	"game": "res://main/game.tscn",
 	"lose": "res://main/UI/Lose_screen.tscn",
 	"credits": "res://main/UI/menu/pages/credits.tscn",

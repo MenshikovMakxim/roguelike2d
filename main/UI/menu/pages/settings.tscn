@@ -1,165 +1,119 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk2gesjwx0q7v"]
+[gd_scene load_steps=6 format=3 uid="uid://cvrlq78ye3nkq"]
 
+[ext_resource type="PackedScene" uid="uid://c450nqqnkjrki" path="res://main/UI/menu/abstract/page.tscn" id="1_nrn8b"]
 [ext_resource type="Script" uid="uid://cgmty8k81wbk1" path="res://main/UI/menu/pages/settings.gd" id="1_rq7vc"]
-[ext_resource type="PackedScene" uid="uid://ddl8wy68jkkh3" path="res://assets/textures/background/background_1.tscn" id="2_etef7"]
 [ext_resource type="Theme" uid="uid://bxboh3d6i323h" path="res://main/globals/main_theme.tres" id="2_pcdxm"]
-
-[sub_resource type="Gradient" id="Gradient_0kv31"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.35333332, 1)
-colors = PackedColorArray(0.9882353, 0.8, 0.1764706, 1, 0.90588236, 0.2627451, 0.18039216, 1, 0.096235804, 0.044887528, 0.039255995, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c710n"]
-gradient = SubResource("Gradient_0kv31")
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
-metadata/_snap_count = 2
 
 [sub_resource type="InputEventAction" id="InputEventAction_mcdfo"]
 action = &"ui_cancel"
 
-[sub_resource type="Shortcut" id="Shortcut_pcdxm"]
+[sub_resource type="Shortcut" id="Shortcut_etef7"]
 events = [SubResource("InputEventAction_mcdfo")]
 
-[node name="Settings" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Page" instance=ExtResource("1_nrn8b")]
 script = ExtResource("1_rq7vc")
 
-[node name="Texture" type="TextureRect" parent="."]
-visible = false
-z_index = -6
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_c710n")
-
-[node name="background_1" parent="." instance=ExtResource("2_etef7")]
-modulate = Color(0.43365613, 0.43365613, 0.43365613, 1)
-texture_filter = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 60
 
-[node name="Sounds" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Sounds" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="NameBlock" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds"]
+[node name="NameBlock" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 5
 text = "Sounds"
 
-[node name="Music" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds"]
+[node name="Music" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds" index="1"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music" index="0"]
 layout_mode = 2
 theme = ExtResource("2_pcdxm")
 theme_override_constants/outline_size = 5
 text = "Music:"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 max_value = 1.0
 step = 0.01
 
-[node name="value" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music"]
+[node name="value" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music" index="2"]
 layout_mode = 2
 text = "0"
 
-[node name="Effects" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds"]
+[node name="Effects" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds" index="2"]
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects" index="0"]
 layout_mode = 2
 text = "Effects:"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 max_value = 1.0
 step = 0.01
 
-[node name="value2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects"]
+[node name="value2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects" index="2"]
 layout_mode = 2
 text = "0"
 
-[node name="Graphic" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Graphic" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic"]
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Graphic"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic" index="1"]
 layout_mode = 2
 
-[node name="NameCheckBox" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer"]
+[node name="NameCheckBox" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer" index="0"]
 layout_mode = 2
 text = "smoothing"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer" index="1"]
 layout_mode = 2
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" index="2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Game"
 
-[node name="Seconds" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+[node name="Seconds" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3" index="1"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 29
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds" index="0"]
 layout_mode = 2
 theme = ExtResource("2_pcdxm")
 theme_override_constants/outline_size = 5
 text = "enemy spawn every second:"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -168,20 +122,20 @@ min_value = 1.0
 max_value = 10.0
 value = 1.0
 
-[node name="value3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds"]
+[node name="value3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds" index="2"]
 layout_mode = 2
 text = "0"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Back" type="Button" parent="MarginContainer"]
+[node name="Back" type="Button" parent="MarginContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
-shortcut = SubResource("Shortcut_pcdxm")
+shortcut = SubResource("Shortcut_etef7")
 text = "<- Back"
 flat = true
 
@@ -189,4 +143,4 @@ flat = true
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects/HSlider" to="." method="_on_h_slider_value_changed2"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/Graphic/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer3/Seconds/HSlider" to="." method="_on_h_slider_value_changed3"]
-[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]

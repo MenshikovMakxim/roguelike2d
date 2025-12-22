@@ -1,28 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlwj448see8i4"]
+[gd_scene load_steps=5 format=3 uid="uid://bklrkcudei1mq"]
 
-[ext_resource type="Script" uid="uid://yf5nmh1exe8x" path="res://main/UI/menu/pages/pause.gd" id="1_nqobt"]
-[ext_resource type="PackedScene" uid="uid://bk2gesjwx0q7v" path="res://main/UI/menu/pages/settings.tscn" id="2_pau44"]
+[ext_resource type="Script" uid="uid://yf5nmh1exe8x" path="res://main/UI/menu/pages/pause.gd" id="2_d2vhy"]
+[ext_resource type="PackedScene" uid="uid://cvrlq78ye3nkq" path="res://main/UI/menu/pages/settings.tscn" id="2_pau44"]
 
-[sub_resource type="Gradient" id="Gradient_xrtpp"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 0.47058824)
+[sub_resource type="Gradient" id="Gradient_nqobt"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.003921569, 0.003921569, 0.003921569, 0.41568628)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cwyrr"]
-gradient = SubResource("Gradient_xrtpp")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pau44"]
+gradient = SubResource("Gradient_nqobt")
 
-[node name="Pause" type="CanvasLayer"]
+[node name="Page" type="CanvasLayer"]
 process_mode = 2
-layer = 2
-script = ExtResource("1_nqobt")
+script = ExtResource("2_d2vhy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_cwyrr")
-stretch_mode = 6
+texture = SubResource("GradientTexture1D_pau44")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -98,9 +97,8 @@ text = "E X I T
 "
 flat = true
 
-[node name="Settings" parent="." instance=ExtResource("2_pau44")]
+[node name="SettingsPage" parent="." instance=ExtResource("2_pau44")]
 visible = false
-z_index = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]

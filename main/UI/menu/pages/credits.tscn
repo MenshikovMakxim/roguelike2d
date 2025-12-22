@@ -1,77 +1,55 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq6w5cbmrodmp"]
+[gd_scene load_steps=7 format=3 uid="uid://bekvaxdt35h5j"]
 
-[ext_resource type="Script" uid="uid://0ld4l0dtkpa6" path="res://main/UI/menu/pages/credits.gd" id="1_xvjtr"]
-
-[sub_resource type="Gradient" id="Gradient_tgvog"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.35333332, 1)
-colors = PackedColorArray(0.9882353, 0.8, 0.1764706, 1, 0.90588236, 0.2627451, 0.18039216, 1, 0.096235804, 0.044887528, 0.039255995, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fd3nf"]
-gradient = SubResource("Gradient_tgvog")
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
-metadata/_snap_count = 2
+[ext_resource type="PackedScene" uid="uid://c450nqqnkjrki" path="res://main/UI/menu/abstract/page.tscn" id="1_ojqwn"]
+[ext_resource type="Script" uid="uid://0ld4l0dtkpa6" path="res://main/UI/menu/pages/credits.gd" id="2_vkmkg"]
 
 [sub_resource type="Gradient" id="Gradient_qi0qp"]
-colors = PackedColorArray(0.56078434, 0.09803922, 0.6156863, 0.41568628, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.26, 1)
+colors = PackedColorArray(0.7411765, 0.45882353, 0.1254902, 0.5411765, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s68ik"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vkmkg"]
 gradient = SubResource("Gradient_qi0qp")
-fill_from = Vector2(0.5, 0.8)
-fill_to = Vector2(0.5, 0.1)
+fill_from = Vector2(0.5, 0.7)
+fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
 [sub_resource type="InputEventAction" id="InputEventAction_qi0qp"]
 action = &"ui_cancel"
 
-[sub_resource type="Shortcut" id="Shortcut_s68ik"]
+[sub_resource type="Shortcut" id="Shortcut_fbmmd"]
 events = [SubResource("InputEventAction_qi0qp")]
 
-[node name="Credits" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_xvjtr")
+[node name="Page" instance=ExtResource("1_ojqwn")]
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="TextureFront" type="TextureRect" parent="." index="1"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -360.0
+offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-
-[node name="Texture" type="TextureRect" parent="MarginContainer2"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_fd3nf")
-
-[node name="TextureFront" type="TextureRect" parent="MarginContainer2"]
-z_index = 1
-layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_s68ik")
+texture = SubResource("GradientTexture2D_vkmkg")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
 z_index = 2
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 55
+script = ExtResource("2_vkmkg")
 
-[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "< A U T O R >"
 
-[node name="Autor" type="Button" parent="MarginContainer2/VBoxContainer"]
+[node name="Autor" type="Button" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -79,18 +57,18 @@ mouse_default_cursor_shape = 2
 text = "M E N S H I K O V   M A X I M"
 flat = true
 
-[node name="Assets" type="Label" parent="MarginContainer2/VBoxContainer"]
+[node name="Assets" type="Label" parent="MarginContainer/VBoxContainer" index="2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "< A U T O R S   O F   A S S E T S >"
 
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer2/VBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="3"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 15
 
-[node name="CreativeKind" type="Button" parent="MarginContainer2/VBoxContainer/Buttons"]
+[node name="CreativeKind" type="Button" parent="MarginContainer/VBoxContainer/Buttons" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -98,7 +76,7 @@ mouse_default_cursor_shape = 2
 text = "C r e a t i v e K i n d"
 flat = true
 
-[node name="LuckyLoops" type="Button" parent="MarginContainer2/VBoxContainer/Buttons"]
+[node name="LuckyLoops" type="Button" parent="MarginContainer/VBoxContainer/Buttons" index="1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -106,7 +84,7 @@ mouse_default_cursor_shape = 2
 text = "L u c k y L o o p s "
 flat = true
 
-[node name="Free" type="Button" parent="MarginContainer2/VBoxContainer/Buttons"]
+[node name="Free" type="Button" parent="MarginContainer/VBoxContainer/Buttons" index="2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -114,12 +92,12 @@ mouse_default_cursor_shape = 2
 text = "Free and Premium Game Assets (GUI, Sprite, Tilesets)"
 flat = true
 
-[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/Buttons"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Buttons" index="3"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = ". . ."
 
-[node name="Sounds" type="Button" parent="MarginContainer2/VBoxContainer/Buttons"]
+[node name="Sounds" type="Button" parent="MarginContainer/VBoxContainer/Buttons" index="4"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -127,15 +105,15 @@ mouse_default_cursor_shape = 2
 text = "S O U N D S"
 flat = true
 
-[node name="Back" type="Button" parent="MarginContainer2/VBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer" index="4"]
 z_index = 5
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-shortcut = SubResource("Shortcut_s68ik")
+shortcut = SubResource("Shortcut_fbmmd")
 text = "B A C K"
 flat = true
 
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/Autor" to="." method="_on_autor_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Autor" to="MarginContainer/VBoxContainer" method="_on_autor_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="MarginContainer/VBoxContainer" method="_on_back_pressed"]

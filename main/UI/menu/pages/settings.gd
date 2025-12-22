@@ -1,6 +1,7 @@
 extends Control
 
 var in_game = false
+@onready var texture = $TextureRect
 @onready var music_sounds = $MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music/HSlider
 @onready var effects_sounds = $MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects/HSlider
 @onready var value_music = $MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music/value
@@ -32,7 +33,7 @@ func _on_h_slider_value_changed2(value: float) -> void:
 	Global.change_volume.emit()
 
 
-func _on_button_pressed() -> void:
+func _on_back_pressed() -> void:
 	if in_game:
 		visible = false
 	else:

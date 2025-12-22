@@ -1,12 +1,13 @@
 extends CanvasLayer
 
 @onready var pause_menu = $MarginContainer
-@onready var settings_menu = $Settings
+@onready var settings_menu = $SettingsPage
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#visible = false
+	settings_menu.texture.hide()
 	settings_menu.visible = false
 	settings_menu.in_game = true
 

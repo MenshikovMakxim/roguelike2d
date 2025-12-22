@@ -10,7 +10,7 @@ var autors_of_assets = {
 
 func _ready():
 	for btn_name in autors_of_assets.keys():
-		var btn = $MarginContainer2/VBoxContainer/Buttons.get_node(btn_name)
+		var btn = $Buttons.get_node(btn_name)
 		if btn and autors_of_assets[btn_name]:
 			btn.pressed.connect(func(): OS.shell_open(autors_of_assets[btn_name]))
 
