@@ -2,14 +2,14 @@ extends State
 
 func enter():
 	actor.anim.connect("frame_changed", Callable(self, "sound"))
-	actor.velocity = Vector2.ZERO
 	actor.disable()
 	actor.play_anim("die", delete_actor)
+	actor.play_effects("die")
 
 
 func sound():
 	if actor.anim.frame == actor.die_frame:
-		actor.shadow.hide()
+		#actor.shadow.hide()
 		actor.play_sound("die", 10)
 
 

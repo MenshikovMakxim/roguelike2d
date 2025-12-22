@@ -7,7 +7,6 @@ class_name Enemy
 @onready var attack_box = $AttackBox
 
 
-
 func get_player():
 	target = get_node_or_null(player)
 	return target
@@ -15,9 +14,8 @@ func get_player():
 
 func disable():
 	super()
-	attack_box.monitoring = false
-	attack_box.monitorable = false
-	#$AttackBox/CollisionShape2D.set_deferred("disabled", true)
+	attack_box.set_deferred("monitoring", false)
+	attack_box.set_deferred("monitorable", false)
 	hp_bar.hide()
 
 func _ready():

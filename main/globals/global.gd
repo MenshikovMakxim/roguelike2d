@@ -11,6 +11,7 @@ signal player_dead
 signal die_enemy
 signal take_soul
 signal change_volume
+signal change_spawn_timer
 signal smooth_changed
 signal start_game
 signal menu
@@ -37,6 +38,11 @@ var souls = 0
 var k_volume = 0.5
 var k_volume_effects = 0.5
 var smooth = false
+
+##game
+
+var spawn_timer = 4
+
 
 
 func switch_filter():

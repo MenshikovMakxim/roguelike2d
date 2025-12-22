@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bc0lqrr8lxyjp"]
 
-[ext_resource type="Script" uid="uid://c7y87b3nkkgcj" path="res://main/character/character.gd" id="1_gep86"]
+[ext_resource type="Script" uid="uid://c7y87b3nkkgcj" path="res://main/character/abstract/character.gd" id="1_gep86"]
 [ext_resource type="SpriteFrames" uid="uid://kbnturjafboi" path="res://main/character/character.tres" id="2_gx21m"]
 [ext_resource type="PackedScene" uid="uid://cto67ynwdm2d4" path="res://main/FSM/state_machine.tscn" id="3_o64gn"]
 

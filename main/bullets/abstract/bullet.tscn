@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bgpsj178gsj44"]
 
-[ext_resource type="Script" uid="uid://cxcc364xsms55" path="res://main/bullets/bullet.gd" id="1_lwcee"]
+[ext_resource type="Script" uid="uid://cxcc364xsms55" path="res://main/bullets/abstract/bullet.gd" id="1_lwcee"]
 [ext_resource type="Texture2D" uid="uid://c2nowduaeptly" path="res://assets/textures/effects/63.png" id="2_arieu"]
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="3_w36f0"]
 

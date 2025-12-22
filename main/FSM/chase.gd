@@ -20,6 +20,9 @@ func chase():
 
 
 func physics_update(_delta):
+	if actor is DistantEnemy:
+		if actor.is_attack_range():
+			actor.fsm.change_to("FarAttack")
 	if target:
 		chase()
 	else:

@@ -1,12 +1,17 @@
 extends Character
 class_name Hero
 
+var fireballs = {
+	"standart" : load("res://main/bullets/hero_bullet.tscn"),
+	"mass" : load("res://main/bullets/mass_hero_bullet.tscn")
+}
+
 @onready var shoot_point = $Face/Marker2D
 @onready var flash = $Face/Marker2D/PointLight2D
-@onready var fireball : PackedScene = load("res://main/bullets/hero_bullet.tscn")
 @onready var collector = $Collector
 @onready var camera = $Camera2D
 @onready var hud = $Hud
+var obsession = false
 
 
 func _ready():
@@ -15,7 +20,7 @@ func _ready():
 	Global.connect("attack_player", Callable(self, "take_damage"))
 	default_state = "Move"
 	fsm.change_to("Move")
-	super.setup(Global.hp, Global.speed, Global.attack, 8, 3)
+	super.setup(Global.hp, Global.speed, Global.attack, attack_frame, die_frame)
 
 
 func take_damage(amount):
@@ -24,7 +29,7 @@ func take_damage(amount):
 
 
 func do_attack():
-	var _fireball = fireball.instantiate()
+	var _fireball = fireballs["standart"].instantiate()
 	get_tree().current_scene.add_child(_fireball)
 	_fireball.set_damage(Global.attack)
 	_fireball.global_position = shoot_point.global_position
