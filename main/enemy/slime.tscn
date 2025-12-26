@@ -254,7 +254,7 @@ animations = [{
 health = 80
 speed = 80.0
 attack = 10.165
-attack_frame = 3
+attack_frames = Array[int]([3])
 die_frame = 2
 sounds = Dictionary[String, AudioStream]({
 "attack": ExtResource("3_iwi5n"),
@@ -272,8 +272,8 @@ shape = SubResource("CapsuleShape2D_28kc4")
 modulate = Color(0.3764706, 1, 1, 1)
 sprite_frames = SubResource("SpriteFrames_phfuy")
 animation = &"attack"
-frame = 7
-frame_progress = 0.6211926
+frame = 1
+frame_progress = 0.45480585
 offset = Vector2(1.09, -8.425)
 flip_h = true
 

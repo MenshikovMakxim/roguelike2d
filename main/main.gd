@@ -3,7 +3,8 @@ extends Node2D
 var mobs = [
 	load("res://main/enemy/night_warrior.tscn"),
 	load("res://main/enemy/slime.tscn"),
-	load("res://main/enemy/fire_worm.tscn")
+	load("res://main/enemy/fire_worm.tscn"),
+	load("res://main/enemy/skeleton.tscn")
 ]
 
 @onready var hero = load("res://main/character/hero.tscn").instantiate()

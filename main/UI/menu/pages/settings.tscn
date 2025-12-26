@@ -13,11 +13,18 @@ events = [SubResource("InputEventAction_mcdfo")]
 [node name="Page" instance=ExtResource("1_nrn8b")]
 script = ExtResource("1_rq7vc")
 
+[node name="TextureRect" parent="." index="0"]
+offset_top = -136.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="0"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -126,7 +133,7 @@ value = 1.0
 layout_mode = 2
 text = "0"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="2"]
 layout_mode = 2
 size_flags_horizontal = 3
 

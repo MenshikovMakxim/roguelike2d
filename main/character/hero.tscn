@@ -347,7 +347,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage",
-"speed": 8.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -438,7 +438,7 @@ script = ExtResource("2_dldjo")
 health = 200
 speed = 180.0
 attack = 20.0
-attack_frame = 8
+attack_frames = Array[int]([8])
 die_frame = 4
 sounds = Dictionary[String, AudioStream]({
 "attack": ExtResource("4_5bngo"),
@@ -456,13 +456,14 @@ shape = SubResource("CapsuleShape2D_37t01")
 [node name="Animation" parent="Face" index="0"]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_dldjo")
-animation = &"idle"
+animation = &"damage"
+frame = 4
+frame_progress = 1.0
 offset = Vector2(-0.75, -23.76)
 
 [node name="Effects" parent="Face" index="1"]
 visible = true
-animation = &"attack"
-frame = 8
+frame = 7
 frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="Face" index="2"]

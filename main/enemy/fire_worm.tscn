@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://il0wfa6mlfbx"]
+[gd_scene load_steps=81 format=3 uid="uid://il0wfa6mlfbx"]
 
 [ext_resource type="PackedScene" uid="uid://d0n5agl4t75yk" path="res://main/enemy/abstract/distant_enemy.tscn" id="1_c44cp"]
 [ext_resource type="Texture2D" uid="uid://dkoi2nlls5c5w" path="res://assets/textures/enemy/fire_worm/Worm/Attack.png" id="2_h40yc"]
@@ -516,13 +516,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x303n"]
+radius = 51.009804
+
 [node name="FireWorm" instance=ExtResource("1_c44cp")]
 modulate = Color(1, 0.75686276, 0.5019608, 1)
 distant_to_attack = 300.0
 health = 150
 speed = 110.0
 attack = 25.0
-attack_frame = 11
+attack_frames = Array[int]([11])
 die_frame = 3
 sounds = Dictionary[String, AudioStream]({
 "attack": ExtResource("3_x303n"),
@@ -535,8 +538,7 @@ shape = SubResource("CapsuleShape2D_hj22q")
 
 [node name="Animation" parent="Face" index="0"]
 sprite_frames = SubResource("SpriteFrames_x303n")
-frame = 2
-frame_progress = 1.0
+animation = &"attack"
 
 [node name="Effects" parent="Face" index="1"]
 sprite_frames = SubResource("SpriteFrames_jrttl")
@@ -547,6 +549,9 @@ scale = Vector2(1.5312499, 0.45312503)
 
 [node name="Marker2D" parent="Face" index="3"]
 position = Vector2(25, -7)
+
+[node name="CollisionShape2D" parent="AttackBox" index="0"]
+shape = SubResource("CircleShape2D_x303n")
 
 [node name="ProgressBar" parent="." index="5"]
 metadata/_edit_use_anchors_ = true

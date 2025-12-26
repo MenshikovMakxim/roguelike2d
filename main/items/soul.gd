@@ -44,6 +44,7 @@ func _on_body_entered(body: Character) -> void:
 		tween.tween_property(self, "modulate:a", 0.0, 0.5)
 		tween.tween_callback(delete)
 
+
 	if body is Enemy:
 		disable()
 		$AnimatedSprite2D.play("free")

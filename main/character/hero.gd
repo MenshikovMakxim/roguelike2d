@@ -20,7 +20,7 @@ func _ready():
 	Global.connect("attack_player", Callable(self, "take_damage"))
 	default_state = "Move"
 	fsm.change_to("Move")
-	super.setup(Global.hp, Global.speed, Global.attack, attack_frame, die_frame)
+	super.setup(Global.hp, Global.speed, Global.attack, attack_frames, die_frame)
 
 
 func take_damage(amount):

@@ -16,7 +16,8 @@ func change_to(state_name: String) -> void:
 		return
 		
 	if current_state == new_state:
-		return 
+		if current_state != states.get("Damage"):
+			return 
 		
 	if current_state:
 		current_state.exit()

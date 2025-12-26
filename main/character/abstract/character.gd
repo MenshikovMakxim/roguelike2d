@@ -4,7 +4,7 @@ class_name Character
 @export var health: int 
 @export var speed : float 
 @export var attack : float 
-@export var attack_frame : int 
+@export var attack_frames : Array[int]
 @export var die_frame : int
 @onready var anim : AnimatedSprite2D = $Face/Animation
 @onready var effects : AnimatedSprite2D = $Face/Effects
@@ -32,11 +32,11 @@ func _process(delta: float) -> void:
 	#fsm.physics_update(delta)
 
 
-func setup(_health:int, _speed:float, _attack:float, _attack_frame:int, _die_frame:int) -> void:
+func setup(_health:int, _speed:float, _attack:float, _attack_frames:Array, _die_frame:int) -> void:
 	self.health = _health
 	self.speed = _speed
 	self.attack = _attack
-	self.attack_frame = _attack_frame
+	self.attack_frames = _attack_frames
 	self.die_frame = _die_frame
 
 
@@ -70,8 +70,8 @@ func play_effects(_name : String):
 	if not effects.sprite_frames.has_animation(_name):
 		return
 
-	if effects.animation == _name and effects.is_playing():
-		return
+	#if effects.animation == _name and effects.is_playing():
+		#return
 
 	effects.show()
 	effects.play(_name)
