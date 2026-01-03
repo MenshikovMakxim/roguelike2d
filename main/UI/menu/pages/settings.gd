@@ -2,6 +2,7 @@ extends Control
 
 var in_game = false
 @onready var texture = $TextureRect
+@onready var anim_texture = $AnimTexture
 @onready var music_sounds = $MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music/HSlider
 @onready var effects_sounds = $MarginContainer/HBoxContainer/VBoxContainer/Sounds/Effects/HSlider
 @onready var value_music = $MarginContainer/HBoxContainer/VBoxContainer/Sounds/Music/value
@@ -38,6 +39,11 @@ func _on_back_pressed() -> void:
 		visible = false
 	else:
 		Global.go_to("menu")
+
+
+func hide_background() -> void:
+	texture.hide()
+	anim_texture.hide()
 
 
 func _on_check_box_toggled(toggled_on: bool) -> void:

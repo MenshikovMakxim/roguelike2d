@@ -13,7 +13,7 @@ events = [SubResource("InputEventAction_mcdfo")]
 [node name="Page" instance=ExtResource("1_nrn8b")]
 script = ExtResource("1_rq7vc")
 
-[node name="TextureRect" parent="." index="0"]
+[node name="TextureRect" parent="." index="1"]
 offset_top = -136.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]

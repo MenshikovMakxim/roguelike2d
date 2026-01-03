@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c450nqqnkjrki"]
+[gd_scene load_steps=3 format=3 uid="uid://c450nqqnkjrki"]
 
+[ext_resource type="PackedScene" uid="uid://rup4gs4iupn2" path="res://main/UI/menu/abstract/anim_texture.tscn" id="1_lk7ma"]
 [ext_resource type="Texture2D" uid="uid://cwamtiveqwrix" path="res://assets/textures/background/menu_screen.png" id="1_u7pi1"]
 
 [node name="Page" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +12,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="AnimTexture" parent="." instance=ExtResource("1_lk7ma")]
+layout_mode = 1
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +29,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
