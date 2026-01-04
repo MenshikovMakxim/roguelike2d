@@ -76,8 +76,8 @@ func play_effects(_name : String):
 	effects.show()
 	effects.play(_name)
 	
-	await effects.animation_finished
-	effects.hide()
+	#await effects.animation_finished
+	#effects.hide()
 
 
 func to_act(_name : String, fn: Callable = Callable()):

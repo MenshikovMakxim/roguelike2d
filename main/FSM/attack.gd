@@ -15,7 +15,6 @@ func physics_update(_delta):
 
 func attack():
 	if actor.anim.frame in actor.attack_frames:
-		#if actor.anim.frame == attack_frame:
 		actor.do_attack()
 		actor.play_sound("attack")
 

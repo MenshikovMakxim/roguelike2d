@@ -33,7 +33,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 16
 text = "W A S D - Move
 
-L M B - Fire to cursor
+L M B, SPACE - Fire to cursor
 
 E S C - Pause"
 

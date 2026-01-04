@@ -463,8 +463,7 @@ offset = Vector2(-0.75, -23.76)
 
 [node name="Effects" parent="Face" index="1"]
 visible = true
-frame = 7
-frame_progress = 1.0
+animation = &"attack"
 
 [node name="Marker2D" type="Marker2D" parent="Face" index="2"]
 position = Vector2(0.29330063, -0.10390091)
