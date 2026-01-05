@@ -1,8 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=47 format=3 uid="uid://kbnturjafboi"]
+[gd_resource type="SpriteFrames" load_steps=46 format=3 uid="uid://kbnturjafboi"]
 
 [ext_resource type="Texture2D" uid="uid://c2nowduaeptly" path="res://assets/textures/effects/63.png" id="1_ifu4c"]
 [ext_resource type="Texture2D" uid="uid://e4wxumir4tu5" path="res://assets/textures/effects/fire/Retro Impact Effect Pack 5 A.png" id="1_lhtdf"]
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="2_lhtdf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcqms"]
+atlas = ExtResource("1_lhtdf")
+region = Rect2(448, 576, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb7a1"]
 atlas = ExtResource("1_lhtdf")
@@ -31,14 +35,6 @@ region = Rect2(320, 576, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wyk3e"]
 atlas = ExtResource("1_lhtdf")
 region = Rect2(384, 576, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tcqms"]
-atlas = ExtResource("1_lhtdf")
-region = Rect2(448, 576, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gfu5"]
-atlas = ExtResource("1_lhtdf")
-region = Rect2(512, 576, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmgxr"]
 atlas = ExtResource("1_lhtdf")
@@ -72,6 +68,10 @@ region = Rect2(384, 768, 64, 64)
 atlas = ExtResource("1_lhtdf")
 region = Rect2(448, 768, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfibc"]
+atlas = ExtResource("2_lhtdf")
+region = Rect2(192, 54, 64, 18)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1re8"]
 atlas = ExtResource("1_ifu4c")
 region = Rect2(0, 0, 64, 64)
@@ -99,10 +99,6 @@ region = Rect2(320, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lq5ou"]
 atlas = ExtResource("1_ifu4c")
 region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfibc"]
-atlas = ExtResource("2_lhtdf")
-region = Rect2(192, 54, 64, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhtdf"]
 atlas = ExtResource("1_lhtdf")
@@ -180,6 +176,9 @@ region = Rect2(448, 1088, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tcqms")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pb7a1")
 }, {
 "duration": 1.0,
@@ -199,12 +198,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wyk3e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tcqms")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1gfu5")
 }],
 "loop": false,
 "name": &"attack",
@@ -240,6 +233,9 @@ animations = [{
 "speed": 11.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfibc")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i1re8")
 }, {

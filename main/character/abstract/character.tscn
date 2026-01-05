@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc0lqrr8lxyjp"]
+[gd_scene load_steps=9 format=3 uid="uid://bc0lqrr8lxyjp"]
 
+[ext_resource type="Material" uid="uid://d32fwk7do0h5f" path="res://main/character/shaders/color_glow.tres" id="1_1jhfm"]
 [ext_resource type="Script" uid="uid://c7y87b3nkkgcj" path="res://main/character/abstract/character.gd" id="1_gep86"]
 [ext_resource type="SpriteFrames" uid="uid://kbnturjafboi" path="res://main/character/character.tres" id="2_gx21m"]
 [ext_resource type="PackedScene" uid="uid://cto67ynwdm2d4" path="res://main/FSM/state_machine.tscn" id="3_o64gn"]
@@ -52,14 +53,18 @@ shape = SubResource("CapsuleShape2D_ild5u")
 [node name="Face" type="Node2D" parent="."]
 
 [node name="Animation" type="AnimatedSprite2D" parent="Face"]
+modulate = Color(1.5225214, 1.5225214, 1.5225214, 1)
+material = ExtResource("1_1jhfm")
 sprite_frames = SubResource("SpriteFrames_bop78")
 animation = &"attack"
 
 [node name="Effects" type="AnimatedSprite2D" parent="Face"]
-visible = false
+modulate = Color(2.1074393, 2.1074393, 1.8652954, 1)
+self_modulate = Color(1, 0.6392883, 0.54301727, 1)
 z_index = 2
+material = ExtResource("1_1jhfm")
 sprite_frames = ExtResource("2_gx21m")
-animation = &"damage"
+animation = &"collect"
 
 [node name="Shadow" type="Sprite2D" parent="Face"]
 z_index = -1

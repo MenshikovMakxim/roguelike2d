@@ -4,8 +4,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oieiu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oieiu"]
-draw_center = false
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cppy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cppy"]
 content_margin_left = 4.0
@@ -31,9 +30,11 @@ expand_margin_bottom = 2.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fbr8o"]
 
 [resource]
+Button/colors/font_hover_color = Color(18.892157, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(18.892157, 16.73316, 16.73316, 1)
 Button/constants/outline_size = 5
 Button/styles/focus = SubResource("StyleBoxEmpty_oieiu")
-Button/styles/hover = SubResource("StyleBoxFlat_oieiu")
+Button/styles/hover = SubResource("StyleBoxEmpty_1cppy")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)

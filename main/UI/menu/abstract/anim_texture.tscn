@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bcgqxhe1gx5m0" path="res://assets/textures/map/SmallTower/frame_4.png" id="5_cj1xa"]
 [ext_resource type="Texture2D" uid="uid://br6nmnbx07ns1" path="res://assets/textures/map/MainTower/frame_5.png" id="5_vywyn"]
 [ext_resource type="Texture2D" uid="uid://eix2qwdkubiy" path="res://assets/textures/map/SmallTower/frame_5.png" id="6_qwmdq"]
-[ext_resource type="Shader" uid="uid://u3dmtqmic7pc" path="res://main/locations/dungeon/flat.gdshader" id="13_8b4aw"]
+[ext_resource type="Shader" uid="uid://u3dmtqmic7pc" path="res://main/locations/shaders/flat.gdshader" id="13_8b4aw"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_knsl3"]
 frames = 6
@@ -95,6 +95,7 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Towers" type="HBoxContainer" parent="."]
+modulate = Color(0.9116014, 0.9116014, 0.9116014, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,6 +130,7 @@ expand_mode = 4
 stretch_mode = 5
 
 [node name="Top" type="TextureRect" parent="."]
+modulate = Color(0.9116014, 0.9116014, 0.9116014, 1)
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -139,6 +141,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_w0qg0")
 
 [node name="Bottom" type="TextureRect" parent="."]
+modulate = Color(0.9116014, 0.9116014, 0.9116014, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,7 +151,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_8b4aw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(0.74509805, 0.78431374, 0.74509805, 1)
+modulate = Color(0.80729145, 0.84891033, 0.80729145, 1)
 self_modulate = Color(0.9764706, 0.9764706, 0.6862745, 1)
 z_index = -1
 texture_filter = 1

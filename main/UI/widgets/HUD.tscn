@@ -41,6 +41,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0.887035, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -53,6 +54,7 @@ theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1.697393, 1.1718559, 1.3425636, 1)
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.8980392, 0.54901963, 0.10980392, 1)

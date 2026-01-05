@@ -404,8 +404,6 @@ animations = [{
 }]
 
 [node name="NightWarrior" instance=ExtResource("1_ya662")]
-modulate = Color(1, 0.6156863, 0.99607843, 1)
-self_modulate = Color(1, 1, 0.4509804, 1)
 scale = Vector2(1.38, 1.38)
 health = 120
 speed = 150.0
@@ -423,9 +421,15 @@ sounds = Dictionary[String, AudioStream]({
 shape = SubResource("CapsuleShape2D_jdeaw")
 
 [node name="Animation" parent="Face" index="0"]
+instance_shader_parameters/Difference = false
+instance_shader_parameters/Glow = Color(1.612184, 0.2823139, 2.5620909, 1)
+instance_shader_parameters/MaskColor = Color(0, 0, 0, 1)
+instance_shader_parameters/TargetColor = Color(0.9539524, 0.23204634, 0.99999994, 1)
+instance_shader_parameters/Tolerance = 0.35200001672
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_bgen6")
 animation = &"attack"
+frame_progress = 0.687207
 offset = Vector2(-0.425, -5.68)
 
 [node name="Effects" parent="Face" index="1"]

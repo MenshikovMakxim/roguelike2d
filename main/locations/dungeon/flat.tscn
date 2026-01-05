@@ -1,17 +1,12 @@
-[gd_scene load_steps=48 format=4 uid="uid://q77herhoyd84"]
+[gd_scene load_steps=47 format=4 uid="uid://q77herhoyd84"]
 
 [ext_resource type="Texture2D" uid="uid://1cg4e8bxmbv1" path="res://assets/textures/map/Free-Undead-Tileset-Top-Down-Pixel-Art/Tiled_files/Ground_rocks.png" id="1_46fhk"]
-[ext_resource type="Shader" uid="uid://u3dmtqmic7pc" path="res://main/locations/dungeon/flat.gdshader" id="1_s1yn4"]
+[ext_resource type="Shader" uid="uid://u3dmtqmic7pc" path="res://main/locations/shaders/flat.gdshader" id="1_s1yn4"]
 [ext_resource type="Script" uid="uid://bddwyvdt8wfwa" path="res://main/locations/dungeon/flat.gd" id="2_ae5yl"]
 [ext_resource type="Texture2D" uid="uid://bi7b7q8v0gumu" path="res://assets/textures/map/Free-Undead-Tileset-Top-Down-Pixel-Art/Tiled_files/details.png" id="2_s1yn4"]
 [ext_resource type="Texture2D" uid="uid://iqovuiwuolyu" path="res://assets/textures/map/Free-Undead-Tileset-Top-Down-Pixel-Art/Tiled_files/Objects.png" id="3_w6wp7"]
 [ext_resource type="Texture2D" uid="uid://bgi2cbf7yqdw6" path="res://assets/textures/map/Free-Undead-Tileset-Top-Down-Pixel-Art/Tiled_files/Objects_animated2.png" id="4_ae5yl"]
 [ext_resource type="Texture2D" uid="uid://dtfa8mopo6syd" path="res://assets/textures/map/Free-Undead-Tileset-Top-Down-Pixel-Art/Tiled_files/Cave_objects_source.png" id="5_w6wp7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6wp7"]
-shader = ExtResource("1_s1yn4")
-shader_parameter/density = 0.25
-shader_parameter/speed = Vector2(0.02, 0.01)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rwr1"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -449,11 +444,9 @@ offset = Vector3(227.27, 0, 0)
 fractal_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w6wp7"]
-width = 342
-height = 267
 noise = SubResource("FastNoiseLite_s1yn4")
 seamless = true
-seamless_blend_skirt = 0.594
+seamless_blend_skirt = 0.618
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1yn4"]
 shader = ExtResource("1_s1yn4")
@@ -463,7 +456,6 @@ shader_parameter/speed = Vector2(0.02, 0.01)
 
 [node name="Flat" type="Node2D"]
 modulate = Color(0.8732984, 0.8732984, 0.8732984, 1)
-material = SubResource("ShaderMaterial_w6wp7")
 script = ExtResource("2_ae5yl")
 
 [node name="Ground" type="TileMapLayer" parent="."]
@@ -488,7 +480,7 @@ color = Color(1, 0, 0, 1)
 texture = SubResource("GradientTexture2D_s1yn4")
 
 [node name="Arhitectures" type="TileMapLayer" parent="."]
-modulate = Color(0.8666667, 1, 1, 1)
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 1)
 z_index = 1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAAAPz/AQABABMAAAAHAAEAAQABACEAAAD5/wEAAQABACEAAAA=")
@@ -518,8 +510,8 @@ offset_right = 1071.0
 offset_bottom = 798.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-modulate = Color(18.892157, 18.892157, 18.892157, 1)
-self_modulate = Color(0.14306727, 0.13794422, 0.043750398, 1)
+modulate = Color(18.892157, 14.948135, 11.637973, 1)
+self_modulate = Color(0.05125062, 0.036756214, 0.012113358, 1)
 material = SubResource("ShaderMaterial_s1yn4")
 layout_mode = 1
 anchors_preset = 15
@@ -529,4 +521,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.8047426, 0.80474263, 0.8047426, 1)

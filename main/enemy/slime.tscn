@@ -264,16 +264,20 @@ sounds = Dictionary[String, AudioStream]({
 })
 
 [node name="CollisionShape2D" parent="." index="0"]
+visible = false
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_28kc4")
 
 [node name="Animation" parent="Face" index="0"]
-modulate = Color(0.3764706, 1, 1, 1)
+instance_shader_parameters/Difference = false
+instance_shader_parameters/Glow = Color(0.17846145, 0.31570956, 0.6931425, 1)
+instance_shader_parameters/MaskColor = Color(0.07480001, 0.34, 0.32674003, 1)
+instance_shader_parameters/TargetColor = Color(0.65295744, 0.8987479, 0.8433247, 1)
+instance_shader_parameters/Tolerance = 0.22000001045
 sprite_frames = SubResource("SpriteFrames_phfuy")
-animation = &"attack"
-frame = 1
-frame_progress = 0.45480585
+frame = 6
+frame_progress = 1.0
 offset = Vector2(1.09, -8.425)
 flip_h = true
 
@@ -283,9 +287,12 @@ z_index = 0
 [node name="Shadow" parent="Face" index="2"]
 position = Vector2(0, 4.5000024)
 
+[node name="AttackBox" parent="." index="2"]
+visible = false
+
 [node name="CollisionShape2D" parent="AttackBox" index="0"]
 metadata/_edit_lock_ = true
 
 [node name="ProgressBar" parent="." index="5"]
-offset_top = -18.0
-offset_bottom = -14.0
+offset_top = -24.0
+offset_bottom = -20.0

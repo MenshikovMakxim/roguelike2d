@@ -188,6 +188,7 @@ fill_to = Vector2(0.90000004, 0.2)
 metadata/_snap_enabled = true
 
 [node name="Soul" type="Area2D"]
+modulate = Color(1.638, 1.638, 1.638, 1)
 z_index = 1
 y_sort_enabled = true
 scale = Vector2(0.615, 0.615)
@@ -198,15 +199,14 @@ script = ExtResource("1_t0fw0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.7777778, 1.3333334)
 sprite_frames = SubResource("SpriteFrames_82hio")
-animation = &"free"
-frame = 14
-frame_progress = 1.0
+animation = &"idle"
 offset = Vector2(0, -3.315)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fl1uk")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 scale = Vector2(2.0833335, 1.9817075)
 color = Color(0.6313726, 1, 1, 1)
 energy = 2.24

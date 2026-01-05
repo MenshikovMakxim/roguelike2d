@@ -105,6 +105,7 @@ scale = Vector2(1.23, 1.23)
 shape = SubResource("CapsuleShape2D_48ig4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(4.45484, 4.45484, 4.45484, 1)
 position = Vector2(1.3698559, 0)
 rotation = 3.1415927
 scale = Vector2(1.09375, 1)
@@ -113,6 +114,7 @@ animation = &"idle"
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(-0.4169159, 0)
 scale = Vector2(0.869193, 0.81335616)
 color = Color(0.94902, 0, 0, 1)

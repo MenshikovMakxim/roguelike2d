@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d32fwk7do0h5f"]
+
+[ext_resource type="Shader" uid="uid://bbx6p0d2iakn5" path="res://main/globals/Difference_colors_s.tres" id="1_mbgk5"]
+
+[resource]
+shader = ExtResource("1_mbgk5")

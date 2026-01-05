@@ -2,50 +2,47 @@
 
 [ext_resource type="PackedScene" uid="uid://c0xg6q3h4wlog" path="res://main/bullets/hero_bullet.tscn" id="1_vya1c"]
 [ext_resource type="Texture2D" uid="uid://e4wxumir4tu5" path="res://assets/textures/effects/fire/Retro Impact Effect Pack 5 A.png" id="2_hf312"]
+[ext_resource type="Texture2D" uid="uid://bsfep60wwuvl7" path="res://assets/textures/effects/fire/Retro Impact Effect Pack 5 A - Left.png" id="2_vya1c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbfxb"]
 radius = 16.705618
 height = 33.411236
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbepf"]
-atlas = ExtResource("2_hf312")
-region = Rect2(512, 1472, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vya1c"]
-atlas = ExtResource("2_hf312")
-region = Rect2(0, 1472, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf312"]
-atlas = ExtResource("2_hf312")
-region = Rect2(64, 1472, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 512, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xlkmn"]
-atlas = ExtResource("2_hf312")
-region = Rect2(128, 1472, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbfxb"]
-atlas = ExtResource("2_hf312")
-region = Rect2(192, 1472, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq7vj"]
-atlas = ExtResource("2_hf312")
-region = Rect2(256, 1472, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4vqp"]
-atlas = ExtResource("2_hf312")
-region = Rect2(320, 1472, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_astjh"]
-atlas = ExtResource("2_hf312")
-region = Rect2(384, 1472, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgj22"]
-atlas = ExtResource("2_hf312")
-region = Rect2(448, 1472, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqlpi"]
-atlas = ExtResource("2_hf312")
-region = Rect2(512, 1408, 64, 64)
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_320es"]
+atlas = ExtResource("2_vya1c")
+region = Rect2(384, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n113l"]
 atlas = ExtResource("2_hf312")
@@ -75,12 +72,6 @@ region = Rect2(320, 512, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xbepf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vya1c")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_hf312")
 }, {
 "duration": 1.0,
@@ -103,6 +94,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yqlpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_320es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf312")
 }],
 "loop": false,
 "name": &"destroy",
@@ -142,9 +139,6 @@ shape = SubResource("CapsuleShape2D_vbfxb")
 rotation = 0.0
 scale = Vector2(1.209, 1.105)
 sprite_frames = SubResource("SpriteFrames_lu6n1")
-animation = &"destroy"
-frame = 9
-frame_progress = 1.0
 
 [node name="PointLight2D" parent="." index="2"]
 position = Vector2(7.802266, 0)

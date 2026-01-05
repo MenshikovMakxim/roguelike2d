@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs7wrh5lxcccj"]
+[gd_scene load_steps=6 format=3 uid="uid://cs7wrh5lxcccj"]
 
 [ext_resource type="Script" uid="uid://chshmfxbtdcta" path="res://main/UI/lose_screen.gd" id="1_2fsn7"]
 [ext_resource type="Texture2D" uid="uid://bgv5gc7f5f1dg" path="res://assets/die_art.png" id="1_w4pcu"]
+[ext_resource type="PackedScene" uid="uid://rup4gs4iupn2" path="res://main/UI/menu/abstract/anim_texture.tscn" id="2_enujj"]
 [ext_resource type="PackedScene" uid="uid://b3fc1acjxjhk8" path="res://main/globals/SoundManager.tscn" id="3_enujj"]
 
 [sub_resource type="Theme" id="Theme_2fsn7"]
@@ -15,7 +16,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2fsn7")
 
+[node name="AnimTexture" parent="." instance=ExtResource("2_enujj")]
+layout_mode = 1
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://c1nstqtgb0f00"]
+[gd_scene load_steps=70 format=3 uid="uid://c1nstqtgb0f00"]
 
 [ext_resource type="PackedScene" uid="uid://bc0lqrr8lxyjp" path="res://main/character/abstract/character.tscn" id="1_j4os2"]
 [ext_resource type="Script" uid="uid://dleelgvum42ca" path="res://main/character/hero.gd" id="2_dldjo"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="4_dldjo"]
 [ext_resource type="AudioStream" uid="uid://ck13wbo8v3nsd" path="res://assets/sounds/fire/burning-fire-from-a-lit-match.ogg" id="5_5bngo"]
 [ext_resource type="AudioStream" uid="uid://bbddg2f7nue5l" path="res://assets/sounds/fire/blow-out-the-fire-of-a-match.ogg" id="6_ff06e"]
+[ext_resource type="Material" uid="uid://bpw1hml4ybam4" path="res://main/globals/Difference_colors.tres" id="7_d2gni"]
 [ext_resource type="PackedScene" uid="uid://j2utusg7nykl" path="res://main/UI/widgets/HUD.tscn" id="10_qy0aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37t01"]
@@ -430,7 +431,6 @@ metadata/_snap_enabled = true
 radius = 32.0
 
 [node name="Hero" instance=ExtResource("1_j4os2")]
-modulate = Color(1, 0.6431373, 0.39607844, 1)
 light_mask = 0
 collision_layer = 2
 collision_mask = 9
@@ -450,20 +450,29 @@ sounds = Dictionary[String, AudioStream]({
 sounds_volumes = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
+visible = false
 y_sort_enabled = true
 shape = SubResource("CapsuleShape2D_37t01")
 
+[node name="Face" parent="." index="1"]
+use_parent_material = true
+
 [node name="Animation" parent="Face" index="0"]
+material = ExtResource("7_d2gni")
+instance_shader_parameters/Difference = false
+instance_shader_parameters/Glow = Color(1.0543317, 0, 0.035848588, 1)
+instance_shader_parameters/MaskColor = Color(0.973535, 0.9735351, 0.973535, 1)
+instance_shader_parameters/TargetColor = Color(0.69411767, 0.9647059, 0.98039216, 1)
+instance_shader_parameters/Tolerance = 0.16400000779
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_dldjo")
-animation = &"damage"
-frame = 4
+frame = 12
 frame_progress = 1.0
 offset = Vector2(-0.75, -23.76)
 
 [node name="Effects" parent="Face" index="1"]
-visible = true
-animation = &"attack"
+frame = 7
+frame_progress = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="Face" index="2"]
 position = Vector2(0.29330063, -0.10390091)
@@ -492,6 +501,7 @@ texture = SubResource("GradientTexture2D_5bngo")
 metadata/_edit_lock_ = true
 
 [node name="Collector" type="Area2D" parent="." index="5"]
+visible = false
 collision_layer = 16
 collision_mask = 16
 monitoring = false

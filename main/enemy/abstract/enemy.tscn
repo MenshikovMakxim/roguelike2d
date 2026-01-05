@@ -1,10 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://duh82fnaqlxri"]
+[gd_scene load_steps=9 format=3 uid="uid://duh82fnaqlxri"]
 
 [ext_resource type="PackedScene" uid="uid://bc0lqrr8lxyjp" path="res://main/character/abstract/character.tscn" id="1_ej5pg"]
 [ext_resource type="Script" uid="uid://ct45cg13se2ef" path="res://main/enemy/abstract/enemy.gd" id="2_we6vg"]
-[ext_resource type="Texture2D" uid="uid://e4wxumir4tu5" path="res://assets/textures/effects/fire/Retro Impact Effect Pack 5 A.png" id="3_27o6e"]
-[ext_resource type="Texture2D" uid="uid://c2nowduaeptly" path="res://assets/textures/effects/63.png" id="4_0shte"]
-[ext_resource type="Texture2D" uid="uid://ddqxxlr05qikm" path="res://assets/textures/enemy/slime-Sheet.png" id="5_cl2i7"]
+[ext_resource type="Material" uid="uid://bpw1hml4ybam4" path="res://main/globals/Difference_colors.tres" id="3_dlg4i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_faf7x"]
 animations = [{
@@ -34,42 +32,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_faf7x"]
-atlas = ExtResource("3_27o6e")
-region = Rect2(384, 320, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1re8"]
-atlas = ExtResource("4_0shte")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gsrg"]
-atlas = ExtResource("4_0shte")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_087wm"]
-atlas = ExtResource("4_0shte")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pkofg"]
-atlas = ExtResource("4_0shte")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hvt3q"]
-atlas = ExtResource("4_0shte")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_orr8a"]
-atlas = ExtResource("4_0shte")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lq5ou"]
-atlas = ExtResource("4_0shte")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfibc"]
-atlas = ExtResource("5_cl2i7")
-region = Rect2(192, 54, 64, 18)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_1i04x"]
 animations = [{
 "frames": [],
@@ -77,34 +39,7 @@ animations = [{
 "name": &"attack",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_faf7x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i1re8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2gsrg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_087wm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pkofg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hvt3q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_orr8a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lq5ou")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tfibc")
-}],
+"frames": [],
 "loop": false,
 "name": &"damage",
 "speed": 12.0
@@ -152,14 +87,14 @@ can_attack = true
 metadata/_edit_lock_ = true
 
 [node name="Animation" parent="Face" index="0"]
+material = ExtResource("3_dlg4i")
 sprite_frames = SubResource("SpriteFrames_faf7x")
 animation = &"damage"
 
 [node name="Effects" parent="Face" index="1"]
-visible = true
+material = ExtResource("3_dlg4i")
 sprite_frames = SubResource("SpriteFrames_1i04x")
-frame = 8
-frame_progress = 1.0
+animation = &"attack"
 
 [node name="Shadow" parent="Face" index="2"]
 position = Vector2(0, 29.500002)
@@ -179,6 +114,7 @@ shape = SubResource("CircleShape2D_tjrd4")
 volume_db = -2.0
 
 [node name="ProgressBar" type="ProgressBar" parent="." index="5"]
+modulate = Color(1.6924742, 0, 0.6187194, 1)
 z_index = 1
 texture_filter = 3
 offset_left = -14.0
