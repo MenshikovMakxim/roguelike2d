@@ -20,7 +20,7 @@ signal menu
 func _ready() -> void:
 	add_child(sound_manager)
 
-	self.connect("player_dead",  Callable(self, "go_to").bind("lose"))
+	self.connect("player_dead",  Callable(self, "go_to").bind("shop"))
 	self.connect("take_soul", Callable(self, "add_soul"))
 	self.connect("start_game", Callable(self, "stop_menu"))
 	self.connect("menu", Callable(self, "start_menu"))
@@ -28,10 +28,10 @@ func _ready() -> void:
 
 ##stats of hero
 
-var hp = 200
-var speed = 170
-var attack = 50
-var souls = 0
+#var hp = 200
+#var speed = 170
+#var attack = 50
+#var souls = 0
 
 ##sound volume [0,1]
 
@@ -42,7 +42,6 @@ var smooth = false
 ##game
 
 var spawn_timer = 4
-
 
 
 func switch_filter():
@@ -59,7 +58,7 @@ func calc_volume_effects():
 	return linear_to_db(Global.k_volume_effects)
 
 func stop_menu():
-	to_def()
+	#to_def()
 	sound_manager.stop_sound()
 
 func start_menu():
@@ -74,12 +73,15 @@ var scens = {
 	"credits": "res://main/UI/menu/pages/credits.tscn",
 	"settings": "res://main/UI/menu/pages/settings.tscn",
 	"pause": "res://main/UI/menu/pause.tscn",
-	"tutorial": "res://main/UI/menu/pages/tutorial.tscn"
+	"tutorial": "res://main/UI/menu/pages/tutorial.tscn",
+	"shop": "res://main/locations/dungeon/shop.tscn"
 }
 
 func go_to(_name: String):
-	var scene = scens[_name]
-	get_tree().change_scene_to_file(scene)
+	if scens[_name]:
+		get_tree().change_scene_to_file(scens[_name])
+	#var scene = scens[_name]
+
 
 ## souls
 
@@ -90,15 +92,15 @@ func spawn_soul(position, parent):
 	parent.add_child(soul)
 
 
-func to_def():
-	hp = 200
-	speed = 170
-	attack = 50
-	souls = 0
+#func to_def():
+	#hp = 200
+	#speed = 170
+	#attack = 50
+	#souls = 0
 
 
 func add_soul():
-	souls += 1
+	Stats.souls += 1
 
 
 func move(_actor : Hero):

@@ -463,11 +463,11 @@ instance_shader_parameters/Difference = false
 instance_shader_parameters/Glow = Color(1.0543317, 0, 0.035848588, 1)
 instance_shader_parameters/MaskColor = Color(0.973535, 0.9735351, 0.973535, 1)
 instance_shader_parameters/TargetColor = Color(0.69411767, 0.9647059, 0.98039216, 1)
-instance_shader_parameters/Tolerance = 0.16400000779
+instance_shader_parameters/Tolerance = 0.0870000041325
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_dldjo")
-frame = 12
-frame_progress = 1.0
+animation = &"idle"
+frame = 1
 offset = Vector2(-0.75, -23.76)
 
 [node name="Effects" parent="Face" index="1"]
