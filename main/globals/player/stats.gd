@@ -1,5 +1,8 @@
 extends Node
 
+var current_stats: StatsDef = load("res://data/player_stats/resources/new_resource.tres")
+var unlocked_abilities: Array[Ability] = []
+
 var hp = 200
 var speed = 170
 var attack = 50
