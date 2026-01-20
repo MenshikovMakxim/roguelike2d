@@ -2,7 +2,6 @@ extends CanvasLayer
 
 @onready var hp_bar = $MarginContainer/VBoxContainer/HpBar
 
-
 func _ready() -> void:
 	Stats.to_def()
 	Global.connect("take_soul", Callable(self, "update_soul_bar"))
