@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="StatsDef" load_steps=2 format=3 uid="uid://e8kjaqn72xhk"]
 
-[ext_resource type="Script" uid="uid://djtebvxi4uadm" path="res://data/player_stats/stats_def.gd" id="1_r0m8j"]
+[ext_resource type="Script" uid="uid://djtebvxi4uadm" path="res://data/player_stats/stats_def.gd" id="1_eo5dr"]
 
 [resource]
-script = ExtResource("1_r0m8j")
+script = ExtResource("1_eo5dr")
 metadata/_custom_type_script = "uid://djtebvxi4uadm"

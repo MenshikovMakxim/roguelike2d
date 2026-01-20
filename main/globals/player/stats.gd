@@ -1,11 +1,11 @@
 extends Node
 
-var current_stats: StatsDef = load("res://data/player_stats/resources/new_resource.tres")
+var current_stats: StatsDef = preload("res://data/player_stats/resources/base_stats.tres")
 var unlocked_abilities: Array[Ability] = []
 
-var hp = 200
-var speed = 170
-var attack = 50
+var hp = current_stats.max_health
+var speed = current_stats.speed
+var attack = current_stats.damage
 var souls = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 
 
 func to_def():
-	hp = 200
-	speed = 170
-	attack = 50
+	hp = current_stats.max_health
+	speed = current_stats.speed
+	attack = current_stats.damage
 	souls = 0

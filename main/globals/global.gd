@@ -31,7 +31,7 @@ func _ready() -> void:
 #var hp = 200
 #var speed = 170
 #var attack = 50
-#var souls = 0
+var souls = 0
 
 ##sound volume [0,1]
 

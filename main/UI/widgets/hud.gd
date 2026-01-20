@@ -4,6 +4,7 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	Stats.to_def()
 	Global.connect("take_soul", Callable(self, "update_soul_bar"))
 	hp_bar.setup(Stats.hp)
 
@@ -13,5 +14,5 @@ func update_soul_bar():
 
 
 func update(_value):
-	Global.hp = _value
+	Stats.hp = _value
 	hp_bar.update(_value)
