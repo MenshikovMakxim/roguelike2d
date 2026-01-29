@@ -5,10 +5,14 @@ class_name NPC
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer : Timer = $Timer
 @onready var label : Label = $Label
+@onready var upgrade_offer := $UpOffer
 var _entered : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if upgrade_offer:
+		upgrade_offer.hide()
+	
 	if label:
 		label.hide()
 	
@@ -17,7 +21,13 @@ func _ready() -> void:
 
 
 func _use() -> void:
-	pass
+	print(get_tree().paused)
+	if upgrade_offer.visible:
+		get_tree().paused = false
+		upgrade_offer.hide()
+	else:
+		get_tree().paused = true
+		upgrade_offer.show()
 
 
 func _process(_delta: float) -> void:

@@ -3,9 +3,12 @@ extends CanvasLayer
 @onready var hp_bar = $MarginContainer/VBoxContainer/HpBar
 
 func _ready() -> void:
-	Stats.to_def()
+	#Stats.to_def()
+	
+	Stats.connect("upgrade_stats", Callable(self, "update_stat"))
 	Global.connect("take_soul", Callable(self, "update_soul_bar"))
-	hp_bar.setup(Stats.hp)
+	#hp_bar.setup(Stats.hp)
+	update_stat()
 
 
 func update_soul_bar():
@@ -15,3 +18,6 @@ func update_soul_bar():
 func update(_value):
 	Stats.hp = _value
 	hp_bar.update(_value)
+
+func update_stat():
+	hp_bar.setup(Stats.hp)

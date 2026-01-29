@@ -1,5 +1,7 @@
 extends Node
 
+signal upgrade_stats
+
 var current_stats: StatsDef = preload("res://data/player_stats/resources/base_stats.tres")
 var unlocked_abilities: Array[Ability] = []
 
@@ -12,10 +14,11 @@ var souls = 0
 func _ready() -> void:
 	pass # Replace with function body.
 
-func upgrade(new_upgrade: Upgrade) -> void:
-	new_upgrade.apply(current_stats)
+func upgrade() -> void:
+	#new_upgrade.apply(current_stats)
+	print("Upgarde from Stats.gd")
 	to_def()
-	
+	upgrade_stats.emit()
 	
 func to_def():
 	hp = current_stats.max_health

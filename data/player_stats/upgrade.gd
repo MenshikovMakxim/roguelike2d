@@ -22,5 +22,5 @@ func apply(stats: StatsDef) -> Array:
 			stats.speed = calc_modify("Speed", stats.speed)
 		StatType.DAMAGE:
 			stats.damage = calc_modify("Damage", stats.damage)
-	print("Upgrade applied: ", upgrade_name)
+	print("Upgrade applied: ", upgrade_name, changed_stat)
 	return changed_stat

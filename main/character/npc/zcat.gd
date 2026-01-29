@@ -8,6 +8,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		$AnimatedSprite2D.play("idle")
 		$Timer.start()
 
-
 func _use() -> void:
+	super()
 	print("Meaw!")

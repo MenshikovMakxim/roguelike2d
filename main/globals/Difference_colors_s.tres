@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://bbx6p0d2iakn5"]
+[gd_resource type="VisualShader" format=3 uid="uid://bbx6p0d2iakn5"]
 
 [sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_7sokx"]
 
@@ -45,96 +45,6 @@ default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
 op_type = 4
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-instance uniform vec4 MaskColor : source_color;
-instance uniform vec4 TargetColor : source_color;
-instance uniform float Tolerance : hint_range(0.0, 1.0);
-instance uniform vec4 Glow : source_color;
-instance uniform bool Difference = false;
-
-
-
-void fragment() {
-// Input:2
-	vec4 n_out2p0 = COLOR;
-
-
-// ColorParameter:3
-	vec4 n_out3p0 = MaskColor;
-
-
-// ColorOp:4
-	vec3 n_out4p0 = abs(vec3(n_out2p0.xyz) - vec3(n_out3p0.xyz));
-
-
-// ColorParameter:17
-	vec4 n_out17p0 = TargetColor;
-
-
-// FloatParameter:15
-	float n_out15p0 = Tolerance;
-
-
-// BooleanConstant:16
-	bool n_out16p0 = true;
-
-
-	vec3 n_out13p0;
-// If:13
-	vec3 n_in13p4 = vec3(0.00000, 0.00000, 0.00000);
-	vec3 n_in13p5 = vec3(0.00000, 0.00000, 0.00000);
-	if(abs(n_out4p0.x - n_out17p0.x) < n_out15p0)
-	{
-		n_out13p0 = vec3(n_out16p0 ? 1.0 : 0.0);
-	}
-	else if(n_out4p0.x < n_out17p0.x)
-	{
-		n_out13p0 = n_in13p5;
-	}
-	else
-	{
-		n_out13p0 = n_in13p4;
-	}
-
-
-// ColorParameter:14
-	vec4 n_out14p0 = Glow;
-
-
-	vec3 n_out9p0;
-// Switch:9
-	n_out9p0 = mix(vec3(n_out2p0.xyz), vec3(n_out14p0.xyz), float(all(bvec3(n_out13p0))));
-
-
-	vec3 n_out22p0;
-// ColorFunc:22
-	{
-		vec3 c = n_out4p0;
-		vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
-		vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
-		vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
-		float d = q.x - min(q.w, q.y);
-		float e = 1.0e-10;
-		n_out22p0 = vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
-	}
-
-
-// BooleanParameter:20
-	bool n_out20p0 = Difference;
-
-
-// Mix:21
-	vec3 n_out21p0 = mix(n_out9p0, n_out22p0, vec3(n_out20p0 ? 1.0 : 0.0));
-
-
-// Output:0
-	COLOR.rgb = n_out21p0;
-
-
-}
-"
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1540, 120)
